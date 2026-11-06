@@ -1,7 +1,7 @@
 import { Canvas, dither, mix } from "./canvas.mjs";
 import { drawPenguin, width as pw, height as ph } from "./penguin.mjs";
 
-const W = 320, H = 180, SCALE = 6, SHELF = 118, PX = 214;
+const W = 320, H = 180, SCALE = 6, SHELF = 96, PX = 214;
 
 const shelfTop = x => SHELF + Math.round(2 * Math.sin(x / 23) + Math.sin(x / 7));
 
@@ -12,7 +12,7 @@ function gradient(c, x, y, a, b, t) {
 export function wallpaper(g, accent, scene) {
   const c = new Canvas(W, H);
   const s = {
-    morning: { top: g[2], horizon: mix(g[3], accent, 0.45), ice: g[6], face: g[4], deep: g[3], sea: g[1], glint: mix(g[2], accent, 0.5), ink: g[0], paper: g[9] },
+    morning: { top: g[2], horizon: mix(g[4], accent, 0.6), ice: g[6], face: g[4], deep: g[3], sea: g[1], glint: mix(g[2], accent, 0.5), ink: g[0], paper: g[9] },
     evening: { top: g[1], horizon: g[4], ice: g[5], face: g[3], deep: g[2], sea: g[1], glint: mix(g[1], accent, 0.35), ink: g[0], paper: g[8] },
     night: { top: g[0], horizon: g[3], ice: g[4], face: g[2], deep: g[1], sea: g[0], glint: g[2], ink: g[0], paper: g[7] },
   }[scene];
@@ -32,11 +32,11 @@ export function wallpaper(g, accent, scene) {
   if (scene === "evening") for (let x = 0; x < W; x++) for (let y = SHELF - 14; y < SHELF; y++) if (y < shelfTop(x) && dither(x, y, (y - SHELF + 14) / 14 * 0.6)) c.set(x, y, mix(s.horizon, accent, 0.4));
   if (scene === "night") {
     for (let i = 0; i < 70; i++) {
-      const x = (i * 97 + 31) % W, y = (i * 53 + 7) % (SHELF - 40);
+      const x = (i * 97 + 31) % W, y = 30 + (i * 53 + 7) % (SHELF - 70);
       c.set(x, y, i % 5 ? g[5] : g[7]);
     }
-    disc(c, 250, 34, 7, g[6], s.top);
-    disc(c, 253, 32, 6, s.top, s.top);
+    disc(c, 150, 40, 7, g[6], s.top);
+    disc(c, 153, 38, 6, s.top, s.top);
   }
 
   const py = Math.min(...Array.from({ length: pw }, (_, i) => shelfTop(PX + i))) - ph + 1;
