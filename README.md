@@ -18,14 +18,15 @@ Needs Node 18 or newer. No dependencies. `preview/index.html` shows the result, 
 | `build/penguin` | Penguin SVG and PNG from 16 to 512 px, `favicon.svg`, `favicon.ico` |
 | `build/cleanyourtv/waddle` | Launcher theme with morning, evening and night wallpapers |
 | `build/waddleos` | `WaddleTokens.h` with four-level greys and 4x4 Bayer patterns |
-| `build/hyprland` | `waddle.conf`, to `source` from `hyprland.conf` |
+| `build/hyprland` | `waddle.conf`, to `source` from `hyprland.conf`, and desktop wallpapers in 1080p, 1440p and 4K |
+| `build/kitty` | `waddle.conf`, to `include` from `kitty.conf` |
 | `build/waybar` | `style.css` and `colors.css` |
 
 ## Use it
 
 Clone once to `~/src/design`. Desktop and TV follow `main`. Apps pin a version tag.
 
-**This machine.** Links the AI skill into `~/.claude/skills` and adds the Hyprland theme to `hyprland.conf`. It prints the Waybar line to add.
+**This machine.** Links the AI skill into `~/.claude/skills`, adds the Hyprland theme to `hyprland.conf` and the kitty theme to `kitty.conf`, and writes `hyprpaper.conf` with the night wallpaper if you have none. It prints the Waybar line to add. Start hyprpaper with `exec-once = hyprpaper` in `hyprland.conf` if you do not already.
 
 ```bash
 ~/src/design/scripts/install.sh
@@ -34,7 +35,7 @@ Clone once to `~/src/design`. Desktop and TV follow `main`. Apps pin a version t
 **Hyprland and Waybar.** Pull and reload.
 
 ```bash
-git -C ~/src/design pull && hyprctl reload && pkill -SIGUSR2 waybar
+git -C ~/src/design pull && hyprctl reload && pkill -SIGUSR2 waybar && pkill -SIGUSR1 kitty
 ```
 
 **TV.** Push the theme with CleanYourTV's script.

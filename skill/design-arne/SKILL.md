@@ -20,6 +20,7 @@ Use token names, never raw hex or pixel values.
 | WaddleOS | `build/waddleos/WaddleTokens.h` | `WaddleTokens::GRAY4_LIGHT_Text` |
 | Hyprland | `build/hyprland/waddle.conf` | `$accent` |
 | Waybar | `build/waybar/colors.css` | `@accent` |
+| kitty | `build/kitty/waddle.conf` | `color1` to `color15` |
 
 Use the semantic names in UI: `bg`, `surface`, `border`, `text`, `muted`, `accent`, `on-accent`. The grey scale `grey-0` to `grey-9` and `nebb` are for the theme itself, not for components.
 
@@ -29,7 +30,7 @@ If a value you need is missing, add it to `tokens.json` and rebuild. Do not inve
 
 - Websites: `npm install github:arneeme/design#<tag>`, then import `@arneeme/design/fonts.css` and `tokens.css`. Or copy `build/web`.
 - WaddleOS: `scripts/sync-waddleos.sh <waddleos>`. Never edit the copied header there.
-- Hyprland, Waybar and TV: see the README in the design repo.
+- Hyprland, Waybar, kitty, the desktop wallpaper and TV: see the README in the design repo.
 - A platform that is missing gets a new section in the design repo's `scripts/build.mjs`, not a local theme in the app.
 
 ## Theme

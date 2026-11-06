@@ -195,6 +195,10 @@ constexpr int RADIUS_SM = ${parseInt(get("radius.sm"))};
 }
 `);
 
+for (const [file, scene] of scenes)
+  for (const [w, h, scale] of [[1920, 1080, 6], [2560, 1440, 8], [3840, 2160, 12]])
+    write(`hyprland/wallpapers/${file.replace(".png", `-${w}x${h}.png`)}`, png(wallpaper(g, get("color.nebb.dark"), scene, scale)));
+
 const hypr = h => `rgb(${h.slice(1)})`;
 const [e1, e2, e3, e4] = get("motion.easing.standard");
 write("hyprland/waddle.conf", `$bg = ${hypr(dark.bg)}
@@ -241,6 +245,34 @@ group {
     col.border_active = $accent
     col.border_inactive = $border
 }
+`);
+
+const ansi = ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"];
+write("kitty/waddle.conf", `font_family JetBrains Mono
+bold_font JetBrains Mono Bold
+cursor_blink_interval 0
+window_border_width ${get("border.width")}
+window_padding_width ${parseInt(get("space.2"))}
+tab_bar_style separator
+tab_separator " "
+
+foreground ${dark.text}
+background ${dark.bg}
+selection_foreground ${dark.text}
+selection_background ${dark.border}
+cursor ${dark.accent}
+cursor_text_color ${dark.bg}
+url_color ${dark.accent}
+active_border_color ${dark.accent}
+inactive_border_color ${dark.border}
+bell_border_color ${get("color.ansi.red")}
+active_tab_foreground ${dark.text}
+active_tab_background ${dark.border}
+inactive_tab_foreground ${dark.muted}
+inactive_tab_background ${dark.bg}
+tab_bar_background ${dark.bg}
+
+${[...ansi, ...ansi.map(n => `bright-${n}`)].map((n, i) => `color${i} ${get(`color.ansi.${n}`)}`).join("\n")}
 `);
 
 write("waybar/colors.css", Object.entries(dark).map(([k, h]) => `@define-color ${k} ${h};`).join("\n") + "\n");
@@ -302,7 +334,7 @@ tooltip {
 }
 `);
 
-const look = check(["preview", "build/web", "build/waybar", "build/penguin", "skill", "README.md", "AGENTS.md"].map(p => new URL(p, root).pathname));
+const look = check(["preview", "build/web", "build/waybar", "build/kitty", "build/penguin", "skill", "README.md", "AGENTS.md"].map(p => new URL(p, root).pathname));
 if (look.length) { console.error("AI look found:\n" + look.join("\n")); process.exit(1); }
 
 console.log("build ok");
