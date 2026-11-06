@@ -1,216 +1,154 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="no" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; font-src 'self'; img-src data:">
-<title>Waddle preview</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' file:; script-src 'unsafe-inline'; font-src 'self' file:; img-src 'self' file:">
+<title>Waddle design</title>
+<link rel="icon" href="../build/penguin/favicon.svg">
+<link rel="stylesheet" href="../build/web/fonts.css">
+<link rel="stylesheet" href="../build/web/tokens.css">
 <style>
-@font-face { font-family: "JetBrains Mono"; src: url("../assets/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2") format("woff2"); font-weight: 400; }
-@font-face { font-family: "JetBrains Mono"; src: url("../assets/fonts/jetbrains-mono/JetBrainsMono-Bold.woff2") format("woff2"); font-weight: 700; }
-:root {
-  --g0:#0c0e10; --g1:#15181b; --g2:#1f2327; --g3:#2d3237; --g4:#474d53;
-  --g5:#6a7077; --g6:#969ca2; --g7:#c1c6cb; --g8:#e2e5e8; --g9:#f5f6f7;
-}
-[data-theme="dark"] { --bg:var(--g0); --surface:var(--g1); --border:var(--g3); --text:var(--g8); --muted:var(--g6); }
-[data-theme="light"] { --bg:var(--g9); --surface:#ffffff; --border:var(--g7); --text:var(--g1); --muted:var(--g5); }
-[data-eink="on"] body { filter: grayscale(1) contrast(1.15); }
 * { box-sizing: border-box; }
-body { margin:0; background:var(--bg); color:var(--text); font:15px/1.5 "JetBrains Mono", ui-monospace, monospace; }
-main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; }
-header { display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; border-bottom:2px solid var(--border); padding-bottom:16px; }
-h1 { font-size:22px; margin:0; }
-h2 { font-size:16px; margin:40px 0 4px; text-transform:lowercase; }
-p.note { color:var(--muted); margin:0 0 16px; }
-button { font:inherit; background:var(--surface); color:var(--text); border:2px solid var(--border); padding:6px 12px; border-radius:2px; cursor:pointer; }
-button[aria-pressed="true"] { border-color:var(--text); }
-.row { display:flex; flex-wrap:wrap; gap:8px; }
-.swatch { width: 92px; }
-.swatch .chip { height:56px; border:2px solid var(--border); }
-.swatch canvas { display:block; width:92px; height:46px; image-rendering:pixelated; border:2px solid var(--border); border-top:0; }
-.swatch small { display:block; font-size:12px; color:var(--muted); }
-.accents { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; }
-.card { background:var(--surface); border:2px solid var(--border); padding:16px; border-radius:2px; }
-.card h3 { margin:0 0 8px; font-size:15px; }
-.btn-acc { border-color:transparent; font-weight:700; }
-table { border-collapse:collapse; width:100%; font-size:12px; margin-top:12px; }
-td { padding:2px 4px; border-top:1px solid var(--border); }
-td.pass { color:var(--text); } td.fail { color:var(--muted); text-decoration:line-through; }
-.type div { margin:4px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.pengs { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; }
-.peng { display:flex; align-items:flex-end; gap:16px; padding:16px; border:2px solid var(--border); flex-wrap:wrap; }
-.peng svg { display:block; }
-.peng.on-dark { background:var(--g0); color:var(--g6); }
-.peng.on-light { background:var(--g9); color:var(--g5); }
-.peng figcaption { width:100%; font-size:12px; }
+body { margin: 0; background: var(--bg); color: var(--text); font: var(--font-size-base)/1.5 var(--font-family-mono); }
+html[data-view="eink"] body { filter: url(#eink); }
+html[data-view="red"] body { filter: url(#red); }
+main { max-width: 1040px; margin: 0 auto; padding: var(--space-6) var(--space-4) var(--space-12); }
+header { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; border-bottom: var(--border-width) solid var(--border); padding-bottom: var(--space-4); }
+header div { display: flex; gap: var(--space-2); align-items: center; }
+h1 { font-size: var(--font-size-lg); margin: 0; }
+h2 { font-size: var(--font-size-base); margin: var(--space-12) 0 var(--space-1); }
+p.note { color: var(--muted); margin: 0 0 var(--space-4); }
+a { color: var(--accent); }
+button, input { font: inherit; border-radius: var(--radius-sm); border: var(--border-width) solid var(--border); padding: var(--space-2) var(--space-4); transition: border-color var(--motion-duration-fast) var(--motion-easing-standard); }
+button { background: var(--surface); color: var(--text); cursor: pointer; }
+button:hover, input:focus { border-color: var(--accent); outline: none; }
+button:focus-visible { outline: var(--border-width) solid var(--accent); outline-offset: var(--border-width); }
+button[aria-pressed="true"] { border-color: var(--text); }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: var(--font-weight-bold); }
+input { background: var(--bg); color: var(--text); width: 100%; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-4); }
+.card { background: var(--surface); border: var(--border-width) solid var(--border); border-radius: var(--radius-sm); padding: var(--space-4); }
+.card h3 { margin: 0 0 var(--space-2); font-size: var(--font-size-base); }
+.row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.chip { width: 88px; font-size: var(--font-size-sm); color: var(--muted); }
+.chip i { display: block; height: 48px; border: var(--border-width) solid var(--border); margin-bottom: var(--space-1); }
+.type div { margin: var(--space-1) 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.type small { color: var(--muted); font-size: var(--font-size-sm); }
+.space div { display: flex; align-items: center; gap: var(--space-3); font-size: var(--font-size-sm); color: var(--muted); margin: var(--space-1) 0; }
+.space i { display: block; height: var(--space-3); background: var(--accent); }
+.pengs { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: end; }
+.pengs figure { margin: 0; font-size: var(--font-size-sm); color: var(--muted); }
+.pengs img { display: block; image-rendering: pixelated; margin-bottom: var(--space-1); }
+.paper { background: var(--color-grey-9); padding: var(--space-3); }
+.walls { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-2); }
+.walls img { width: 100%; display: block; image-rendering: pixelated; border: var(--border-width) solid var(--border); }
+table { border-collapse: collapse; width: 100%; font-size: var(--font-size-sm); }
+td { padding: var(--space-1) var(--space-2) var(--space-1) 0; border-top: 1px solid var(--border); vertical-align: top; }
+td:first-child { white-space: nowrap; }
+code { font-size: var(--font-size-sm); }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="eink" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncR type="discrete" tableValues="0 0.333 0.333 0.667 0.667 1"/><feFuncG type="discrete" tableValues="0 0.333 0.333 0.667 0.667 1"/><feFuncB type="discrete" tableValues="0 0.333 0.333 0.667 0.667 1"/></feComponentTransfer></filter>
+  <filter id="red" color-interpolation-filters="sRGB"><feColorMatrix values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/></filter>
+</svg>
 <main>
 <header>
-  <h1>waddle / preview</h1>
-  <div class="row">
-    <button id="theme" aria-pressed="false">light</button>
-    <button id="eink" aria-pressed="false">e-ink view</button>
+  <h1>waddle / design</h1>
+  <div>
+    <button id="theme">lys</button>
+    <button data-view="eink" aria-pressed="false">e-ink</button>
+    <button data-view="red" aria-pressed="false">rødfilter</button>
   </div>
 </header>
 
-<h2>grey ramp</h2>
-<p class="note">Ten greys with a faint blue tint. Below each chip: the same grey as 4x4 Bayer dither in pure black and white, as a 1-bit screen shows it.</p>
+<h2>tema</h2>
+<p class="note">Bruk disse navnene i UI. Rå grånivåer er for temaet selv.</p>
+<div class="row" id="semantic"></div>
+
+<h2>grånivåer og isbre</h2>
+<p class="note">g0 til g9 med svak blåtone. Isbre er aksenten, mørk og lys variant.</p>
 <div class="row" id="ramp"></div>
 
-<h2>accent: pick one</h2>
-<p class="note">Ice blue in three strengths. Dark and light themes each get their own shade. The table checks WCAG AA: 4.5 for text, 3 for large text and UI.</p>
-<div class="accents" id="accents"></div>
+<h2>skrift</h2>
+<p class="note">JetBrains Mono, lagret lokalt. 400 og 700, fire størrelser.</p>
+<div class="card type">
+  <div style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold)">Waddle 07:42 <small>xl 700</small></div>
+  <div style="font-size: var(--font-size-lg); font-weight: var(--font-weight-bold)">Vær i Oslo: 4 grader, lett regn <small>lg 700</small></div>
+  <div>Brødtekst. Korte setninger, vanlige ord, ingen pynt. <small>base 400</small></div>
+  <div style="font-size: var(--font-size-sm); color: var(--muted)">oppdatert 07:40 · NRK <small>sm 400</small></div>
+</div>
 
-<h2>type</h2>
-<p class="note">JetBrains Mono, OFL, self-hosted. A pixel font for headings can come later if you want one.</p>
-<div class="type card" id="type"></div>
+<h2>komponenter</h2>
+<p class="note">2px kanter, 0 eller 2px hjørner, ingen skygger. 120ms på hover og fokus.</p>
+<div class="grid">
+  <div class="card">
+    <h3>Lagre endringene?</h3>
+    <p>Neste buss går <a href="#">om fire minutter</a>.</p>
+    <div class="row"><button class="primary">Lagre</button><button>Avbryt</button></div>
+  </div>
+  <div class="card">
+    <h3>Wi-Fi</h3>
+    <p><input value="hjemme-5g" aria-label="Nettverk"></p>
+    <p style="color: var(--muted); font-size: var(--font-size-sm); margin: 0">Fant ikke nettverket. Sjekk navnet og prøv igjen.</p>
+  </div>
+</div>
 
-<h2>penguin: pick a dark mode</h2>
-<p class="note">Drawn from the 30x30 WaddleOS grid. A black penguin disappears on a black screen, so dark mode needs a choice: invert it, or put it on a lighter plate.</p>
-<div class="pengs" id="pengs"></div>
+<h2>avstand</h2>
+<div class="card space" id="space"></div>
+
+<h2>pingvin</h2>
+<p class="note">Generert fra <code>assets/src/penguin.txt</code>. Mørk modus på plate, lys modus rett på papir. Skaler i hele tall.</p>
+<div class="pengs">
+  <figure><img src="../build/penguin/penguin-dark.svg" width="120" alt=""><code>penguin-dark.svg</code></figure>
+  <figure class="paper"><img src="../build/penguin/penguin-light.svg" width="120" alt=""><code>penguin-light.svg</code></figure>
+  <figure><img src="../build/penguin/png/penguin-dark-64.png" width="64" alt=""><code>64</code></figure>
+  <figure><img src="../build/penguin/png/penguin-dark-32.png" width="32" alt=""><code>32</code></figure>
+  <figure><img src="../build/penguin/png/penguin-dark-16.png" width="16" alt=""><code>16</code></figure>
+  <figure><img src="../build/penguin/favicon.svg" width="32" alt=""><code>favicon.svg</code></figure>
+</div>
+
+<h2>tv</h2>
+<p class="note">CleanYourTV-temaet <code>waddle</code>. Morgen, kveld og natt. Natten tåler rødfilteret.</p>
+<div class="walls">
+  <img src="../build/cleanyourtv/waddle/wallpapers/01-morgen.png" alt="Morgen på isbreen">
+  <img src="../build/cleanyourtv/waddle/wallpapers/02-kveld.png" alt="Kveld på isbreen">
+  <img src="../build/cleanyourtv/waddle/wallpapers/03-natt.png" alt="Natt på isbreen">
+</div>
+
+<h2>plattformer</h2>
+<table>
+  <tr><td>web</td><td><code>build/web/tokens.css</code>, <code>fonts.css</code>, <code>tailwind-preset.js</code></td></tr>
+  <tr><td>waddleos</td><td><code>build/waddleos/WaddleTokens.h</code></td></tr>
+  <tr><td>tv</td><td><code>build/cleanyourtv/waddle</code></td></tr>
+  <tr><td>hyprland</td><td><code>build/hyprland/waddle.conf</code></td></tr>
+  <tr><td>waybar</td><td><code>build/waybar/style.css</code></td></tr>
+  <tr><td>ai</td><td><code>skill/design-arne/SKILL.md</code></td></tr>
+</table>
 </main>
-
-<script type="text/plain" id="grid">
-
-
-
-
-          ##########
-         ############
-       ################
-      ##################
-      #####..####..#####
-     ####.....##.....####
-    #####.....##.....#####
-    ####...#.....#....####
-    ####...##....##...####
-    #####..##....##..#####
- ## ####.::...##...::.#### ##
- #######......##......#######
- ######................######
- ######................######
-  #####................#####
-    ###................###
-     ##::............::##
-      ##:............:##
-      ##::..........::##
-       ##::........::##
-       ####::::::::####
-         ############
-         ############
-         #####  #####
-
-
-</script>
 <script>
-const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const greys = [0,1,2,3,4,5,6,7,8,9].map(i => ["g"+i, css("--g"+i)]);
-
-const rgb = h => [1,3,5].map(i => parseInt(h.slice(i, i+2), 16) / 255);
-const lin = c => c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
-const lum = h => { const [r,g,b] = rgb(h).map(lin); return 0.2126*r + 0.7152*g + 0.0722*b; };
-const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
-
-const bayer = [[0,8,2,10],[12,4,14,6],[3,11,1,9],[15,7,13,5]];
-const ramp = document.getElementById("ramp");
-for (const [name, hex] of greys) {
-  const el = document.createElement("div");
-  el.className = "swatch";
-  const cv = document.createElement("canvas");
-  cv.width = 16; cv.height = 8;
-  const ctx = cv.getContext("2d");
-  const L = Math.cbrt(lum(hex));
-  for (let y = 0; y < 8; y++) for (let x = 0; x < 16; x++) {
-    ctx.fillStyle = L > (bayer[y%4][x%4] + 0.5) / 16 ? "#fff" : "#000";
-    ctx.fillRect(x, y, 1, 1);
-  }
-  el.innerHTML = `<div class="chip" style="background:${hex}"></div>`;
-  el.append(cv);
-  el.insertAdjacentHTML("beforeend", `<small>${name}<br>${hex}</small>`);
-  ramp.append(el);
-}
-
-const accents = [
-  { name: "A. isflak", note: "pale and quiet", dark: "#9fd3ee", light: "#1f6f99" },
-  { name: "B. isbre", note: "clear, middle strength", dark: "#5fb0dc", light: "#1b6390" },
-  { name: "C. bresprekk", note: "colder, a little green", dark: "#6cc4d4", light: "#13707f" },
-];
-const G = Object.fromEntries(greys);
-const fmt = r => r.toFixed(2);
-const cell = (r, min) => `<td class="${r >= min ? "pass" : "fail"}">${fmt(r)}</td>`;
-const acc = document.getElementById("accents");
-function drawAccents() {
-  const t = document.documentElement.dataset.theme;
-  acc.innerHTML = "";
-  for (const a of accents) {
-    const c = a[t];
-    const bg = t === "dark" ? G.g0 : G.g9;
-    const sf = t === "dark" ? G.g1 : "#ffffff";
-    const on = t === "dark" ? G.g0 : "#ffffff";
-    acc.insertAdjacentHTML("beforeend", `
-      <div class="card">
-        <h3>${a.name}</h3>
-        <p class="note">${a.note}. dark ${a.dark}, light ${a.light}</p>
-        <div class="row">
-          <button class="btn-acc" style="background:${c};color:${on}">Lagre</button>
-          <button style="border-color:${c};color:${c}">Avbryt</button>
-        </div>
-        <p style="margin:12px 0 0">Neste buss går <span style="color:${c};text-decoration:underline">om fire minutter</span>.</p>
-        <table>
-          <tr><td>accent on background</td>${cell(ratio(c, bg), 4.5)}</tr>
-          <tr><td>accent on surface</td>${cell(ratio(c, sf), 4.5)}</tr>
-          <tr><td>text on accent button</td>${cell(ratio(on, c), 4.5)}</tr>
-        </table>
-      </div>`);
-  }
-}
-
-const type = document.getElementById("type");
-[[32,700,"Waddle 07:42"],[22,700,"Vær i Oslo: 4 grader, lett regn"],[15,400,"Brødtekst. Korte setninger, vanlige ord, ingen pynt."],[12,400,"metadata · oppdatert 07:40 · NRK"]]
-  .forEach(([s, w, t]) => type.insertAdjacentHTML("beforeend", `<div style="font-size:${s}px;font-weight:${w}">${t} <span style="color:var(--muted);font-weight:400;font-size:12px">${s}/${w}</span></div>`));
-
-const rows = document.getElementById("grid").textContent.split("\n").filter((l, i, a) => i > 0 && i < a.length - 1);
-function penguin(px, ink, paper) {
-  const n = rows.length, s = 2;
-  let r = "";
-  rows.forEach((row, y) => [...row].forEach((ch, x) => {
-    if (ch === "#") r += `<rect x="${x*s}" y="${y*s}" width="${s}" height="${s}" fill="${ink}"/>`;
-    else if (ch === ".") r += `<rect x="${x*s}" y="${y*s}" width="${s}" height="${s}" fill="${paper}"/>`;
-    else if (ch === ":") r += `<rect x="${x*s}" y="${y*s}" width="${s}" height="${s}" fill="${paper}"/><rect x="${x*s}" y="${y*s}" width="1" height="1" fill="${ink}"/><rect x="${x*s+1}" y="${y*s+1}" width="1" height="1" fill="${ink}"/>`;
-  }));
-  return `<svg width="${px}" height="${px}" viewBox="0 0 ${n*s} ${n*s}" shape-rendering="crispEdges" role="img" aria-label="Waddle">${r}</svg>`;
-}
-const sizes = [30, 60, 120, 240];
-const variants = [
-  ["on-light", "light: black ink on paper", G.g0, G.g9, null],
-  ["on-dark", "dark 1: inverted, light ink", G.g8, G.g0, null],
-  ["on-dark", "dark 2: black penguin on a g3 plate", G.g0, G.g9, G.g3],
-];
-const pengs = document.getElementById("pengs");
-for (const [cls, label, ink, paper, plate] of variants) {
-  const f = document.createElement("figure");
-  f.className = "peng " + cls;
-  f.style.margin = 0;
-  if (plate) f.style.background = plate;
-  f.innerHTML = sizes.map(px => penguin(px, ink, paper)).join("") + `<figcaption>${label} · ${sizes.join(", ")} px</figcaption>`;
-  pengs.append(f);
-}
-
 const root = document.documentElement;
+const css = name => getComputedStyle(root).getPropertyValue(name).trim();
+const chip = (label, v) => `<div class="chip"><i style="background: var(${v})"></i>${label}<br>${css(v)}</div>`;
+const draw = () => {
+  semantic.innerHTML = ["bg", "surface", "border", "text", "muted", "accent", "on-accent", "penguin-plate"].map(n => chip(n, `--${n}`)).join("");
+  ramp.innerHTML = [...Array(10).keys()].map(i => chip(`g${i}`, `--color-grey-${i}`)).join("") + chip("isbre dark", "--color-isbre-dark") + chip("isbre light", "--color-isbre-light");
+};
+space.innerHTML = [1, 2, 3, 4, 6, 8, 12].map(n => `<div><i style="width: var(--space-${n})"></i>space-${n} · ${css(`--space-${n}`)}</div>`).join("");
 document.getElementById("theme").onclick = e => {
-  const light = root.dataset.theme === "dark";
-  root.dataset.theme = light ? "light" : "dark";
-  e.target.textContent = light ? "dark" : "light";
-  drawAccents();
+  const dark = root.dataset.theme === "dark";
+  root.dataset.theme = dark ? "light" : "dark";
+  e.target.textContent = dark ? "mørk" : "lys";
+  draw();
 };
-document.getElementById("eink").onclick = e => {
-  const on = root.dataset.eink !== "on";
-  root.dataset.eink = on ? "on" : "off";
-  e.target.setAttribute("aria-pressed", on);
-};
-drawAccents();
+document.querySelectorAll("[data-view]").forEach(b => b.onclick = () => {
+  const on = root.dataset.view !== b.dataset.view;
+  root.dataset.view = on ? b.dataset.view : "";
+  document.querySelectorAll("[data-view]").forEach(o => o.setAttribute("aria-pressed", String(on && o === b)));
+});
+draw();
 </script>
 </body>
 </html>
