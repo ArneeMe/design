@@ -1,17 +1,17 @@
 :root {
-  --color-grey-0: #0c0e10;
-  --color-grey-1: #15181b;
-  --color-grey-2: #1f2327;
-  --color-grey-3: #2d3237;
-  --color-grey-4: #474d53;
-  --color-grey-5: #6a7077;
-  --color-grey-6: #969ca2;
-  --color-grey-7: #c1c6cb;
-  --color-grey-8: #e2e5e8;
-  --color-grey-9: #f5f6f7;
+  --color-grey-0: #0e0e0d;
+  --color-grey-1: #171716;
+  --color-grey-2: #21211f;
+  --color-grey-3: #2f2f2c;
+  --color-grey-4: #4a4a46;
+  --color-grey-5: #6a6a65;
+  --color-grey-6: #9a9a94;
+  --color-grey-7: #c6c6c0;
+  --color-grey-8: #e4e4df;
+  --color-grey-9: #f4f4f0;
   --color-grey-white: #ffffff;
-  --color-isbre-dark: #5fb0dc;
-  --color-isbre-light: #1b6390;
+  --color-nebb-dark: #f0a040;
+  --color-nebb-light: #9a4a00;
   --font-family-mono: "JetBrains Mono", ui-monospace, monospace;
   --font-size-sm: 12px;
   --font-size-base: 15px;
@@ -36,44 +36,44 @@
 
 :root, [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0c0e10;
-  --surface: #15181b;
-  --border: #2d3237;
-  --text: #e2e5e8;
-  --muted: #969ca2;
-  --accent: #5fb0dc;
-  --on-accent: #0c0e10;
-  --penguin-ink: #0c0e10;
-  --penguin-paper: #f5f6f7;
-  --penguin-plate: #2d3237;
+  --bg: #0e0e0d;
+  --surface: #171716;
+  --border: #2f2f2c;
+  --text: #e4e4df;
+  --muted: #9a9a94;
+  --accent: #f0a040;
+  --on-accent: #0e0e0d;
+  --penguin-ink: #0e0e0d;
+  --penguin-paper: #f4f4f0;
+  --penguin-plate: #2f2f2c;
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     color-scheme: light;
-    --bg: #f5f6f7;
+    --bg: #f4f4f0;
     --surface: #ffffff;
-    --border: #c1c6cb;
-    --text: #15181b;
-    --muted: #6a7077;
-    --accent: #1b6390;
+    --border: #c6c6c0;
+    --text: #171716;
+    --muted: #6a6a65;
+    --accent: #9a4a00;
     --on-accent: #ffffff;
-    --penguin-ink: #0c0e10;
-    --penguin-paper: #f5f6f7;
-    --penguin-plate: #f5f6f7;
+    --penguin-ink: #0e0e0d;
+    --penguin-paper: #f4f4f0;
+    --penguin-plate: #f4f4f0;
   }
 }
 
 [data-theme="light"] {
   color-scheme: light;
-  --bg: #f5f6f7;
+  --bg: #f4f4f0;
   --surface: #ffffff;
-  --border: #c1c6cb;
-  --text: #15181b;
-  --muted: #6a7077;
-  --accent: #1b6390;
+  --border: #c6c6c0;
+  --text: #171716;
+  --muted: #6a6a65;
+  --accent: #9a4a00;
   --on-accent: #ffffff;
-  --penguin-ink: #0c0e10;
-  --penguin-paper: #f5f6f7;
-  --penguin-plate: #f5f6f7;
+  --penguin-ink: #0e0e0d;
+  --penguin-paper: #f4f4f0;
+  --penguin-plate: #f4f4f0;
 }

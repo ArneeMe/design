@@ -26,9 +26,9 @@ export default {
         "9": "var(--color-grey-9)",
         "white": "var(--color-grey-white)"
       },
-      "isbre": {
-        "dark": "var(--color-isbre-dark)",
-        "light": "var(--color-isbre-light)"
+      "nebb": {
+        "dark": "var(--color-nebb-dark)",
+        "light": "var(--color-nebb-light)"
       }
     },
     "fontFamily": {
