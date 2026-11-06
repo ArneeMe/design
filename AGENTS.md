@@ -17,6 +17,7 @@ This repo is Arne's design system. Follow the `arnes-stil` skill for code, git a
 
 - Change `tokens.json` or a script, then run `node scripts/build.mjs` and commit `build/` with it.
 - Never add npm dependencies, CDNs, remote fonts or network calls.
+- Read `docs/no-ai-look.md` before changing how anything looks. The build fails on what it lists.
 - Never draw the penguin by hand. Change `penguin.txt` and rebuild.
 - Keep `build/` byte-stable: the same input must give the same output.
 - When `build/` changes, bump `version` in `package.json` and tag the merge on `main` as `vX.Y.Z`. See Versions in the README.

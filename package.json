@@ -12,6 +12,7 @@
     "./penguin/*": "./build/penguin/*"
   },
   "scripts": {
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs",
+    "check-ai-look": "node scripts/check-ai-look.mjs"
   }
 }

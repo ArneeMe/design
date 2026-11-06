@@ -79,6 +79,10 @@ Follow the design-arne skill (github.com/arneeme/design) for colours, type, the 
 3. Run the build and commit the output.
 4. Add a line to the table above and to `skill/design-arne/SKILL.md`.
 
+## No AI look
+
+`docs/no-ai-look.md` lists what makes a design look AI-made and what this repo uses instead. `scripts/check-ai-look.mjs` catches the common tells, and the build runs it. Run it on other apps with `node ~/src/design/scripts/check-ai-look.mjs src`.
+
 ## AI rules
 
 `skill/design-arne/SKILL.md` is a skill for Claude Code and other agents. `AGENTS.md` covers work in this repo.

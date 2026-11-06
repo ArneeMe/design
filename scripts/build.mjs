@@ -3,6 +3,7 @@ import { encodePng, encodeIco } from "./png.mjs";
 import { Canvas, rgb, BAYER4 } from "./canvas.mjs";
 import { drawPenguin, penguinSvg, SIZE, width as pw, height as ph } from "./penguin.mjs";
 import { wallpaper } from "./wallpapers.mjs";
+import { check } from "./check-ai-look.mjs";
 
 const root = new URL("../", import.meta.url);
 const out = new URL("build/", root);
@@ -300,5 +301,8 @@ tooltip {
   border: ${get("border.width")} solid @border;
 }
 `);
+
+const look = check(["preview", "build/web", "build/waybar", "build/penguin", "skill", "README.md", "AGENTS.md"].map(p => new URL(p, root).pathname));
+if (look.length) { console.error("AI look found:\n" + look.join("\n")); process.exit(1); }
 
 console.log("build ok");

@@ -60,7 +60,7 @@ If a value you need is missing, add it to `tokens.json` and rebuild. Do not inve
 
 ## Avoid
 
-These are the things that make a UI look generated. Do not use them.
+These are the things that make a UI look generated. Do not use them. The reasons and sources are in `docs/no-ai-look.md` in the design repo.
 
 - Cyan, teal or ice blue on near-black. Blue-tinted "slate" greys.
 - Purple, violet or blue gradients. Gradient text. Neon or glow.
@@ -96,6 +96,7 @@ Show real content instead: the clock, the bus, the headline. Let a plain table o
 ## Check your work
 
 - Run `node scripts/build.mjs`. It stops if a theme pair fails WCAG AA (4.5:1).
+- In other repos, run `node ~/src/design/scripts/check-ai-look.mjs src`. It flags gradients, shadows, blur, round corners, blue or purple colours, emoji and marketing words.
 - Look at it in dark and light.
 - For e-ink, view it in greyscale. Text and borders must still read with four grey levels.
 - For evening use, check it with a red filter. Shapes must not depend on blue or green alone.
