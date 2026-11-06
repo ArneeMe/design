@@ -10,7 +10,8 @@ This repo is Arne's design system. Follow the `arnes-stil` skill for code, git a
 - `scripts/build.mjs`: the build. Node only, no dependencies.
 - `scripts/png.mjs`, `canvas.mjs`, `penguin.mjs`, `wallpapers.mjs`: helpers for the build.
 - `build/`: generated output. Committed. Never edit by hand.
-- `preview/index.html`: static preview page.
+- `preview/index.html`: preview built from `build/`, with dark, light, e-ink and red filter views.
+- `scripts/install.sh`, `scripts/sync-waddleos.sh`: hook this machine and WaddleOS up to `build/`.
 
 ## Rules
 
@@ -18,6 +19,7 @@ This repo is Arne's design system. Follow the `arnes-stil` skill for code, git a
 - Never add npm dependencies, CDNs, remote fonts or network calls.
 - Never draw the penguin by hand. Change `penguin.txt` and rebuild.
 - Keep `build/` byte-stable: the same input must give the same output.
+- When `build/` changes, bump `version` in `package.json` and tag the merge on `main` as `vX.Y.Z`. See Versions in the README.
 
 ## Check
 

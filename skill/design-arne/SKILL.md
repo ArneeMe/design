@@ -25,6 +25,13 @@ Use the semantic names in UI: `bg`, `surface`, `border`, `text`, `muted`, `accen
 
 If a value you need is missing, add it to `tokens.json` and rebuild. Do not invent one in place.
 
+## Getting the files
+
+- Websites: `npm install github:arneeme/design#<tag>`, then import `@arneeme/design/fonts.css` and `tokens.css`. Or copy `build/web`.
+- WaddleOS: `scripts/sync-waddleos.sh <waddleos>`. Never edit the copied header there.
+- Hyprland, Waybar and TV: see the README in the design repo.
+- A platform that is missing gets a new section in the design repo's `scripts/build.mjs`, not a local theme in the app.
+
 ## Theme
 
 - Dark is the default. Light is for e-ink and paper.

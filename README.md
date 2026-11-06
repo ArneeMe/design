@@ -8,7 +8,7 @@ Arne's design system. One source of truth for colours, type, the penguin and AI 
 node scripts/build.mjs
 ```
 
-Needs Node 18 or newer. No dependencies. The build checks WCAG AA contrast and stops if a theme pair fails.
+Needs Node 18 or newer. No dependencies. `preview/index.html` shows the result, with dark, light, e-ink and red filter views. The build checks WCAG AA contrast and stops if a theme pair fails.
 
 ## Output
 
@@ -20,6 +20,57 @@ Needs Node 18 or newer. No dependencies. The build checks WCAG AA contrast and s
 | `build/waddleos` | `WaddleTokens.h` with four-level greys and 4x4 Bayer patterns |
 | `build/hyprland` | `waddle.conf`, to `source` from `hyprland.conf` |
 | `build/waybar` | `style.css` and `colors.css` |
+
+## Use it
+
+Clone once to `~/src/design`. Desktop and TV follow `main`. Apps pin a version tag.
+
+**This machine.** Links the AI skill into `~/.claude/skills` and adds the Hyprland theme to `hyprland.conf`. It prints the Waybar line to add.
+
+```bash
+~/src/design/scripts/install.sh
+```
+
+**Hyprland and Waybar.** Pull and reload.
+
+```bash
+git -C ~/src/design pull && hyprctl reload && pkill -SIGUSR2 waybar
+```
+
+**TV.** Push the theme with CleanYourTV's script.
+
+```bash
+TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/src/design/build/cleanyourtv/waddle
+```
+
+**WaddleOS.** Copy the header into the firmware and commit it there. The firmware builds offline, so it gets a copy, not a submodule.
+
+```bash
+~/src/design/scripts/sync-waddleos.sh ~/src/waddleos
+```
+
+**Websites.** Add the repo as a git dependency at a tag. No CDN.
+
+```bash
+npm install github:arneeme/design#v1.0.0
+```
+
+```css
+@import "@arneeme/design/fonts.css";
+@import "@arneeme/design/tokens.css";
+```
+
+For Tailwind, `import preset from "@arneeme/design/tailwind-preset"` and add `presets: [preset]`. For a plain static site, copy `build/web` into the site.
+
+**New app repos.** Add this line to the repo's `AGENTS.md` or `CLAUDE.md`:
+
+```
+Follow the design-arne skill (github.com/arneeme/design) for colours, type, the penguin and UI text.
+```
+
+## Versions
+
+`package.json` holds the version and `main` is tagged `vX.Y.Z`. Bump the patch for fixes, the minor for new tokens or platforms, and the major when a token is renamed or removed.
 
 ## Add a platform
 

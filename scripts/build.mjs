@@ -30,7 +30,11 @@ for (const theme of ["dark", "light"])
     const r = ratio(get(`theme.${theme}.${fg}`), get(`theme.${theme}.${bg}`));
     if (r < 4.5) failed.push(`${theme}: ${fg} on ${bg} is ${r.toFixed(2)}`);
   }
-if (failed.length) { console.error("WCAG AA failed:\n" + failed.join("\n")); process.exit(1); }
+const gray4 = h => Math.round([1, 3, 5].reduce((s, i, k) => s + parseInt(h.slice(i, i + 2), 16) * [0.2126, 0.7152, 0.0722][k], 0) / 85);
+for (const fg of ["border", "text", "muted", "accent"])
+  for (const bg of ["bg", "surface"])
+    if (gray4(get(`theme.light.${fg}`)) === gray4(get(`theme.light.${bg}`))) failed.push(`e-ink: ${fg} on ${bg} lands on the same grey`);
+if (failed.length) { console.error("Check failed:\n" + failed.join("\n")); process.exit(1); }
 
 rmSync(out, { recursive: true, force: true });
 mkdirSync(new URL("web/fonts/", out), { recursive: true });
