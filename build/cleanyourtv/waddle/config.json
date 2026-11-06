@@ -1,0 +1,30 @@
+{
+  "background_color": "#0C0E10",
+  "sky_intensity": 0,
+  "wallpaper": true,
+  "wallpaper_rotation_minutes": 60,
+  "wallpaper_moods": {
+    "morning": [
+      "01-morgen.png"
+    ],
+    "evening": [
+      "02-kveld.png"
+    ],
+    "night": [
+      "03-natt.png"
+    ]
+  },
+  "wallpaper_captions": true,
+  "wallpaper_dim": 10,
+  "wallpaper_true_color": true,
+  "dock_glass": false,
+  "dock_opacity": 100,
+  "ambient_glow": false,
+  "app_glow": false,
+  "glass_style": "rim",
+  "focus_overshoot": false,
+  "show_greeting": false,
+  "clock_format": "24",
+  "clock_wallpaper": true,
+  "clock_wallpaper_dim": 30
+}
