@@ -9,7 +9,7 @@ function gradient(c, x, y, a, b, t) {
   c.set(x, y, dither(x, y, Math.min(1, Math.max(0, t))) ? b : a);
 }
 
-export function wallpaper(g, accent, scene) {
+export function wallpaper(g, accent, scene, scale = SCALE) {
   const c = new Canvas(W, H);
   const s = {
     morning: { top: g[2], horizon: mix(g[4], accent, 0.6), ice: g[6], face: g[4], deep: g[3], sea: g[1], glint: mix(g[2], accent, 0.5), ink: g[0], paper: g[9] },
@@ -41,7 +41,7 @@ export function wallpaper(g, accent, scene) {
 
   const py = Math.min(...Array.from({ length: pw }, (_, i) => shelfTop(PX + i))) - ph + 1;
   drawPenguin(c, PX, py, 1, s);
-  return c.scaled(SCALE);
+  return c.scaled(scale);
 }
 
 function disc(c, cx, cy, r, color, halo) {
