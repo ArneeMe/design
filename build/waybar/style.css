@@ -1,0 +1,56 @@
+@import "colors.css";
+
+* {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  border: none;
+  border-radius: 0px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: @bg;
+  color: @text;
+  border-bottom: 2px solid @border;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  color: @muted;
+  background: transparent;
+  border-bottom: 2px solid transparent;
+  transition: all 120ms;
+}
+
+#workspaces button.active {
+  color: @text;
+  border-bottom-color: @accent;
+}
+
+#workspaces button.urgent {
+  color: @on-accent;
+  background: @accent;
+}
+
+#workspaces button:hover {
+  background: @surface;
+  box-shadow: none;
+}
+
+#clock, #battery, #network, #pulseaudio, #cpu, #memory, #tray, #bluetooth {
+  padding: 0 12px;
+}
+
+#clock {
+  color: @text;
+  font-weight: 700;
+}
+
+#battery.warning, #battery.critical, #network.disconnected, #pulseaudio.muted {
+  color: @accent;
+}
+
+tooltip {
+  background: @surface;
+  border: 2px solid @border;
+}
