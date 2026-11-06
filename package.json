@@ -1,0 +1,17 @@
+{
+  "name": "@arneeme/design",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "files": ["build", "skill"],
+  "exports": {
+    "./tokens.css": "./build/web/tokens.css",
+    "./fonts.css": "./build/web/fonts.css",
+    "./tailwind-preset": "./build/web/tailwind-preset.js",
+    "./penguin/*": "./build/penguin/*"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  }
+}
