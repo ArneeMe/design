@@ -30,6 +30,11 @@ for (const theme of ["dark", "light"])
     const r = ratio(get(`theme.${theme}.${fg}`), get(`theme.${theme}.${bg}`));
     if (r < 4.5) failed.push(`${theme}: ${fg} on ${bg} is ${r.toFixed(2)}`);
   }
+const redOnly = h => "#" + h.slice(1, 3) + "0000";
+for (const [fg, bg] of [["text", "bg"], ["text", "surface"], ["accent", "bg"], ["on-accent", "accent"]]) {
+  const r = ratio(redOnly(get(`theme.dark.${fg}`)), redOnly(get(`theme.dark.${bg}`)));
+  if (r < 3) failed.push(`red filter: ${fg} on ${bg} is ${r.toFixed(2)}`);
+}
 const gray4 = h => Math.round([1, 3, 5].reduce((s, i, k) => s + parseInt(h.slice(i, i + 2), 16) * [0.2126, 0.7152, 0.0722][k], 0) / 85);
 for (const fg of ["border", "text", "muted", "accent"])
   for (const bg of ["bg", "surface"])
@@ -80,7 +85,7 @@ const preset = {
       current: "currentColor",
       ...Object.fromEntries(group("theme.dark").map(([k]) => [k, `var(--${k})`])),
       grey: vars("color.grey"),
-      isbre: vars("color.isbre"),
+      nebb: vars("color.nebb"),
     },
     fontFamily: { mono: "var(--font-family-mono)", sans: "var(--font-family-mono)" },
     fontSize: vars("font.size"),
@@ -125,7 +130,7 @@ for (const size of [16, 32, 64, 128, 256, 512]) {
 write("penguin/favicon.ico", encodeIco([16, 32, 64].map(size => ({ size, png: png(icon(size, dark["penguin-plate"])) }))));
 
 const scenes = [["01-morgen.png", "morning", "Morgen på isbreen"], ["02-kveld.png", "evening", "Kveld på isbreen"], ["03-natt.png", "night", "Natt på isbreen"]];
-for (const [file, scene] of scenes) write(`cleanyourtv/waddle/wallpapers/${file}`, png(wallpaper(g, get("color.isbre.dark"), scene)));
+for (const [file, scene] of scenes) write(`cleanyourtv/waddle/wallpapers/${file}`, png(wallpaper(g, get("color.nebb.dark"), scene)));
 write("cleanyourtv/waddle/wallpapers/captions.txt", scenes.map(([f, , t]) => `${f}\t${t}\n`).join(""));
 write("cleanyourtv/waddle/config.json", JSON.stringify({
   background_color: dark.bg.toUpperCase(),
@@ -152,7 +157,7 @@ const levels = [0, 85, 170, 255];
 const level = h => { const l = rgb(h).reduce((s, v, i) => s + v * [0.2126, 0.7152, 0.0722][i], 0); return levels.reduce((b, v, i) => Math.abs(v - l) < Math.abs(levels[b] - l) ? i : b, 0); };
 const ditherMask = h => { const l = rgb(h).reduce((s, v, i) => s + v * [0.2126, 0.7152, 0.0722][i], 0) / 255, n = Math.round((1 - l) * 16); return BAYER4.reduce((m, b, i) => b < n ? m | (1 << i) : m, 0); };
 const cName = k => k.replace(/-(.)/g, (_, c) => c.toUpperCase()).replace(/^./, c => c.toUpperCase());
-const named = [...g.map((h, i) => [`Grey${i}`, h]), ["White", get("color.grey.white")], ["IsbreDark", get("color.isbre.dark")], ["IsbreLight", get("color.isbre.light")]];
+const named = [...g.map((h, i) => [`Grey${i}`, h]), ["White", get("color.grey.white")], ["NebbDark", get("color.nebb.dark")], ["NebbLight", get("color.nebb.light")]];
 write("waddleos/WaddleTokens.h", `#pragma once
 
 #include <stdint.h>
@@ -218,11 +223,11 @@ decoration {
 
 animations {
     enabled = true
-    bezier = isbre, ${e1}, ${e2}, ${e3}, ${e4}
-    animation = windows, 1, ${ms("motion.duration.base") / 100}, isbre, slide
-    animation = border, 1, ${ms("motion.duration.fast") / 100}, isbre
-    animation = fade, 1, ${ms("motion.duration.fast") / 100}, isbre
-    animation = workspaces, 1, ${ms("motion.duration.base") / 100}, isbre, slide
+    bezier = waddle, ${e1}, ${e2}, ${e3}, ${e4}
+    animation = windows, 1, ${ms("motion.duration.base") / 100}, waddle, slide
+    animation = border, 1, ${ms("motion.duration.fast") / 100}, waddle
+    animation = fade, 1, ${ms("motion.duration.fast") / 100}, waddle
+    animation = workspaces, 1, ${ms("motion.duration.base") / 100}, waddle, slide
 }
 
 misc {

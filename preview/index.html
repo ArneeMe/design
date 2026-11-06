@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' file:; script-src 'unsafe-inline'; font-src 'self' file:; img-src 'self' file:">
-<title>Waddle design</title>
+<title>Waddle</title>
 <link rel="icon" href="../build/penguin/favicon.svg">
 <link rel="stylesheet" href="../build/web/fonts.css">
 <link rel="stylesheet" href="../build/web/tokens.css">
@@ -13,40 +13,44 @@
 body { margin: 0; background: var(--bg); color: var(--text); font: var(--font-size-base)/1.5 var(--font-family-mono); }
 html[data-view="eink"] body { filter: url(#eink); }
 html[data-view="red"] body { filter: url(#red); }
-main { max-width: 1040px; margin: 0 auto; padding: var(--space-6) var(--space-4) var(--space-12); }
-header { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; border-bottom: var(--border-width) solid var(--border); padding-bottom: var(--space-4); }
-header div { display: flex; gap: var(--space-2); align-items: center; }
-h1 { font-size: var(--font-size-lg); margin: 0; }
-h2 { font-size: var(--font-size-base); margin: var(--space-12) 0 var(--space-1); }
-p.note { color: var(--muted); margin: 0 0 var(--space-4); }
+main { max-width: 960px; margin: 0 auto; padding: var(--space-4) var(--space-4) var(--space-12); }
+nav { display: flex; gap: var(--space-2); justify-content: flex-end; margin-bottom: var(--space-8); }
+h2 { font-size: var(--font-size-base); font-weight: var(--font-weight-bold); margin: var(--space-12) 0 var(--space-3); padding-bottom: var(--space-2); border-bottom: var(--border-width) solid var(--border); }
 a { color: var(--accent); }
-button, input { font: inherit; border-radius: var(--radius-sm); border: var(--border-width) solid var(--border); padding: var(--space-2) var(--space-4); transition: border-color var(--motion-duration-fast) var(--motion-easing-standard); }
-button { background: var(--surface); color: var(--text); cursor: pointer; }
-button:hover, input:focus { border-color: var(--accent); outline: none; }
+button, input { font: inherit; border-radius: var(--radius-sm); border: var(--border-width) solid var(--border); padding: var(--space-1) var(--space-3); transition: border-color var(--motion-duration-fast) var(--motion-easing-standard); }
+button { background: var(--bg); color: var(--text); cursor: pointer; }
+button:hover, input:focus { border-color: var(--text); outline: none; }
 button:focus-visible { outline: var(--border-width) solid var(--accent); outline-offset: var(--border-width); }
-button[aria-pressed="true"] { border-color: var(--text); }
+button[aria-pressed="true"] { border-color: var(--accent); }
 button.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: var(--font-weight-bold); }
-input { background: var(--bg); color: var(--text); width: 100%; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-4); }
-.card { background: var(--surface); border: var(--border-width) solid var(--border); border-radius: var(--radius-sm); padding: var(--space-4); }
-.card h3 { margin: 0 0 var(--space-2); font-size: var(--font-size-base); }
-.row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.chip { width: 88px; font-size: var(--font-size-sm); color: var(--muted); }
-.chip i { display: block; height: 48px; border: var(--border-width) solid var(--border); margin-bottom: var(--space-1); }
-.type div { margin: var(--space-1) 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.type small { color: var(--muted); font-size: var(--font-size-sm); }
-.space div { display: flex; align-items: center; gap: var(--space-3); font-size: var(--font-size-sm); color: var(--muted); margin: var(--space-1) 0; }
-.space i { display: block; height: var(--space-3); background: var(--accent); }
+input { background: var(--bg); color: var(--text); }
+
+.screen { border: var(--border-width) solid var(--border); display: grid; grid-template-columns: 1fr auto; gap: var(--space-6); padding: var(--space-6); }
+.clock { font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); line-height: 1; }
+.date { color: var(--muted); margin: var(--space-2) 0 var(--space-6); }
+.news { list-style: none; margin: 0; padding: 0; }
+.news li { padding: var(--space-2) 0; border-top: var(--border-width) solid var(--border); }
+.news li:last-child { border-bottom: var(--border-width) solid var(--border); }
+.news small { color: var(--muted); font-size: var(--font-size-sm); margin-right: var(--space-2); }
+.side { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-4); text-align: right; }
+.side img { image-rendering: pixelated; }
+.weather { font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); }
+.dialog { margin-top: var(--space-4); border: var(--border-width) solid var(--border); padding: var(--space-4); max-width: 420px; }
+.dialog p { margin: 0 0 var(--space-3); }
+.row { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+
+table { border-collapse: collapse; width: 100%; }
+td, th { text-align: left; padding: var(--space-1) var(--space-4) var(--space-1) 0; border-bottom: 1px solid var(--border); font-weight: var(--font-weight-regular); vertical-align: middle; }
+th { color: var(--muted); font-size: var(--font-size-sm); }
+td code { font-size: var(--font-size-sm); }
+.sw { display: inline-block; width: var(--space-4); height: var(--space-4); border: 1px solid var(--border); vertical-align: middle; margin-right: var(--space-2); }
+
 .pengs { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: end; }
-.pengs figure { margin: 0; font-size: var(--font-size-sm); color: var(--muted); }
-.pengs img { display: block; image-rendering: pixelated; margin-bottom: var(--space-1); }
+.pengs img { display: block; image-rendering: pixelated; }
 .paper { background: var(--color-grey-9); padding: var(--space-3); }
-.walls { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-2); }
-.walls img { width: 100%; display: block; image-rendering: pixelated; border: var(--border-width) solid var(--border); }
-table { border-collapse: collapse; width: 100%; font-size: var(--font-size-sm); }
-td { padding: var(--space-1) var(--space-2) var(--space-1) 0; border-top: 1px solid var(--border); vertical-align: top; }
-td:first-child { white-space: nowrap; }
-code { font-size: var(--font-size-sm); }
+.walls { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-2); }
+.walls img { width: 100%; display: block; image-rendering: pixelated; }
+@media (max-width: 600px) { .screen { grid-template-columns: 1fr; } .side { align-items: flex-start; text-align: left; } }
 </style>
 </head>
 <body>
@@ -55,100 +59,98 @@ code { font-size: var(--font-size-sm); }
   <filter id="red" color-interpolation-filters="sRGB"><feColorMatrix values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/></filter>
 </svg>
 <main>
-<header>
-  <h1>waddle / design</h1>
+<nav>
+  <button id="theme">Lys</button>
+  <button data-view="eink" aria-pressed="false">E-ink</button>
+  <button data-view="red" aria-pressed="false">Rødfilter</button>
+</nav>
+
+<div class="screen">
   <div>
-    <button id="theme">lys</button>
-    <button data-view="eink" aria-pressed="false">e-ink</button>
-    <button data-view="red" aria-pressed="false">rødfilter</button>
+    <div class="clock">07:42</div>
+    <div class="date">Fredag 6. november</div>
+    <ul class="news">
+      <li><small>NRK</small>Stengt E6 ved Dovre etter snøfall</li>
+      <li><small>NRK</small>Strømprisen stiger igjen i Sør-Norge</li>
+      <li><small>Ruter</small>Buss 20 går <a href="#">om fire minutter</a></li>
+    </ul>
+    <div class="dialog">
+      <p>Bruke bildet som bakgrunn?</p>
+      <div class="row"><button class="primary">Bruk</button><button>Avbryt</button></div>
+    </div>
   </div>
-</header>
-
-<h2>tema</h2>
-<p class="note">Bruk disse navnene i UI. Rå grånivåer er for temaet selv.</p>
-<div class="row" id="semantic"></div>
-
-<h2>grånivåer og isbre</h2>
-<p class="note">g0 til g9 med svak blåtone. Isbre er aksenten, mørk og lys variant.</p>
-<div class="row" id="ramp"></div>
-
-<h2>skrift</h2>
-<p class="note">JetBrains Mono, lagret lokalt. 400 og 700, fire størrelser.</p>
-<div class="card type">
-  <div style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold)">Waddle 07:42 <small>xl 700</small></div>
-  <div style="font-size: var(--font-size-lg); font-weight: var(--font-weight-bold)">Vær i Oslo: 4 grader, lett regn <small>lg 700</small></div>
-  <div>Brødtekst. Korte setninger, vanlige ord, ingen pynt. <small>base 400</small></div>
-  <div style="font-size: var(--font-size-sm); color: var(--muted)">oppdatert 07:40 · NRK <small>sm 400</small></div>
-</div>
-
-<h2>komponenter</h2>
-<p class="note">2px kanter, 0 eller 2px hjørner, ingen skygger. 120ms på hover og fokus.</p>
-<div class="grid">
-  <div class="card">
-    <h3>Lagre endringene?</h3>
-    <p>Neste buss går <a href="#">om fire minutter</a>.</p>
-    <div class="row"><button class="primary">Lagre</button><button>Avbryt</button></div>
-  </div>
-  <div class="card">
-    <h3>Wi-Fi</h3>
-    <p><input value="hjemme-5g" aria-label="Nettverk"></p>
-    <p style="color: var(--muted); font-size: var(--font-size-sm); margin: 0">Fant ikke nettverket. Sjekk navnet og prøv igjen.</p>
+  <div class="side">
+    <img src="../build/penguin/penguin-dark.svg" width="120" height="120" alt="" id="peng">
+    <div class="weather">4° lett regn</div>
+    <div>Bluesound: Kjøkken</div>
+    <input value="Jazz til frokost" aria-label="Spilleliste" size="16">
   </div>
 </div>
 
-<h2>avstand</h2>
-<div class="card space" id="space"></div>
+<h2>Farger</h2>
+<table id="colors"><tr><th>Navn</th><th>Mørk</th><th>Lys</th></tr></table>
 
-<h2>pingvin</h2>
-<p class="note">Generert fra <code>assets/src/penguin.txt</code>. Mørk modus på plate, lys modus rett på papir. Skaler i hele tall.</p>
+<h2>Gråskala</h2>
+<table id="ramp"><tr><th>Token</th><th>Verdi</th><th>E-ink</th></tr></table>
+
+<h2>Skrift</h2>
+<div style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold)">07:42</div>
+<div style="font-size: var(--font-size-lg); font-weight: var(--font-weight-bold)">4° lett regn</div>
+<div>Buss 20 går om fire minutter.</div>
+<div style="font-size: var(--font-size-sm); color: var(--muted)">Oppdatert 07:40</div>
+
+<h2>Pingvin</h2>
 <div class="pengs">
-  <figure><img src="../build/penguin/penguin-dark.svg" width="120" alt=""><code>penguin-dark.svg</code></figure>
-  <figure class="paper"><img src="../build/penguin/penguin-light.svg" width="120" alt=""><code>penguin-light.svg</code></figure>
-  <figure><img src="../build/penguin/png/penguin-dark-64.png" width="64" alt=""><code>64</code></figure>
-  <figure><img src="../build/penguin/png/penguin-dark-32.png" width="32" alt=""><code>32</code></figure>
-  <figure><img src="../build/penguin/png/penguin-dark-16.png" width="16" alt=""><code>16</code></figure>
-  <figure><img src="../build/penguin/favicon.svg" width="32" alt=""><code>favicon.svg</code></figure>
+  <img src="../build/penguin/penguin-dark.svg" width="120" alt="Mørk">
+  <div class="paper"><img src="../build/penguin/penguin-light.svg" width="96" alt="Lys"></div>
+  <img src="../build/penguin/png/penguin-dark-64.png" width="64" alt="64 px">
+  <img src="../build/penguin/png/penguin-dark-32.png" width="32" alt="32 px">
+  <img src="../build/penguin/png/penguin-dark-16.png" width="16" alt="16 px">
 </div>
 
-<h2>tv</h2>
-<p class="note">CleanYourTV-temaet <code>waddle</code>. Morgen, kveld og natt. Natten tåler rødfilteret.</p>
+<h2>TV</h2>
 <div class="walls">
   <img src="../build/cleanyourtv/waddle/wallpapers/01-morgen.png" alt="Morgen på isbreen">
   <img src="../build/cleanyourtv/waddle/wallpapers/02-kveld.png" alt="Kveld på isbreen">
   <img src="../build/cleanyourtv/waddle/wallpapers/03-natt.png" alt="Natt på isbreen">
 </div>
 
-<h2>plattformer</h2>
+<h2>Filer</h2>
 <table>
-  <tr><td>web</td><td><code>build/web/tokens.css</code>, <code>fonts.css</code>, <code>tailwind-preset.js</code></td></tr>
-  <tr><td>waddleos</td><td><code>build/waddleos/WaddleTokens.h</code></td></tr>
-  <tr><td>tv</td><td><code>build/cleanyourtv/waddle</code></td></tr>
-  <tr><td>hyprland</td><td><code>build/hyprland/waddle.conf</code></td></tr>
-  <tr><td>waybar</td><td><code>build/waybar/style.css</code></td></tr>
-  <tr><td>ai</td><td><code>skill/design-arne/SKILL.md</code></td></tr>
+  <tr><td>Web</td><td><code>build/web/tokens.css</code></td></tr>
+  <tr><td>WaddleOS</td><td><code>build/waddleos/WaddleTokens.h</code></td></tr>
+  <tr><td>TV</td><td><code>build/cleanyourtv/waddle</code></td></tr>
+  <tr><td>Hyprland</td><td><code>build/hyprland/waddle.conf</code></td></tr>
+  <tr><td>Waybar</td><td><code>build/waybar/style.css</code></td></tr>
+  <tr><td>AI</td><td><code>skill/design-arne/SKILL.md</code></td></tr>
 </table>
 </main>
 <script>
 const root = document.documentElement;
-const css = name => getComputedStyle(root).getPropertyValue(name).trim();
-const chip = (label, v) => `<div class="chip"><i style="background: var(${v})"></i>${label}<br>${css(v)}</div>`;
-const draw = () => {
-  semantic.innerHTML = ["bg", "surface", "border", "text", "muted", "accent", "on-accent", "penguin-plate"].map(n => chip(n, `--${n}`)).join("");
-  ramp.innerHTML = [...Array(10).keys()].map(i => chip(`g${i}`, `--color-grey-${i}`)).join("") + chip("isbre dark", "--color-isbre-dark") + chip("isbre light", "--color-isbre-light");
+const val = (name, theme) => {
+  const el = document.createElement("div");
+  if (theme) el.dataset.theme = theme;
+  document.body.append(el);
+  const v = getComputedStyle(el).getPropertyValue(name).trim();
+  el.remove();
+  return v;
 };
-space.innerHTML = [1, 2, 3, 4, 6, 8, 12].map(n => `<div><i style="width: var(--space-${n})"></i>space-${n} · ${css(`--space-${n}`)}</div>`).join("");
+const sw = v => `<span class="sw" style="background:${v}"></span><code>${v}</code>`;
+const gray4 = h => ["svart", "mørkegrå", "lysegrå", "hvit"][Math.round([1, 3, 5].reduce((s, i, k) => s + parseInt(h.slice(i, i + 2), 16) * [0.2126, 0.7152, 0.0722][k], 0) / 85)];
+colors.innerHTML += ["bg", "surface", "border", "text", "muted", "accent", "on-accent"].map(n => `<tr><td>${n}</td><td>${sw(val(`--${n}`, "dark"))}</td><td>${sw(val(`--${n}`, "light"))}</td></tr>`).join("");
+ramp.innerHTML += [...Array(10).keys(), "white"].map(i => { const v = val(`--color-grey-${i}`); return `<tr><td>grey-${i}</td><td>${sw(v)}</td><td>${gray4(v)}</td></tr>`; }).join("")
+  + ["dark", "light"].map(t => { const v = val(`--color-nebb-${t}`); return `<tr><td>nebb-${t}</td><td>${sw(v)}</td><td>${gray4(v)}</td></tr>`; }).join("");
 document.getElementById("theme").onclick = e => {
   const dark = root.dataset.theme === "dark";
   root.dataset.theme = dark ? "light" : "dark";
-  e.target.textContent = dark ? "mørk" : "lys";
-  draw();
+  e.target.textContent = dark ? "Mørk" : "Lys";
+  peng.src = `../build/penguin/penguin-${dark ? "light" : "dark"}.svg`;
 };
 document.querySelectorAll("[data-view]").forEach(b => b.onclick = () => {
   const on = root.dataset.view !== b.dataset.view;
   root.dataset.view = on ? b.dataset.view : "";
   document.querySelectorAll("[data-view]").forEach(o => o.setAttribute("aria-pressed", String(on && o === b)));
 });
-draw();
 </script>
 </body>
 </html>

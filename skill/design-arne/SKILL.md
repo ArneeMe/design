@@ -21,7 +21,7 @@ Use token names, never raw hex or pixel values.
 | Hyprland | `build/hyprland/waddle.conf` | `$accent` |
 | Waybar | `build/waybar/colors.css` | `@accent` |
 
-Use the semantic names in UI: `bg`, `surface`, `border`, `text`, `muted`, `accent`, `on-accent`. The grey scale `g0` to `g9` and `isbre` are for the theme itself, not for components.
+Use the semantic names in UI: `bg`, `surface`, `border`, `text`, `muted`, `accent`, `on-accent`. The grey scale `grey-0` to `grey-9` and `nebb` are for the theme itself, not for components.
 
 If a value you need is missing, add it to `tokens.json` and rebuild. Do not invent one in place.
 
@@ -36,7 +36,9 @@ If a value you need is missing, add it to `tokens.json` and rebuild. Do not inve
 
 - Dark is the default. Light is for e-ink and paper.
 - Support both through `data-theme` or `prefers-color-scheme`. `tokens.css` already does this.
-- Accent is "isbre" ice blue. Use it for focus, links and the one thing that matters on a screen. Not for large areas.
+- Greys are neutral, with no blue or cream tint.
+- Accent is "nebb", the orange of a penguin beak. Use it for focus, links and the one thing that matters on a screen. Never for large areas or decoration.
+- Orange keeps its contrast under the red night filter. Blue and cyan do not, so do not add them.
 
 ## Type
 
@@ -58,11 +60,22 @@ If a value you need is missing, add it to `tokens.json` and rebuild. Do not inve
 
 ## Avoid
 
-- Purple-to-blue gradients.
-- Glassmorphism, blur and frosted panels.
-- Stock illustrations.
-- Emoji as decoration.
+These are the things that make a UI look generated. Do not use them.
+
+- Cyan, teal or ice blue on near-black. Blue-tinted "slate" greys.
+- Purple, violet or blue gradients. Gradient text. Neon or glow.
+- Glassmorphism, blur and frosted panels. Soft drop shadows.
+- Big rounded cards, pill buttons and pill badges. Cards inside cards.
+- A coloured left border on cards or callouts.
+- Three feature cards in a row with an icon each. Bento grids.
+- Lowercase section titles, small uppercase "eyebrow" labels and titles like `name / thing`.
+- Hex codes and token names printed under every swatch, except on a reference page.
+- A muted caption under every heading that explains the design.
+- Emoji as icons or decoration. Sparkles. Stock illustrations.
+- Copy like "Seamless", "Effortless", "Unlock", "Supercharge" or "Built for".
 - Tracking, telemetry, CDNs, remote fonts and network calls.
+
+Show real content instead: the clock, the bus, the headline. Let a plain table or a list do the work.
 
 ## The penguin
 
