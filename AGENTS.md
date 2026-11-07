@@ -11,7 +11,7 @@ This repo is Arne's design system. Follow the `arnes-stil` skill for code, git a
 - `web/base.css`: styles for plain HTML, the same for every theme.
 - `assets/icons/`: pixel icons from pixelarticons. `surfaces/icons.mjs` builds them to `build/icons/` for every platform.
 - `docs/apps.md`: how to build an app on top of the design system.
-- `assets/icon-pack.json`: which icon each app on Arne's phone gets. `surfaces/iconpack.mjs` builds an Android icon pack from it.
+- `assets/icon-pack.json`: which icon each app on Arne's phone gets. `surfaces/iconpack.mjs` builds an Android icon pack from it. `assets/icon-colors.json` has each app's own colour for the pack in colour, `surfaces/iconpack-farge.mjs`.
 - `assets/fonts/`: fonts as woff2 for the web and TTF for Termux, with `font.json` and the licence.
 - `scripts/build.mjs`: the build. `scripts/lib/` has the theme loader, checks, canvas and PNG encoder. Node only, no dependencies.
 - `build/`: generated output. Committed. Never edit by hand.

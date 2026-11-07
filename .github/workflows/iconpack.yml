@@ -3,7 +3,7 @@ name: Ikonpakke
 on:
   push:
     branches: [main]
-    paths: ["build/*/iconpack/**"]
+    paths: ["build/*/iconpack/**", "build/*/iconpack-farge/**"]
   workflow_dispatch:
 
 permissions:
@@ -24,10 +24,14 @@ jobs:
       - name: Bygg
         working-directory: build/waddle/iconpack
         run: gradle --no-daemon assembleDebug
+      - name: Bygg i farger
+        working-directory: build/waddle/iconpack-farge
+        run: gradle --no-daemon assembleDebug
       - name: Last opp
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           cp build/waddle/iconpack/app/build/outputs/apk/debug/app-debug.apk waddle-ikoner.apk
+          cp build/waddle/iconpack-farge/app/build/outputs/apk/debug/app-debug.apk waddle-ikoner-farge.apk
           gh release view ikoner >/dev/null 2>&1 || gh release create ikoner --title "Ikonpakke" --notes "Bygges på nytt hver gang ikonpakken endres på main."
-          gh release upload ikoner waddle-ikoner.apk --clobber
+          gh release upload ikoner waddle-ikoner.apk waddle-ikoner-farge.apk --clobber
