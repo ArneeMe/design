@@ -161,6 +161,8 @@ dialog { color: var(--text); background: var(--bg); border: var(--border-width) 
 .row { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
 .stack > * + * { margin-top: var(--space-3); }
 .pixel { image-rendering: pixelated; }
+.icon { width: 24px; height: 24px; fill: currentColor; vertical-align: middle; flex: none; shape-rendering: crispEdges; }
+.icon.x2 { width: 48px; height: 48px; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }

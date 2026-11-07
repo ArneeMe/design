@@ -3,6 +3,7 @@ import { loadThemes } from "./lib/theme.mjs";
 import { runChecks } from "./lib/checks.mjs";
 import { check } from "./check-ai-look.mjs";
 import web from "../surfaces/web.mjs";
+import icons from "../surfaces/icons.mjs";
 
 const root = new URL("../", import.meta.url);
 const out = new URL("build/", root);
@@ -19,6 +20,7 @@ const writer = dir => (path, data) => {
 
 rmSync(out, { recursive: true, force: true });
 web(themes.filter(t => t.surfaces.includes("web")), writer("web"));
+icons(writer("icons"));
 for (const t of themes) {
   t.art.files?.(t, writer(t.id));
   for (const s of t.surfaces.filter(s => s !== "web")) {
