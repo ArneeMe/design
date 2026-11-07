@@ -7,7 +7,7 @@ description: Arne's design system. Use whenever you build or change UI, themes, 
 
 Follow `arnes-stil` for code, git and prose. This skill covers how things look and read.
 
-Source: `github.com/arneeme/design`, cloned to `~/src/design`. Shared values live in `tokens/base.json`, each theme in `themes/<theme>/tokens.json`. Generated files live in `build/`.
+Source: `github.com/arneeme/design`, cloned to `~/Code/design`. Shared values live in `tokens/base.json`, each theme in `themes/<theme>/tokens.json`. Generated files live in `build/`.
 
 ## Themes and surfaces
 
@@ -107,7 +107,7 @@ Show real content instead: the clock, the bus, the headline. Let a plain table o
 ## Check your work
 
 - Run `node scripts/build.mjs`. It stops if a theme fails WCAG AA (4.5:1) or its other checks.
-- In other repos, run `node ~/src/design/scripts/check-ai-look.mjs src`. It flags gradients, shadows, blur, round corners, blue or purple colours, emoji and marketing words.
+- In other repos, run `node ~/Code/design/scripts/check-ai-look.mjs src`. It flags gradients, shadows, blur, round corners, blue or purple colours, emoji and marketing words.
 - Look at it in dark and light.
 - For e-ink, view it in greyscale. Text and borders must still read with four grey levels.
 - For evening use, check it with a red filter. Shapes must not depend on blue or green alone.

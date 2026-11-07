@@ -48,32 +48,34 @@ Several themes, chosen on the page:
 
 ## Use it
 
-Clone once to `~/src/design`. Desktop and TV follow `main`. Apps pin a version tag.
+Clone once to `~/Code/design`. Desktop and TV follow `main`. Apps pin a version tag.
 
 **This machine.** Links the AI skill into `~/.claude/skills`, adds the Hyprland theme to `hyprland.conf` and the kitty theme to `kitty.conf`, and writes `hyprpaper.conf` with the night wallpaper if you have none. It prints the Waybar line to add. Start hyprpaper with `exec-once = hyprpaper` in `hyprland.conf` if you do not already.
 
 ```bash
-~/src/design/scripts/install.sh
+~/Code/design/scripts/install.sh
 ```
 
-Pass a theme name to use another theme: `install.sh <theme>`. It swaps the old lines for the new ones.
+Pass a theme name to use another theme: `install.sh <theme>`. It swaps the old lines for the new ones. Before the first change it copies each file to `<file>.for-design`.
+
+It only adds one line at the end of `hyprland.conf` and `kitty.conf`. Keybinds, monitors, autostart, window rules, input and kitty shortcuts stay yours. The theme overrides only what it sets: colours, borders, gaps, rounding, blur, shadows and animations in Hyprland, and colours, font, cursor, padding and tab bar in kitty. Waybar's `config.jsonc` with your modules is never touched.
 
 **Hyprland, Waybar and kitty.** Pull and reload.
 
 ```bash
-git -C ~/src/design pull && hyprctl reload && pkill -SIGUSR2 waybar && pkill -SIGUSR1 kitty
+git -C ~/Code/design pull && hyprctl reload && pkill -SIGUSR2 waybar && pkill -SIGUSR1 kitty
 ```
 
 **TV.** Push the theme with CleanYourTV's script.
 
 ```bash
-TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/src/design/build/waddle/cleanyourtv
+TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/Code/design/build/waddle/cleanyourtv
 ```
 
 **WaddleOS.** Copy the header into the firmware and commit it there. The firmware builds offline, so it gets a copy, not a submodule.
 
 ```bash
-~/src/design/scripts/sync-waddleos.sh ~/src/waddleos
+~/Code/design/scripts/sync-waddleos.sh ~/src/waddleos
 ```
 
 **Websites.** Add the repo as a git dependency at a tag. No CDN.
@@ -116,7 +118,7 @@ Follow the design-arne skill (github.com/arneeme/design) for colours, type, the 
 
 ## No AI look
 
-`docs/no-ai-look.md` lists what makes a design look AI-made and what this repo uses instead. `scripts/check-ai-look.mjs` catches the common tells, and the build runs it. Run it on other apps with `node ~/src/design/scripts/check-ai-look.mjs src`.
+`docs/no-ai-look.md` lists what makes a design look AI-made and what this repo uses instead. `scripts/check-ai-look.mjs` catches the common tells, and the build runs it. Run it on other apps with `node ~/Code/design/scripts/check-ai-look.mjs src`.
 
 ## AI rules
 
