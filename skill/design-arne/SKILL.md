@@ -22,6 +22,7 @@ A theme is a look. A surface is where it goes. Ask which theme a project uses. I
 | Omarchy | `build/<theme>/omarchy/` | `colors.toml`, linked into `~/.config/omarchy/themes/` |
 | Android | `build/<theme>/android/` | wallpapers, system colour and Termux, sent with `scripts/android.sh` |
 | Android app | `build/<theme>/app-android/` | `WaddleTokens.Dark.ACCENT`, `R.color.waddle_accent`, `R.font.waddle_mono` |
+| Icon pack | `build/<theme>/iconpack/` | app icons for the phone launcher, from `assets/icon-pack.json` |
 | Hyprland | `build/<theme>/hyprland/<theme>.conf` | `$accent` |
 | Waybar | `build/<theme>/waybar/colors.css` | `@accent` |
 | kitty | `build/<theme>/kitty/<theme>.conf` | `color1` to `color15` |
@@ -50,7 +51,7 @@ Read `docs/apps.md` in the design repo before starting or changing an app.
 ## Icons
 
 - Icons are pixelarticons on a 24 grid, in `build/icons/`: SVG and a sprite for the web, `R.drawable.ic_<name>` for Android, `WaddleIcons.h` for WaddleOS.
-- Never draw icons, penguins or other figures yourself. If an icon is missing, copy the `-sharp` version from pixelarticons into `assets/icons/` and rebuild.
+- Never draw penguins or other figures yourself. If an icon is missing, copy the `-sharp` version from pixelarticons into `assets/icons/`. Only if pixelarticons has nothing, draw it on a 12x12 grid in `assets/icons/drawn/`, and compare it with the set.
 - Show icons at 24 or 48 px so the pixels stay whole. They take the text colour.
 
 ## Modes

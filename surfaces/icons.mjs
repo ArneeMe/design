@@ -39,12 +39,24 @@ function raster(d) {
   }));
 }
 
-export default function icons(write) {
+export function loadIcons() {
   const dir = new URL("assets/icons/", root);
-  const list = readdirSync(dir).filter(f => f.endsWith(".svg")).sort().map(f => ({
-    name: f.slice(0, -4),
-    d: [...readFileSync(new URL(f, dir), "utf8").matchAll(/ d="([^"]+)"/g)].map(m => m[1]).join(""),
-  }));
+  const drawn = new URL("drawn/", dir);
+  const list = [
+    ...readdirSync(dir).filter(f => f.endsWith(".svg")).map(f => ({
+      name: f.slice(0, -4),
+      d: [...readFileSync(new URL(f, dir), "utf8").matchAll(/ d="([^"]+)"/g)].map(m => m[1]).join(""),
+    })),
+    ...readdirSync(drawn).filter(f => f.endsWith(".txt")).map(f => ({
+      name: f.slice(0, -4),
+      d: readFileSync(new URL(f, drawn), "utf8").trim().split("\n").flatMap((row, y) => [...row].map((c, x) => c === "#" ? `M${x * 2} ${y * 2}h2v2h-2z` : "")).join(""),
+    })),
+  ].sort((a, b) => a.name.localeCompare(b.name));
+  return list;
+}
+
+export default function icons(write) {
+  const list = loadIcons();
   const ident = n => n.replace(/-/g, "_");
 
   for (const { name, d } of list) {
@@ -81,5 +93,5 @@ ${list.map(({ name, d }) => `constexpr uint8_t ${ident(name).toUpperCase()}[${SI
 
 }
 `);
-  return list.map(i => i.name);
+  return list;
 }

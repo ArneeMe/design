@@ -1,6 +1,6 @@
 import { Canvas } from "../../scripts/lib/canvas.mjs";
 import { encodePng, encodeIco } from "../../scripts/lib/png.mjs";
-import { drawPenguin, penguinSvg, SIZE, width as pw, height as ph } from "./penguin.mjs";
+import { drawPenguin, penguinSvg, cells, SIZE, width as pw, height as ph } from "./penguin.mjs";
 import { wallpaper as draw } from "./wallpapers.mjs";
 
 const png = c => encodePng(c.w, c.h, c.data);
@@ -36,4 +36,11 @@ export function files(t, write) {
     write(`penguin/png/penguin-dark-${size}.png`, png(icon(size, dark["penguin-plate"])));
   }
   write("penguin/favicon.ico", encodeIco([16, 32, 64].map(size => ({ size, png: png(icon(size, dark["penguin-plate"])) }))));
+}
+
+export function badge(t) {
+  const m = t.mode("dark");
+  const ox = (SIZE - pw) / 2, oy = (SIZE - ph) / 2;
+  const path = test => cells.flatMap((row, y) => [...row].map((c, x) => test(c) ? `M${x + ox} ${y + oy}h1v1h-1z` : "")).join("");
+  return { size: SIZE, plate: m["penguin-plate"], layers: [[m["penguin-ink"], path(c => c === "#" || c === ":")], [m["penguin-paper"], path(c => c === ".")]] };
 }

@@ -63,7 +63,8 @@ Icons take the text colour. `class="icon x2"` doubles them. Single SVG files are
 The icons come from [pixelarticons](https://github.com/halfmage/pixelarticons) (MIT), on a 24 pixel grid like the penguin. We use the `-sharp` variants, since corners are square.
 
 - To add one, copy its SVG from pixelarticons into `assets/icons/`, named without `-sharp`, and rebuild.
-- Do not draw icons or penguins by hand. Pick one that exists.
+- If pixelarticons has nothing that fits, draw it in `assets/icons/drawn/<name>.txt`: 12 lines of 12 characters, `#` for ink. Each cell becomes 2x2 pixels, so lines are 2 px like the rest. Train, plane, bike, scooter and ticket are drawn this way.
+- Never draw penguins or other figures.
 - Use them at 24 or 48 px so the pixels stay whole.
 
 ## Checklist
@@ -73,3 +74,21 @@ The icons come from [pixelarticons](https://github.com/halfmage/pixelarticons) (
 - Text and buttons reach WCAG AA. Buttons are at least 48 dp tall.
 - No shadows, glass, gradients or round corners over 2 px. See `docs/no-ai-look.md`.
 - UI text is short and plain, in the user's language.
+
+## Icon pack for the phone
+
+`assets/icon-pack.json` maps each app on the phone to an icon: `"package/activity": "icon"`. The build turns it into an Android project in `build/<theme>/iconpack/` with a dark plate, a light symbol and an orange bar for each app.
+
+To build and install it, with the phone connected:
+
+```bash
+ANDROID_SERIAL=<serial> ~/Code/design/scripts/iconpack.sh
+```
+
+It borrows the Gradle wrapper from `~/Code/waddleOS/phone`. Then pick the pack in the launcher's settings. The launcher has to support icon packs, like Lawnchair or Kvaesitso.
+
+To add a new app, find its component in Termux and add a line to `assets/icon-pack.json`:
+
+```bash
+cmd package query-activities --brief --user 0 -a android.intent.action.MAIN -c android.intent.category.LAUNCHER | grep /
+```

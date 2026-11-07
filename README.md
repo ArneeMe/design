@@ -49,7 +49,7 @@ Several themes, chosen on the page:
 
 ## Apps and icons
 
-`docs/apps.md` explains how to start an Android app, a web page or a WaddleOS screen: the Kotlin tokens and UI helpers, the icons and a checklist.
+`docs/apps.md` explains how to start an Android app, a web page or a WaddleOS screen: the Kotlin tokens and UI helpers, the icons, the phone's icon pack and a checklist.
 
 ## Use it
 
@@ -100,7 +100,7 @@ TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/Code/design/build/waddle
 **Websites.** Add the repo as a git dependency at a tag. No CDN.
 
 ```bash
-npm install github:arneeme/design#v2.6.0
+npm install github:arneeme/design#v2.7.0
 ```
 
 ```css
