@@ -56,7 +56,7 @@ Type and copy
 Run it on any other app:
 
 ```bash
-node ~/src/design/scripts/check-ai-look.mjs src
+node ~/Code/design/scripts/check-ai-look.mjs src
 ```
 
 The check is a tripwire, not a judge. It cannot see layout, so a page can pass and still look generated. Look at the result in dark, light, e-ink and red filter before you call it done.

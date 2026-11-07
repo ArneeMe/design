@@ -9,9 +9,12 @@ mkdir -p "$HOME/.claude/skills"
 ln -sfn "$repo/skill/design-arne" "$HOME/.claude/skills/design-arne"
 echo "skill: ~/.claude/skills/design-arne"
 
+backup() { [ -f "$1.for-design" ] || cp "$1" "$1.for-design"; }
+
 hypr="$HOME/.config/hypr/hyprland.conf"
 line="source = $out/hyprland/$theme.conf"
 if [ -f "$hypr" ] && ! grep -qxF "$line" "$hypr"; then
+  backup "$hypr"
   grep -vF "$repo/build/" "$hypr" > "$hypr.tmp" || true
   mv "$hypr.tmp" "$hypr"
   printf '\n%s\n' "$line" >> "$hypr"
@@ -21,6 +24,7 @@ fi
 kitty="$HOME/.config/kitty/kitty.conf"
 line="include $out/kitty/$theme.conf"
 if [ -f "$kitty" ] && ! grep -qxF "$line" "$kitty"; then
+  backup "$kitty"
   grep -vF "$repo/build/" "$kitty" > "$kitty.tmp" || true
   mv "$kitty.tmp" "$kitty"
   printf '\n%s\n' "$line" >> "$kitty"
