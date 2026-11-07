@@ -21,6 +21,7 @@ A theme is a look. A surface is where it goes. Ask which theme a project uses. I
 | WaddleOS | `build/<theme>/waddleos/<Theme>Tokens.h` | `WaddleTokens::GRAY4_LIGHT_Text` |
 | Omarchy | `build/<theme>/omarchy/` | `colors.toml`, linked into `~/.config/omarchy/themes/` |
 | Android | `build/<theme>/android/` | wallpapers, system colour and Termux, sent with `scripts/android.sh` |
+| Android app | `build/<theme>/app-android/` | `WaddleTokens.Dark.ACCENT`, `R.color.waddle_accent`, `R.font.waddle_mono` |
 | Hyprland | `build/<theme>/hyprland/<theme>.conf` | `$accent` |
 | Waybar | `build/<theme>/waybar/colors.css` | `@accent` |
 | kitty | `build/<theme>/kitty/<theme>.conf` | `color1` to `color15` |
@@ -37,6 +38,13 @@ If a value you need is missing, add it to the theme or to `tokens/base.json` and
 - If the app already uses React or Tailwind, keep it and use the same CSS and the preset.
 - Install with `npm install github:arneeme/design#<tag>` and import `@arneeme/design/<theme>.css`, or copy `build/web`.
 - WaddleOS: `scripts/sync-waddleos.sh <waddleos>`. Never edit the copied header there.
+
+## Apps
+
+- Android apps get `<Theme>Tokens.kt` and resources with `scripts/sync-app.sh <module>`. Never edit the copied files in the app.
+- Plain Views are fine. Do not add Compose, Material Components or other libraries just for looks.
+- Read colours from the tokens object or `R.color`, sizes from `R.dimen`, never hex or raw numbers in the app.
+- Icons are not decided yet. See `drafts/` in the design repo.
 
 ## Modes
 

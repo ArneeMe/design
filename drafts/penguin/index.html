@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="no" data-theme="waddle" data-mode="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pingvinutkast</title>
+<link rel="stylesheet" href="../../build/web/all.css">
+<style>
+main { max-width: 1040px; margin: 0 auto; padding: var(--space-6) var(--space-4); }
+table td { vertical-align: middle; padding: var(--space-3) var(--space-4) var(--space-3) 0; }
+.plate { background: var(--penguin-plate); display: inline-block; line-height: 0; }
+.paper { background: var(--penguin-paper); display: inline-block; line-height: 0; }
+.row img { display: block; }
+</style>
+</head>
+<body>
+<main>
+<h1>Pingvinutkast</h1>
+<p class="muted">D er dagens pikselpingvin, til sammenligning. Hver vises stor, på 48 og på 24 piksler, på mørk plate og på papir.</p>
+<table id="t"><tr><th></th><th>Stor</th><th>48</th><th>24</th><th>Papir</th></tr></table>
+</main>
+<script>
+const drafts = [["A", "Flat og geometrisk", "a-flat.svg"], ["B", "Én linje", "b-line.svg"], ["C", "Linosnitt", "c-lino.svg"], ["D", "Piksel, dagens", "../../build/waddle/penguin/penguin-light.svg"]];
+t.innerHTML += drafts.map(([k, name, f]) => `<tr><td><b>${k}</b><br><span class="muted">${name}</span></td>
+<td><span class="plate"><img src="${f}" width="160"></span></td>
+<td><span class="plate"><img src="${f}" width="48"></span></td>
+<td><span class="plate"><img src="${f}" width="24"></span></td>
+<td><span class="paper"><img src="${f}" width="96"></span></td></tr>`).join("");
+</script>
+</body>
+</html>

@@ -58,6 +58,12 @@ Clone once to `~/Code/design`. Desktop and TV follow `main`. Apps pin a version 
 ~/Code/design/scripts/android.sh
 ```
 
+**Android apps.** Copies the theme into an app module: `<Theme>Tokens.kt` in the package `me.arnee.design`, colours and sizes as resources (`R.color.waddle_accent`, `R.dimen.waddle_space_4`, light in `values`, dark in `values-night`) and the font as `R.font.waddle_mono`. No libraries needed. Commit the copied files in the app.
+
+```bash
+~/Code/design/scripts/sync-app.sh ~/Code/waddleOS/phone/app
+```
+
 **Other Hyprland setups.** Links the AI skill into `~/.claude/skills`, adds the Hyprland theme to `hyprland.conf` and the kitty theme to `kitty.conf`, and writes `hyprpaper.conf` with the night wallpaper if you have none. It prints the Waybar line to add. Start hyprpaper with `exec-once = hyprpaper` in `hyprland.conf` if you do not already.
 
 ```bash
@@ -89,7 +95,7 @@ TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/Code/design/build/waddle
 **Websites.** Add the repo as a git dependency at a tag. No CDN.
 
 ```bash
-npm install github:arneeme/design#v2.4.0
+npm install github:arneeme/design#v2.5.0
 ```
 
 ```css
