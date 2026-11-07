@@ -79,7 +79,21 @@ The icons come from [pixelarticons](https://github.com/halfmage/pixelarticons) (
 
 `assets/icon-pack.json` maps each app on the phone to an icon: `"package/activity": "icon"`. The build turns it into an Android project in `build/<theme>/iconpack/` with a dark plate, a light symbol and an orange bar for each app.
 
-To build and install it, with the phone connected:
+GitHub builds the pack every time it changes on `main` and puts it on the release `ikoner`. To install it from Termux on the phone, allow Termux to hand files to other apps once:
+
+```bash
+echo "allow-external-apps = true" >> ~/.termux/termux.properties && termux-reload-settings
+```
+
+Then download and open it. Android asks whether to install, and the first time, whether Termux may install apps:
+
+```bash
+curl -L -o waddle-ikoner.apk https://github.com/arneeme/design/releases/download/ikoner/waddle-ikoner.apk && termux-open waddle-ikoner.apk
+```
+
+Every build is signed with `assets/iconpack.keystore`, so a new version installs over the old one. The key is only for the icon pack and is public on purpose.
+
+To build and install it from a PC instead, with the phone connected:
 
 ```bash
 ANDROID_SERIAL=<serial> ~/Code/design/scripts/iconpack.sh

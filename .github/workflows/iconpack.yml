@@ -1,0 +1,33 @@
+name: Ikonpakke
+
+on:
+  push:
+    branches: [main]
+    paths: ["build/*/iconpack/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10.2"
+      - name: Bygg
+        working-directory: build/waddle/iconpack
+        run: gradle --no-daemon assembleDebug
+      - name: Last opp
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp build/waddle/iconpack/app/build/outputs/apk/debug/app-debug.apk waddle-ikoner.apk
+          gh release view ikoner >/dev/null 2>&1 || gh release create ikoner --title "Ikonpakke" --notes "Bygges på nytt hver gang ikonpakken endres på main."
+          gh release upload ikoner waddle-ikoner.apk --clobber
