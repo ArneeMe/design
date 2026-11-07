@@ -113,7 +113,7 @@ const sw = v => v ? `<span class="sw" style="background:${v}"></span><code>${v}<
 const draw = () => {
   const t = root.dataset.theme;
   colors.innerHTML = "<tr><th>Navn</th><th>Mørk</th><th>Lys</th></tr>" + ["bg", "surface", "border", "text", "muted", "accent", "on-accent"].map(n => `<tr><td>${n}</td><td>${sw(val(`--${n}`, "dark"))}</td><td>${sw(val(`--${n}`, "light"))}</td></tr>`).join("");
-  files.innerHTML = [["Web, ett tema", `build/web/${t}.css`], ["Web, alle temaer", "build/web/all.css"], ["WaddleOS", `build/${t}/waddleos`], ["TV", `build/${t}/cleanyourtv`], ["Hyprland", `build/${t}/hyprland`], ["Waybar", `build/${t}/waybar`], ["kitty", `build/${t}/kitty`]].map(([a, b]) => `<tr><td>${a}</td><td><code>${b}</code></td></tr>`).join("");
+  files.innerHTML = [["Web, ett tema", `build/web/${t}.css`], ["Web, alle temaer", "build/web/all.css"], ["WaddleOS", `build/${t}/waddleos`], ["TV", `build/${t}/cleanyourtv`], ["Omarchy", `build/${t}/omarchy`], ["Android", `build/${t}/android`], ["Hyprland", `build/${t}/hyprland`], ["Waybar", `build/${t}/waybar`], ["kitty", `build/${t}/kitty`]].map(([a, b]) => `<tr><td>${a}</td><td><code>${b}</code></td></tr>`).join("");
   document.querySelectorAll("[data-art]").forEach(img => { img.src = `../build/${t}/${img.dataset.art}`; });
   peng.src = `../build/${t}/penguin/penguin-${root.dataset.mode === "light" ? "light" : "dark"}.svg`;
 };

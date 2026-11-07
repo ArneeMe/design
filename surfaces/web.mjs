@@ -23,7 +23,7 @@ export default function web(themes, write) {
     const { family } = JSON.parse(readFileSync(new URL(`assets/fonts/${dir}/font.json`, root)));
     const weight = f => weights[f.replace(/.*-|\.woff2/g, "")] ?? 0;
     const files = readdirSync(new URL(`assets/fonts/${dir}/`, root)).sort((a, b) => weight(a) - weight(b) || a.localeCompare(b));
-    for (const f of files.filter(f => !f.endsWith(".json"))) write(`fonts/${f}`, readFileSync(new URL(`assets/fonts/${dir}/${f}`, root)));
+    for (const f of files.filter(f => /\.(woff2|txt)$/.test(f))) write(`fonts/${f}`, readFileSync(new URL(`assets/fonts/${dir}/${f}`, root)));
     return files.filter(f => f.endsWith(".woff2")).map(f => `@font-face {
   font-family: "${family}";
   src: url("fonts/${f}") format("woff2");

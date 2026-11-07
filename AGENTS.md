@@ -9,11 +9,11 @@ This repo is Arne's design system. Follow the `arnes-stil` skill for code, git a
 - `themes/<theme>/art.mjs`: optional images for a theme. Waddle has the penguin (`penguin.txt`) and wallpapers.
 - `surfaces/<surface>.mjs`: turns a theme into files for one surface. `web.mjs` handles all themes at once.
 - `web/base.css`: styles for plain HTML, the same for every theme.
-- `assets/fonts/`: fonts as woff2, with `font.json` and the licence.
+- `assets/fonts/`: fonts as woff2 for the web and TTF for Termux, with `font.json` and the licence.
 - `scripts/build.mjs`: the build. `scripts/lib/` has the theme loader, checks, canvas and PNG encoder. Node only, no dependencies.
 - `build/`: generated output. Committed. Never edit by hand.
 - `preview/index.html`: preview of every theme from `build/`, with dark, light, e-ink and red filter views.
-- `scripts/install.sh`, `scripts/sync-waddleos.sh`: hook this machine and WaddleOS up to `build/`.
+- `scripts/install.sh`, `scripts/sync-waddleos.sh`, `scripts/android.sh`: hook this machine, WaddleOS and the phone up to `build/`.
 
 ## Rules
 
