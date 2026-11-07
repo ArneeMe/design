@@ -31,7 +31,25 @@ for f in colors.properties font.ttf; do
   [ -f ~/.termux/$f ] && [ ! -f ~/.termux/$f.for-design ] && cp ~/.termux/$f ~/.termux/$f.for-design
   cp "$dir/$f" ~/.termux/
 done
+if command -v termux-job-scheduler >/dev/null && command -v termux-wallpaper >/dev/null; then
+  cp "$dir/wallpaper.sh" ~/.termux/wallpaper.sh
+  termux-job-scheduler --job-id 4242 --period-ms 900000 --persisted true --script ~/.termux/wallpaper.sh >/dev/null
+  sh ~/.termux/wallpaper.sh
+  echo "bakgrunn: bytter etter tid på døgnet"
+else
+  echo "bakgrunn: installer Termux:API fra F-Droid og kjør pkg install termux-api for å bytte etter tid på døgnet"
+fi
 termux-reload-settings
 echo "termux: bruker ${t.id}"
+`);
+  const phone = phones[0].id;
+  const pick = scene => (t.art.wallpapers ?? []).find(w => w.scene === scene)?.file.replace(".png", `-${phone}.png`);
+  if (t.art.wallpapers?.length) write("termux/wallpaper.sh", `h=$(date +%-H)
+if [ "$h" -ge 6 ] && [ "$h" -lt 12 ]; then f=${pick("morning")}
+elif [ "$h" -ge 12 ] && [ "$h" -lt 19 ]; then f=${pick("evening")}
+else f=${pick("night")}
+fi
+[ "$(cat ~/.termux/wallpaper.last 2>/dev/null)" = "$f" ] && exit 0
+termux-wallpaper -f "/sdcard/Pictures/${t.id}/$f" && termux-wallpaper -l -f "/sdcard/Pictures/${t.id}/$f" && echo "$f" > ~/.termux/wallpaper.last
 `);
 }
