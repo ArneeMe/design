@@ -25,4 +25,13 @@ export default function android(t, write) {
     ...[...ansi, ...ansi.map(n => `bright-${n}`)].map((n, i) => `color${i}=${t.get(`color.ansi.${n}`)}`),
   ].join("\n") + "\n");
   write("termux/font.ttf", readFileSync(new URL("assets/fonts/jetbrains-mono/ttf/JetBrainsMono-Regular.ttf", root)));
+  write("termux/install.sh", `dir="$(cd "$(dirname "$0")" && pwd)"
+mkdir -p ~/.termux
+for f in colors.properties font.ttf; do
+  [ -f ~/.termux/$f ] && [ ! -f ~/.termux/$f.for-design ] && cp ~/.termux/$f ~/.termux/$f.for-design
+  cp "$dir/$f" ~/.termux/
+done
+termux-reload-settings
+echo "termux: bruker ${t.id}"
+`);
 }
