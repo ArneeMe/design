@@ -3,110 +3,110 @@
     <item component="ComponentInfo{InfinityLoop1309.NewPipeEnhanced/org.schabi.newpipe.MainActivity}" drawable="farge_infinityloop1309_newpipeenhanced" />
     <item component="ComponentInfo{app.comaps.google/app.organicmaps.DownloadResourcesActivity}" drawable="farge_app_comaps_google" />
     <item component="ComponentInfo{app.organicmaps/app.organicmaps.DownloadResourcesActivity}" drawable="farge_app_organicmaps" />
-    <item component="ComponentInfo{app.skrive/app.skrive.MainActivity}" drawable="ikon_pencil" />
-    <item component="ComponentInfo{app.zkpassport.zkpassport/app.zkpassport.zkpassport.MainActivity}" drawable="ikon_membercard" />
+    <item component="ComponentInfo{app.skrive/app.skrive.MainActivity}" drawable="farge_app_skrive" />
+    <item component="ComponentInfo{app.zkpassport.zkpassport/app.zkpassport.zkpassport.MainActivity}" drawable="farge_app_zkpassport_zkpassport" />
     <item component="ComponentInfo{ch.protonmail.android/ch.protonmail.android.RoutingActivity}" drawable="farge_ch_protonmail_android" />
     <item component="ComponentInfo{ch.protonvpn.android/ch.protonvpn.android.RoutingActivity}" drawable="farge_ch_protonvpn_android" />
     <item component="ComponentInfo{ch.threema.app.libre/ch.threema.app.activities.MainActivity}" drawable="farge_ch_threema_app_libre" />
     <item component="ComponentInfo{com.Slack/slack.app.HomeActivity}" drawable="farge_com_slack" />
     <item component="ComponentInfo{com.airbnb.android/com.airbnb.android.feat.splashscreen.SplashScreenActivity}" drawable="farge_com_airbnb_android" />
-    <item component="ComponentInfo{com.android.calculator2/com.android.calculator2.Calculator}" drawable="ikon_calculator" />
-    <item component="ComponentInfo{com.android.contacts/com.android.contacts.activities.PeopleActivity}" drawable="ikon_contact" />
-    <item component="ComponentInfo{com.android.deskclock/com.android.deskclock.DeskClock}" drawable="ikon_alarm_clock" />
-    <item component="ComponentInfo{com.android.dialer/com.android.dialer.main.impl.MainActivity}" drawable="ikon_phone" />
-    <item component="ComponentInfo{com.android.documentsui/com.android.documentsui.LauncherActivity}" drawable="ikon_folder" />
-    <item component="ComponentInfo{com.android.settings/com.android.settings.Settings}" drawable="ikon_settings_cog" />
+    <item component="ComponentInfo{com.android.calculator2/com.android.calculator2.Calculator}" drawable="farge_com_android_calculator2" />
+    <item component="ComponentInfo{com.android.contacts/com.android.contacts.activities.PeopleActivity}" drawable="farge_com_android_contacts" />
+    <item component="ComponentInfo{com.android.deskclock/com.android.deskclock.DeskClock}" drawable="farge_com_android_deskclock" />
+    <item component="ComponentInfo{com.android.dialer/com.android.dialer.main.impl.MainActivity}" drawable="farge_com_android_dialer" />
+    <item component="ComponentInfo{com.android.documentsui/com.android.documentsui.LauncherActivity}" drawable="farge_com_android_documentsui" />
+    <item component="ComponentInfo{com.android.settings/com.android.settings.Settings}" drawable="farge_com_android_settings" />
     <item component="ComponentInfo{com.anthropic.claude/com.anthropic.claude.mainactivity.MainActivity}" drawable="farge_com_anthropic_claude" />
     <item component="ComponentInfo{com.app.tgtg/com.app.tgtg.feature.login.SplashActivity}" drawable="farge_com_app_tgtg" />
     <item component="ComponentInfo{com.azure.authenticator/com.azure.authenticator.ui.LaunchActivity}" drawable="farge_com_azure_authenticator" />
-    <item component="ComponentInfo{com.bang_olufsen.OneApp/crc646b24ab3c8c501156.MainActivity}" drawable="ikon_volume_1" />
-    <item component="ComponentInfo{com.blizzard.wtcg.hearthstone/com.blizzard.wtcg.hearthstone.HearthstoneActivity}" drawable="ikon_crown" />
-    <item component="ComponentInfo{com.bowerswilkins.splice/com.bowerswilkins.splice.views.StartupView}" drawable="ikon_volume_2" />
+    <item component="ComponentInfo{com.bang_olufsen.OneApp/crc646b24ab3c8c501156.MainActivity}" drawable="farge_com_bang_olufsen_oneapp" />
+    <item component="ComponentInfo{com.blizzard.wtcg.hearthstone/com.blizzard.wtcg.hearthstone.HearthstoneActivity}" drawable="farge_com_blizzard_wtcg_hearthstone" />
+    <item component="ComponentInfo{com.bowerswilkins.splice/com.bowerswilkins.splice.views.StartupView}" drawable="farge_com_bowerswilkins_splice" />
     <item component="ComponentInfo{com.c4mprod.voiturelib/com.drivy.android.MainActivity}" drawable="farge_com_c4mprod_voiturelib" />
-    <item component="ComponentInfo{com.costarastrology/com.costarastrology.root.RootActivity}" drawable="ikon_star" />
+    <item component="ComponentInfo{com.costarastrology/com.costarastrology.root.RootActivity}" drawable="farge_com_costarastrology" />
     <item component="ComponentInfo{com.discord/com.discord.main.MainDefault}" drawable="farge_com_discord" />
     <item component="ComponentInfo{com.disney.disneyplus/com.bamtechmedia.dominguez.main.MainActivity}" drawable="farge_com_disney_disneyplus" />
-    <item component="ComponentInfo{com.drdropin/com.drdropin.MainActivity}" drawable="ikon_cross" />
-    <item component="ComponentInfo{com.easypick.main/com.easypick.main.MainActivity}" drawable="ikon_box" />
-    <item component="ComponentInfo{com.example.nattatid/com.example.nattatid.MainActivity}" drawable="ikon_moon" />
-    <item component="ComponentInfo{com.fps.camera/com.android.camera.CameraLauncher}" drawable="ikon_camera" />
-    <item component="ComponentInfo{com.generalmagic.magicearth/com.magiclane.androidsphere.map.MapActivity}" drawable="ikon_earth" />
-    <item component="ComponentInfo{com.google.android.gms/org.microg.gms.ui.SettingsActivity}" drawable="ikon_gear" />
+    <item component="ComponentInfo{com.drdropin/com.drdropin.MainActivity}" drawable="farge_com_drdropin" />
+    <item component="ComponentInfo{com.easypick.main/com.easypick.main.MainActivity}" drawable="farge_com_easypick_main" />
+    <item component="ComponentInfo{com.example.nattatid/com.example.nattatid.MainActivity}" drawable="farge_com_example_nattatid" />
+    <item component="ComponentInfo{com.fps.camera/com.android.camera.CameraLauncher}" drawable="farge_com_fps_camera" />
+    <item component="ComponentInfo{com.generalmagic.magicearth/com.magiclane.androidsphere.map.MapActivity}" drawable="farge_com_generalmagic_magicearth" />
+    <item component="ComponentInfo{com.google.android.gms/org.microg.gms.ui.SettingsActivity}" drawable="farge_com_google_android_gms" />
     <item component="ComponentInfo{com.google.android.youtube/com.google.android.youtube.app.honeycomb.Shell$HomeActivity}" drawable="farge_com_google_android_youtube" />
-    <item component="ComponentInfo{com.lenbrook.sovi.bluesound/com.lenbrook.sovi.HomeActivity}" drawable="ikon_audio_waveform" />
+    <item component="ComponentInfo{com.lenbrook.sovi.bluesound/com.lenbrook.sovi.HomeActivity}" drawable="farge_com_lenbrook_sovi_bluesound" />
     <item component="ComponentInfo{com.netflix.mediaclient/com.netflix.mediaclient.ui.launch.UIWebViewActivity}" drawable="farge_com_netflix_mediaclient" />
     <item component="ComponentInfo{com.norwegian.travelassistant/com.norwegian.travelassistant.MainActivity}" drawable="farge_com_norwegian_travelassistant" />
     <item component="ComponentInfo{com.onepassword.android/com.onepassword.android.app.StartActivity}" drawable="farge_com_onepassword_android" />
     <item component="ComponentInfo{com.pagerduty.android/com.pagerduty.android.feature.main.view.ui.MainActivity}" drawable="farge_com_pagerduty_android" />
-    <item component="ComponentInfo{com.saltosystems.justin/com.saltosystems.justin.ui.SplashScreenActivity}" drawable="ikon_door_closed" />
+    <item component="ComponentInfo{com.saltosystems.justin/com.saltosystems.justin.ui.SplashScreenActivity}" drawable="farge_com_saltosystems_justin" />
     <item component="ComponentInfo{com.snapchat.android/com.snapchat.android.LandingPageActivity}" drawable="farge_com_snapchat_android" />
     <item component="ComponentInfo{com.songkick/com.songkick.MainActivity}" drawable="farge_com_songkick" />
-    <item component="ComponentInfo{com.sonos.acr2/com.sonos.passport.ui.launcheractivity.LauncherActivity}" drawable="ikon_airplay" />
-    <item component="ComponentInfo{com.soundboks.SOUNDBOKS/com.soundboks.SOUNDBOKS.MainActivity}" drawable="ikon_volume_3" />
+    <item component="ComponentInfo{com.sonos.acr2/com.sonos.passport.ui.launcheractivity.LauncherActivity}" drawable="farge_com_sonos_acr2" />
+    <item component="ComponentInfo{com.soundboks.SOUNDBOKS/com.soundboks.SOUNDBOKS.MainActivity}" drawable="farge_com_soundboks_soundboks" />
     <item component="ComponentInfo{com.spotify.music/com.spotify.music.MainActivity}" drawable="farge_com_spotify_music" />
     <item component="ComponentInfo{com.teliacompany.tsc/no.nordicom.phonerobedriftsnett.ui.activities.LoginActivity}" drawable="farge_com_teliacompany_tsc" />
-    <item component="ComponentInfo{com.termux.api/com.termux.api.activities.TermuxAPILauncherActivity}" drawable="ikon_plug" />
-    <item component="ComponentInfo{com.termux/com.termux.app.TermuxActivity}" drawable="ikon_terminal" />
+    <item component="ComponentInfo{com.termux.api/com.termux.api.activities.TermuxAPILauncherActivity}" drawable="farge_com_termux_api" />
+    <item component="ComponentInfo{com.termux/com.termux.app.TermuxActivity}" drawable="farge_com_termux" />
     <item component="ComponentInfo{com.vivaldi.browser/com.vivaldi.browser.IconAlt0}" drawable="farge_com_vivaldi_browser" />
-    <item component="ComponentInfo{com.vrem.wifianalyzer/com.vrem.wifianalyzer.MainActivity}" drawable="ikon_wifi" />
-    <item component="ComponentInfo{com.vsmartcard.acardemulator/com.vsmartcard.acardemulator.MainActivity}" drawable="ikon_credit_card" />
+    <item component="ComponentInfo{com.vrem.wifianalyzer/com.vrem.wifianalyzer.MainActivity}" drawable="farge_com_vrem_wifianalyzer" />
+    <item component="ComponentInfo{com.vsmartcard.acardemulator/com.vsmartcard.acardemulator.MainActivity}" drawable="farge_com_vsmartcard_acardemulator" />
     <item component="ComponentInfo{com.wbd.stream/com.wbd.fuse.appcore.FuseActivity}" drawable="farge_com_wbd_stream" />
-    <item component="ComponentInfo{de.csicar.ning/de.csicar.ning.MainActivity}" drawable="ikon_signal" />
-    <item component="ComponentInfo{de.syss.MifareClassicTool/de.syss.MifareClassicTool.Activities.MainMenu}" drawable="ikon_scan_barcode" />
-    <item component="ComponentInfo{dev.xitee.sleeptimer/dev.xitee.sleeptimer.MainActivity}" drawable="ikon_hourglass" />
-    <item component="ComponentInfo{foundation.e.apps/foundation.e.apps.feature.main.MainActivity}" drawable="ikon_store" />
-    <item component="ComponentInfo{foundation.e.blissweather/foundation.e.blissweather.settings.SettingsActivity}" drawable="ikon_cloud_sun" />
-    <item component="ComponentInfo{foundation.e.browser/com.google.android.apps.chrome.Main}" drawable="ikon_compass" />
-    <item component="ComponentInfo{foundation.e.calendar/com.android.calendar.AllInOneActivity}" drawable="ikon_calendar" />
-    <item component="ComponentInfo{foundation.e.camera/net.sourceforge.opencamera.MainActivity}" drawable="ikon_camera" />
-    <item component="ComponentInfo{foundation.e.mail/com.fsck.k9.activity.MessageList}" drawable="ikon_inbox" />
-    <item component="ComponentInfo{foundation.e.message/com.moez.QKSMS.feature.main.MainActivity}" drawable="ikon_message" />
-    <item component="ComponentInfo{foundation.e.notes/it.niedermann.owncloud.notes.main.MainActivity}" drawable="ikon_notes" />
-    <item component="ComponentInfo{foundation.e.pdfviewer/com.gitlab.mudlej.MjPdfReader.ui.main.MainActivity}" drawable="ikon_file_text" />
-    <item component="ComponentInfo{foundation.e.tasks/org.dmfs.tasks.TaskListActivity}" drawable="ikon_bulletlist" />
-    <item component="ComponentInfo{foundation.e.webapk_murenaio/org.chromium.webapk.shell_apk.h2o.H2OOpaqueMainActivity}" drawable="ikon_cloud" />
-    <item component="ComponentInfo{fun.firstplayer/fun.firstplayer.MainActivity}" drawable="ikon_gamepad" />
+    <item component="ComponentInfo{de.csicar.ning/de.csicar.ning.MainActivity}" drawable="farge_de_csicar_ning" />
+    <item component="ComponentInfo{de.syss.MifareClassicTool/de.syss.MifareClassicTool.Activities.MainMenu}" drawable="farge_de_syss_mifareclassictool" />
+    <item component="ComponentInfo{dev.xitee.sleeptimer/dev.xitee.sleeptimer.MainActivity}" drawable="farge_dev_xitee_sleeptimer" />
+    <item component="ComponentInfo{foundation.e.apps/foundation.e.apps.feature.main.MainActivity}" drawable="farge_foundation_e_apps" />
+    <item component="ComponentInfo{foundation.e.blissweather/foundation.e.blissweather.settings.SettingsActivity}" drawable="farge_foundation_e_blissweather" />
+    <item component="ComponentInfo{foundation.e.browser/com.google.android.apps.chrome.Main}" drawable="farge_foundation_e_browser" />
+    <item component="ComponentInfo{foundation.e.calendar/com.android.calendar.AllInOneActivity}" drawable="farge_foundation_e_calendar" />
+    <item component="ComponentInfo{foundation.e.camera/net.sourceforge.opencamera.MainActivity}" drawable="farge_foundation_e_camera" />
+    <item component="ComponentInfo{foundation.e.mail/com.fsck.k9.activity.MessageList}" drawable="farge_foundation_e_mail" />
+    <item component="ComponentInfo{foundation.e.message/com.moez.QKSMS.feature.main.MainActivity}" drawable="farge_foundation_e_message" />
+    <item component="ComponentInfo{foundation.e.notes/it.niedermann.owncloud.notes.main.MainActivity}" drawable="farge_foundation_e_notes" />
+    <item component="ComponentInfo{foundation.e.pdfviewer/com.gitlab.mudlej.MjPdfReader.ui.main.MainActivity}" drawable="farge_foundation_e_pdfviewer" />
+    <item component="ComponentInfo{foundation.e.tasks/org.dmfs.tasks.TaskListActivity}" drawable="farge_foundation_e_tasks" />
+    <item component="ComponentInfo{foundation.e.webapk_murenaio/org.chromium.webapk.shell_apk.h2o.H2OOpaqueMainActivity}" drawable="farge_foundation_e_webapk_murenaio" />
+    <item component="ComponentInfo{fun.firstplayer/fun.firstplayer.MainActivity}" drawable="farge_fun_firstplayer" />
     <item component="ComponentInfo{io.heckel.ntfy/io.heckel.ntfy.ui.MainActivity}" drawable="farge_io_heckel_ntfy" />
     <item component="ComponentInfo{io.voiapp.voi/io.voiapp.voi.MainActivity}" drawable="farge_io_voiapp_voi" />
-    <item component="ComponentInfo{jp.nonbili.noutube/jp.nonbili.noutube.MainActivity}" drawable="ikon_play" />
-    <item component="ComponentInfo{me.lucky.sentry/me.lucky.sentry.MainActivity}" drawable="ikon_eye" />
+    <item component="ComponentInfo{jp.nonbili.noutube/jp.nonbili.noutube.MainActivity}" drawable="farge_jp_nonbili_noutube" />
+    <item component="ComponentInfo{me.lucky.sentry/me.lucky.sentry.MainActivity}" drawable="farge_me_lucky_sentry" />
     <item component="ComponentInfo{me.proton.android.calendar/me.proton.android.calendar.presentation.main.MainActivity}" drawable="farge_me_proton_android_calendar" />
     <item component="ComponentInfo{me.proton.android.drive/me.proton.android.drive.ui.MainActivity}" drawable="farge_me_proton_android_drive" />
     <item component="ComponentInfo{me.proton.android.lumo/me.proton.android.lumo.MainActivity}" drawable="farge_me_proton_android_lumo" />
     <item component="ComponentInfo{net.osmand.plus/net.osmand.plus.activities.MapActivity}" drawable="farge_net_osmand_plus" />
-    <item component="ComponentInfo{no.app.aett/no.app.aett.MainActivity}" drawable="ikon_tree" />
-    <item component="ComponentInfo{no.bouvet.nrkut/no.bouvet.nrkut.MainActivity}" drawable="ikon_tent" />
+    <item component="ComponentInfo{no.app.aett/no.app.aett.MainActivity}" drawable="farge_no_app_aett" />
+    <item component="ComponentInfo{no.bouvet.nrkut/no.bouvet.nrkut.MainActivity}" drawable="farge_no_bouvet_nrkut" />
     <item component="ComponentInfo{no.digipost.android/no.digipost.android.MainActivity}" drawable="farge_no_digipost_android" />
     <item component="ComponentInfo{no.entur/no.entur.MainActivity}" drawable="farge_no_entur" />
     <item component="ComponentInfo{no.finn.android/com.schibsted.nmp.NmpActivity}" drawable="farge_no_finn_android" />
-    <item component="ComponentInfo{no.flytoget.flytoget/newKotlin.launchactivity.LaunchActivity}" drawable="ikon_train" />
-    <item component="ComponentInfo{no.giantleap.parko.qpark/no.giantleap.cardboard.StartupActivity}" drawable="ikon_parking" />
+    <item component="ComponentInfo{no.flytoget.flytoget/newKotlin.launchactivity.LaunchActivity}" drawable="farge_no_flytoget_flytoget" />
+    <item component="ComponentInfo{no.giantleap.parko.qpark/no.giantleap.cardboard.StartupActivity}" drawable="farge_no_giantleap_parko_qpark" />
     <item component="ComponentInfo{no.handelsbanken.mobilbank.android/no.handelsbanken.mobilbank.android.MainActivity}" drawable="farge_no_handelsbanken_mobilbank_android" />
-    <item component="ComponentInfo{no.hyre.demand/no.hyre.demand.LaunchActivity}" drawable="ikon_car" />
-    <item component="ComponentInfo{no.nkgs.webatlas.android.munmed/no.nkgs.webatlas.android.munmed.MainActivity}" drawable="ikon_map_pin_home" />
-    <item component="ComponentInfo{no.nrk.mobil.app/no.nrk.mobil.app.activity.SplashScreenActivity}" drawable="ikon_text_align_justify_box" />
-    <item component="ComponentInfo{no.nrk.mobil.radio/no.nrk.mobil.radio.MainActivitySwitch}" drawable="ikon_radio" />
-    <item component="ComponentInfo{no.nrk.tv/no.nrk.tv.view.MobileSplashScreenActivity}" drawable="ikon_tv" />
-    <item component="ComponentInfo{no.oslokommune.parkeringsapp/crc6496689812c907d9bf.MainActivity}" drawable="ikon_building" />
+    <item component="ComponentInfo{no.hyre.demand/no.hyre.demand.LaunchActivity}" drawable="farge_no_hyre_demand" />
+    <item component="ComponentInfo{no.nkgs.webatlas.android.munmed/no.nkgs.webatlas.android.munmed.MainActivity}" drawable="farge_no_nkgs_webatlas_android_munmed" />
+    <item component="ComponentInfo{no.nrk.mobil.app/no.nrk.mobil.app.activity.SplashScreenActivity}" drawable="farge_no_nrk_mobil_app" />
+    <item component="ComponentInfo{no.nrk.mobil.radio/no.nrk.mobil.radio.MainActivitySwitch}" drawable="farge_no_nrk_mobil_radio" />
+    <item component="ComponentInfo{no.nrk.tv/no.nrk.tv.view.MobileSplashScreenActivity}" drawable="farge_no_nrk_tv" />
+    <item component="ComponentInfo{no.oslokommune.parkeringsapp/crc6496689812c907d9bf.MainActivity}" drawable="farge_no_oslokommune_parkeringsapp" />
     <item component="ComponentInfo{no.posten.sporing.controller/no.posten.sporing.controller.ui.navigation.NavigationActivity}" drawable="farge_no_posten_sporing_controller" />
     <item component="ComponentInfo{no.ruter.reise/no.ruter.app.feature.startup.StartupActivity}" drawable="farge_no_ruter_reise" />
     <item component="ComponentInfo{no.telia.bedriftsnett/no.nordicom.phonerobedriftsnett.ui.activities.LoginActivity}" drawable="farge_no_telia_bedriftsnett" />
     <item component="ComponentInfo{no.tv2.sumo/no.tv2.android.ui.LauncherBridgeActivity}" drawable="farge_no_tv2_sumo" />
-    <item component="ComponentInfo{no.urbaninfrastructure.bysykkel/no.urbaninfrastructure.bysykkel.ui.splash.SplashActivity}" drawable="ikon_bike" />
+    <item component="ComponentInfo{no.urbaninfrastructure.bysykkel/no.urbaninfrastructure.bysykkel.ui.splash.SplashActivity}" drawable="farge_no_urbaninfrastructure_bysykkel" />
     <item component="ComponentInfo{no.vipps.bankid/no.bankid.app.main.MainActivity}" drawable="farge_no_vipps_bankid" />
-    <item component="ComponentInfo{notion.id/notion.local.id.MainActivity}" drawable="ikon_notebook" />
-    <item component="ComponentInfo{org.futo.inputmethod.latin.playstore/org.futo.inputmethod.latin.uix.settings.SettingsActivity}" drawable="ikon_keyboard" />
-    <item component="ComponentInfo{org.lichess.mobileV2/org.lichess.mobileV2.MainActivity}" drawable="ikon_chess" />
-    <item component="ComponentInfo{org.lineageos.glimpse/org.lineageos.glimpse.MainActivity}" drawable="ikon_images" />
-    <item component="ComponentInfo{org.lineageos.recorder/org.lineageos.recorder.RecorderActivity}" drawable="ikon_mic" />
-    <item component="ComponentInfo{org.lineageos.twelve/org.lineageos.twelve.MainActivity}" drawable="ikon_headphone" />
+    <item component="ComponentInfo{notion.id/notion.local.id.MainActivity}" drawable="farge_notion_id" />
+    <item component="ComponentInfo{org.futo.inputmethod.latin.playstore/org.futo.inputmethod.latin.uix.settings.SettingsActivity}" drawable="farge_org_futo_inputmethod_latin_playstore" />
+    <item component="ComponentInfo{org.lichess.mobileV2/org.lichess.mobileV2.MainActivity}" drawable="farge_org_lichess_mobilev2" />
+    <item component="ComponentInfo{org.lineageos.glimpse/org.lineageos.glimpse.MainActivity}" drawable="farge_org_lineageos_glimpse" />
+    <item component="ComponentInfo{org.lineageos.recorder/org.lineageos.recorder.RecorderActivity}" drawable="farge_org_lineageos_recorder" />
+    <item component="ComponentInfo{org.lineageos.twelve/org.lineageos.twelve.MainActivity}" drawable="farge_org_lineageos_twelve" />
     <item component="ComponentInfo{org.mozilla.firefox/org.mozilla.firefox.App}" drawable="farge_org_mozilla_firefox" />
     <item component="ComponentInfo{org.mozilla.focus/org.mozilla.focus.activity.MainActivity}" drawable="farge_org_mozilla_focus" />
     <item component="ComponentInfo{org.schabi.newpipe/org.schabi.newpipe.MainActivity}" drawable="farge_org_schabi_newpipe" />
-    <item component="ComponentInfo{org.sufficientlysecure.keychain/org.sufficientlysecure.keychain.ui.MainActivity}" drawable="ikon_key" />
+    <item component="ComponentInfo{org.sufficientlysecure.keychain/org.sufficientlysecure.keychain.ui.MainActivity}" drawable="farge_org_sufficientlysecure_keychain" />
     <item component="ComponentInfo{org.thoughtcrime.securesms/org.thoughtcrime.securesms.RoutingActivity}" drawable="farge_org_thoughtcrime_securesms" />
     <item component="ComponentInfo{proton.android.authenticator/proton.android.authenticator.app.ui.MainActivity}" drawable="farge_proton_android_authenticator" />
     <item component="ComponentInfo{proton.android.pass/proton.android.pass.ui.MainActivity}" drawable="farge_proton_android_pass" />
     <item component="ComponentInfo{tv.twitch.android.app/tv.twitch.android.app.core.LandingActivity}" drawable="farge_tv_twitch_android_app" />
-    <item component="ComponentInfo{us.spotco.maps/us.spotco.maps.MainActivity}" drawable="ikon_map_solid" />
+    <item component="ComponentInfo{us.spotco.maps/us.spotco.maps.MainActivity}" drawable="farge_us_spotco_maps" />
 </resources>

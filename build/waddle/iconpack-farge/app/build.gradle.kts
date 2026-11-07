@@ -10,8 +10,8 @@ android {
         applicationId = "me.arnee.design.ikoner.waddle.farge"
         minSdk = 26
         targetSdk = 35
-        versionCode = 20800
-        versionName = "2.8.0"
+        versionCode = 20900
+        versionName = "2.9.0"
     }
 
     signingConfigs {
