@@ -41,10 +41,17 @@ If a value you need is missing, add it to the theme or to `tokens/base.json` and
 
 ## Apps
 
-- Android apps get `<Theme>Tokens.kt` and resources with `scripts/sync-app.sh <module>`. Never edit the copied files in the app.
-- Plain Views are fine. Do not add Compose, Material Components or other libraries just for looks.
-- Read colours from the tokens object or `R.color`, sizes from `R.dimen`, never hex or raw numbers in the app.
-- Icons are not decided yet. See `drafts/` in the design repo.
+Read `docs/apps.md` in the design repo before starting or changing an app.
+
+- Android apps get `<Theme>Tokens.kt`, `<Theme>Ui.kt`, resources and icons with `scripts/sync-app.sh <module>`. Never edit the copied files in the app.
+- Build screens with the `<Theme>Ui` helpers and plain Views. Do not add Compose, Material Components or other libraries just for looks.
+- Read colours from the tokens or `R.color`, sizes from `R.dimen`. Never hex or raw numbers in the app.
+
+## Icons
+
+- Icons are pixelarticons on a 24 grid, in `build/icons/`: SVG and a sprite for the web, `R.drawable.ic_<name>` for Android, `WaddleIcons.h` for WaddleOS.
+- Never draw icons, penguins or other figures yourself. If an icon is missing, copy the `-sharp` version from pixelarticons into `assets/icons/` and rebuild.
+- Show icons at 24 or 48 px so the pixels stay whole. They take the text colour.
 
 ## Modes
 
