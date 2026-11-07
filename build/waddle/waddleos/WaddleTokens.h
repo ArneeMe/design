@@ -36,26 +36,15 @@ constexpr uint16_t DITHER_Grey8 = 0x0401;
 constexpr uint32_t RGB_Grey9 = 0xf4f4f0;
 constexpr uint8_t GRAY4_Grey9 = 3;
 constexpr uint16_t DITHER_Grey9 = 0x0001;
-constexpr uint32_t RGB_White = 0xffffff;
-constexpr uint8_t GRAY4_White = 3;
-constexpr uint16_t DITHER_White = 0x0000;
+constexpr uint32_t RGB_GreyWhite = 0xffffff;
+constexpr uint8_t GRAY4_GreyWhite = 3;
+constexpr uint16_t DITHER_GreyWhite = 0x0000;
 constexpr uint32_t RGB_NebbDark = 0xf0a040;
 constexpr uint8_t GRAY4_NebbDark = 2;
 constexpr uint16_t DITHER_NebbDark = 0x0525;
 constexpr uint32_t RGB_NebbLight = 0x9a4a00;
 constexpr uint8_t GRAY4_NebbLight = 1;
 constexpr uint16_t DITHER_NebbLight = 0xadaf;
-
-constexpr uint8_t GRAY4_LIGHT_Bg = 3;
-constexpr uint8_t GRAY4_LIGHT_Surface = 3;
-constexpr uint8_t GRAY4_LIGHT_Border = 2;
-constexpr uint8_t GRAY4_LIGHT_Text = 0;
-constexpr uint8_t GRAY4_LIGHT_Muted = 1;
-constexpr uint8_t GRAY4_LIGHT_Accent = 1;
-constexpr uint8_t GRAY4_LIGHT_OnAccent = 3;
-constexpr uint8_t GRAY4_LIGHT_PenguinInk = 0;
-constexpr uint8_t GRAY4_LIGHT_PenguinPaper = 3;
-constexpr uint8_t GRAY4_LIGHT_PenguinPlate = 3;
 
 constexpr uint8_t GRAY4_DARK_Bg = 0;
 constexpr uint8_t GRAY4_DARK_Surface = 0;
@@ -67,6 +56,17 @@ constexpr uint8_t GRAY4_DARK_OnAccent = 0;
 constexpr uint8_t GRAY4_DARK_PenguinInk = 0;
 constexpr uint8_t GRAY4_DARK_PenguinPaper = 3;
 constexpr uint8_t GRAY4_DARK_PenguinPlate = 1;
+
+constexpr uint8_t GRAY4_LIGHT_Bg = 3;
+constexpr uint8_t GRAY4_LIGHT_Surface = 3;
+constexpr uint8_t GRAY4_LIGHT_Border = 2;
+constexpr uint8_t GRAY4_LIGHT_Text = 0;
+constexpr uint8_t GRAY4_LIGHT_Muted = 1;
+constexpr uint8_t GRAY4_LIGHT_Accent = 1;
+constexpr uint8_t GRAY4_LIGHT_OnAccent = 3;
+constexpr uint8_t GRAY4_LIGHT_PenguinInk = 0;
+constexpr uint8_t GRAY4_LIGHT_PenguinPaper = 3;
+constexpr uint8_t GRAY4_LIGHT_PenguinPlate = 3;
 
 constexpr uint8_t BAYER_4X4[16] = {0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5};
 

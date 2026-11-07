@@ -1,4 +1,4 @@
-import { Canvas, dither, mix } from "./canvas.mjs";
+import { Canvas, dither, mix } from "../../scripts/lib/canvas.mjs";
 import { drawPenguin, width as pw, height as ph } from "./penguin.mjs";
 
 const W = 320, H = 180, SCALE = 6, SHELF = 96, PX = 214;

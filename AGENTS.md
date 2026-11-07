@@ -4,21 +4,24 @@ This repo is Arne's design system. Follow the `arnes-stil` skill for code, git a
 
 ## Layout
 
-- `tokens.json`: the only source of colours, type, space, radius, border and motion. W3C DTCG format.
-- `assets/src/penguin.txt`: the 30x30 penguin grid. `#` black, `:` dithered grey, `.` white, space transparent.
-- `assets/fonts/`: JetBrains Mono woff2 and its licence.
-- `scripts/build.mjs`: the build. Node only, no dependencies.
-- `scripts/png.mjs`, `canvas.mjs`, `penguin.mjs`, `wallpapers.mjs`: helpers for the build.
+- `tokens/base.json`: type, space, radius, border and motion, shared by every theme. W3C DTCG format.
+- `themes/<theme>/tokens.json`: a theme's colours and modes, overrides of base, and the surfaces and checks it wants.
+- `themes/<theme>/art.mjs`: optional images for a theme. Waddle has the penguin (`penguin.txt`) and wallpapers.
+- `surfaces/<surface>.mjs`: turns a theme into files for one surface. `web.mjs` handles all themes at once.
+- `web/base.css`: styles for plain HTML, the same for every theme.
+- `assets/fonts/`: fonts as woff2, with `font.json` and the licence.
+- `scripts/build.mjs`: the build. `scripts/lib/` has the theme loader, checks, canvas and PNG encoder. Node only, no dependencies.
 - `build/`: generated output. Committed. Never edit by hand.
-- `preview/index.html`: preview built from `build/`, with dark, light, e-ink and red filter views.
+- `preview/index.html`: preview of every theme from `build/`, with dark, light, e-ink and red filter views.
 - `scripts/install.sh`, `scripts/sync-waddleos.sh`: hook this machine and WaddleOS up to `build/`.
 
 ## Rules
 
-- Change `tokens.json` or a script, then run `node scripts/build.mjs` and commit `build/` with it.
+- Change tokens, a theme, a surface or a script, then run `node scripts/build.mjs` and commit `build/` with it.
 - Never add npm dependencies, CDNs, remote fonts or network calls.
 - Read `docs/no-ai-look.md` before changing how anything looks. The build fails on what it lists.
-- Never draw the penguin by hand. Change `penguin.txt` and rebuild.
+- Never draw the penguin by hand. Change `themes/waddle/penguin.txt` and rebuild.
+- Surfaces use semantic names only, never one theme's raw colours, so they work for every theme.
 - Keep `build/` byte-stable: the same input must give the same output.
 - When `build/` changes, bump `version` in `package.json` and tag the merge on `main` as `vX.Y.Z`. See Versions in the README.
 

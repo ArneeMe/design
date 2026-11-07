@@ -12,24 +12,7 @@ export default {
       "on-accent": "var(--on-accent)",
       "penguin-ink": "var(--penguin-ink)",
       "penguin-paper": "var(--penguin-paper)",
-      "penguin-plate": "var(--penguin-plate)",
-      "grey": {
-        "0": "var(--color-grey-0)",
-        "1": "var(--color-grey-1)",
-        "2": "var(--color-grey-2)",
-        "3": "var(--color-grey-3)",
-        "4": "var(--color-grey-4)",
-        "5": "var(--color-grey-5)",
-        "6": "var(--color-grey-6)",
-        "7": "var(--color-grey-7)",
-        "8": "var(--color-grey-8)",
-        "9": "var(--color-grey-9)",
-        "white": "var(--color-grey-white)"
-      },
-      "nebb": {
-        "dark": "var(--color-nebb-dark)",
-        "light": "var(--color-nebb-light)"
-      }
+      "penguin-plate": "var(--penguin-plate)"
     },
     "fontFamily": {
       "mono": "var(--font-family-mono)",

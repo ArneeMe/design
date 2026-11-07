@@ -1,6 +1,23 @@
 # design
 
-Arne's design system. One source of truth for colours, type, the penguin and AI rules across web, CleanYourTV, WaddleOS, Hyprland and Waybar.
+Arne's design system. One source of truth for colours, type, art and AI rules, built for every screen he uses: websites, the WaddleOS e-reader, the TV, Hyprland, Waybar and kitty.
+
+## How it fits together
+
+A **theme** is a look: colours, light and dark modes, and its own art. A **surface** is a place the look goes: a web page, the e-reader, the TV. The build makes every theme for every surface it asks for.
+
+```
+tokens/base.json        type, space, radius, border, motion. Shared by all themes
+themes/<theme>/         one folder per theme
+  tokens.json           colours, modes, overrides of base, and which surfaces and checks it wants
+  art.mjs               optional: images, like the penguin and wallpapers
+surfaces/<surface>.mjs  turns any theme into files for one surface
+web/base.css            styles for plain HTML elements, the same for every theme
+build/web/              CSS for all themes, fonts and a Tailwind preset
+build/<theme>/          everything else for that theme, one folder per surface
+```
+
+Only `waddle` exists today. A theme does not need every surface, its own art or a dark mode.
 
 ## Build
 
@@ -8,19 +25,26 @@ Arne's design system. One source of truth for colours, type, the penguin and AI 
 node scripts/build.mjs
 ```
 
-Needs Node 18 or newer. No dependencies. `preview/index.html` shows the result, with dark, light, e-ink and red filter views. The build checks WCAG AA contrast and stops if a theme pair fails.
+Needs Node 18 or newer. No dependencies. The build stops if a theme fails its checks: WCAG AA contrast, the red night filter, e-ink greys, or the AI look check. `preview/index.html` shows every theme with dark, light, e-ink and red filter views.
 
-## Output
+## Web pages
 
-| Folder | What |
-|---|---|
-| `build/web` | `tokens.css`, `fonts.css`, fonts and a Tailwind preset |
-| `build/penguin` | Penguin SVG and PNG from 16 to 512 px, `favicon.svg`, `favicon.ico` |
-| `build/cleanyourtv/waddle` | Launcher theme with morning, evening and night wallpapers |
-| `build/waddleos` | `WaddleTokens.h` with four-level greys and 4x4 Bayer patterns |
-| `build/hyprland` | `waddle.conf`, to `source` from `hyprland.conf`, and desktop wallpapers in 1080p, 1440p and 4K |
-| `build/kitty` | `waddle.conf`, to `include` from `kitty.conf` |
-| `build/waybar` | `style.css` and `colors.css` |
+There are no components to install. `base.css` styles plain HTML: text, links, buttons, inputs, tables, dialogs. A page written with normal elements looks right in any theme, in plain HTML, React or anything else. A handful of classes cover the rest: `primary`, `muted`, `box`, `row`, `stack` and `pixel`.
+
+One theme, one file:
+
+```html
+<link rel="stylesheet" href="design/web/waddle.css">
+```
+
+Several themes, chosen on the page:
+
+```html
+<link rel="stylesheet" href="design/web/all.css">
+<html data-theme="waddle" data-mode="dark">
+```
+
+`data-mode` is optional. Without it, the page follows the system setting. Use the CSS variables for anything you style yourself: `var(--accent)`, `var(--space-4)`.
 
 ## Use it
 
@@ -32,7 +56,9 @@ Clone once to `~/src/design`. Desktop and TV follow `main`. Apps pin a version t
 ~/src/design/scripts/install.sh
 ```
 
-**Hyprland and Waybar.** Pull and reload.
+Pass a theme name to use another theme: `install.sh <theme>`. It swaps the old lines for the new ones.
+
+**Hyprland, Waybar and kitty.** Pull and reload.
 
 ```bash
 git -C ~/src/design pull && hyprctl reload && pkill -SIGUSR2 waybar && pkill -SIGUSR1 kitty
@@ -41,7 +67,7 @@ git -C ~/src/design pull && hyprctl reload && pkill -SIGUSR2 waybar && pkill -SI
 **TV.** Push the theme with CleanYourTV's script.
 
 ```bash
-TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/src/design/build/cleanyourtv/waddle
+TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/src/design/build/waddle/cleanyourtv
 ```
 
 **WaddleOS.** Copy the header into the firmware and commit it there. The firmware builds offline, so it gets a copy, not a submodule.
@@ -53,15 +79,14 @@ TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/src/design/build/cleanyo
 **Websites.** Add the repo as a git dependency at a tag. No CDN.
 
 ```bash
-npm install github:arneeme/design#v1.0.0
+npm install github:arneeme/design#v2.0.0
 ```
 
 ```css
-@import "@arneeme/design/fonts.css";
-@import "@arneeme/design/tokens.css";
+@import "@arneeme/design/waddle.css";
 ```
 
-For Tailwind, `import preset from "@arneeme/design/tailwind-preset"` and add `presets: [preset]`. For a plain static site, copy `build/web` into the site.
+For Tailwind, `import preset from "@arneeme/design/tailwind-preset"` and add `presets: [preset]`. For a plain static site, copy `build/web` into the site. Theme art lives in `build/<theme>/`, for example `@arneeme/design/waddle/penguin/favicon.svg`.
 
 **New app repos.** Add this line to the repo's `AGENTS.md` or `CLAUDE.md`:
 
@@ -73,12 +98,21 @@ Follow the design-arne skill (github.com/arneeme/design) for colours, type, the 
 
 `package.json` holds the version and `main` is tagged `vX.Y.Z`. Bump the patch for fixes, the minor for new tokens or platforms, and the major when a token is renamed or removed.
 
-## Add a platform
+## Add a theme
 
-1. Add a section to `scripts/build.mjs` that reads tokens with `get()` or `group()` and writes to `build/<platform>/`.
-2. Use the semantic theme names, not raw greys.
-3. Run the build and commit the output.
-4. Add a line to the table above and to `skill/design-arne/SKILL.md`.
+1. Make `themes/<name>/tokens.json`. Copy `themes/waddle/tokens.json` and change it.
+2. Set `name`, `surfaces` and `checks` under `$extensions.design.arne`.
+3. Give every mode the same names: `bg`, `surface`, `border`, `text`, `muted`, `accent`, `on-accent`. Add `color.ansi` if the theme has a kitty surface.
+4. Override anything from `tokens/base.json` by repeating it, for example `radius`.
+5. Add `art.mjs` only if the theme has its own images. See `themes/waddle/art.mjs`.
+6. Run the build and look at the preview.
+
+## Add a surface
+
+1. Make `surfaces/<name>.mjs` with a default export `(theme, write)`. Read values with `theme.get()`, `theme.group()` and `theme.mode()`. Write files with `write(path, data)`. They land in `build/<theme>/<name>/`.
+2. Use the semantic names, never one theme's raw colours.
+3. Add the surface to the themes that want it.
+4. Add a line to the README and to `skill/design-arne/SKILL.md`.
 
 ## No AI look
 

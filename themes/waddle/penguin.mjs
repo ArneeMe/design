@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 
-const rows = readFileSync(new URL("../assets/src/penguin.txt", import.meta.url), "utf8").split("\n").slice(0, 30).map(r => r.padEnd(30));
+const rows = readFileSync(new URL("./penguin.txt", import.meta.url), "utf8").split("\n").slice(0, 30).map(r => r.padEnd(30));
 const filled = rows.flatMap((r, y) => [...r].map((c, x) => c === " " ? null : [x, y])).filter(Boolean);
 const [x0, y0] = [Math.min(...filled.map(p => p[0])), Math.min(...filled.map(p => p[1]))];
 const [x1, y1] = [Math.max(...filled.map(p => p[0])), Math.max(...filled.map(p => p[1]))];
