@@ -50,7 +50,13 @@ Several themes, chosen on the page:
 
 Clone once to `~/Code/design`. Desktop and TV follow `main`. Apps pin a version tag.
 
-**Omarchy.** The install script sees Omarchy and does it Omarchy's way. It links `build/<theme>/omarchy` into `~/.config/omarchy/themes/` and runs `omarchy-theme-set`. Omarchy then colours Hyprland, the bar, the terminal, the lock screen and the rest from the theme's `colors.toml`. Your keybinds, monitors and `looknfeel.lua` stay yours. Later you can pick the theme in Omarchy's theme menu like any other. After a pull, run `omarchy-theme-refresh` to apply changes.
+**Omarchy.** The install script sees Omarchy and does it Omarchy's way. It links `build/<theme>/omarchy` into `~/.config/omarchy/themes/` and runs `omarchy-theme-set`. Omarchy then colours Hyprland, the bar, the terminal, the lock screen and the rest from the theme's `colors.toml`. Your keybinds, monitors and `looknfeel.lua` stay yours. Later you can pick the theme in Omarchy's theme menu like any other. After a pull, run `omarchy-theme-set <theme>` again. `omarchy-theme-refresh` skips the wallpaper.
+
+**Android.** With the phone on USB and USB debugging on, this puts the wallpapers in `Pictures/<theme>`, sets the system colour and dark mode, and gives Termux the theme's colours and font. Termux needs root. Before the first change it copies Termux's files to `<file>.for-design`. Pick the wallpaper yourself in the gallery. Phones and their sizes are listed in `surfaces/android.mjs`.
+
+```bash
+~/Code/design/scripts/android.sh
+```
 
 **Other Hyprland setups.** Links the AI skill into `~/.claude/skills`, adds the Hyprland theme to `hyprland.conf` and the kitty theme to `kitty.conf`, and writes `hyprpaper.conf` with the night wallpaper if you have none. It prints the Waybar line to add. Start hyprpaper with `exec-once = hyprpaper` in `hyprland.conf` if you do not already.
 
@@ -83,7 +89,7 @@ TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/Code/design/build/waddle
 **Websites.** Add the repo as a git dependency at a tag. No CDN.
 
 ```bash
-npm install github:arneeme/design#v2.1.1
+npm install github:arneeme/design#v2.2.0
 ```
 
 ```css

@@ -11,7 +11,9 @@ export const wallpapers = [
   { file: "03-natt.png", scene: "night", caption: "Natt på isbreen" },
 ];
 
-export const wallpaper = (t, scene, scale, place = "tv") => png(draw(Array.from({ length: 10 }, (_, i) => t.get(`color.grey.${i}`)), t.get("color.nebb.dark"), scene, scale, place === "desktop" ? 118 : 96));
+const places = { tv: [96, 320, 180], desktop: [118, 320, 180], phone: [260, 186, 414] };
+
+export const wallpaper = (t, scene, scale, place = "tv") => png(draw(Array.from({ length: 10 }, (_, i) => t.get(`color.grey.${i}`)), t.get("color.nebb.dark"), scene, scale, ...places[place]));
 
 export function files(t, write) {
   const dark = t.mode("dark"), light = t.mode("light");
