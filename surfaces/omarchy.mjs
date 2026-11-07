@@ -23,7 +23,7 @@ hyprland_inactive_border = "${m.border}"
 `);
   write("icons.theme", "Yaru\n");
   const walls = t.art.wallpapers ?? [];
-  for (const w of walls) write(`backgrounds/${w.file}`, t.art.wallpaper(t, w.scene, 8));
+  for (const w of walls) write(`backgrounds/${w.file}`, t.art.wallpaper(t, w.scene, 8, "desktop"));
   const night = walls.find(w => w.scene === "night") ?? walls[0];
-  if (night) write("preview.png", t.art.wallpaper(t, night.scene, 8));
+  if (night) write("preview.png", t.art.wallpaper(t, night.scene, 8, "desktop"));
 }
