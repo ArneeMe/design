@@ -1,5 +1,5 @@
 {
-  "InfinityLoop1309.NewPipeEnhanced/org.schabi.newpipe.MainActivity": "youtube",
+  "InfinityLoop1309.NewPipeEnhanced/org.schabi.newpipe.MainActivity": "clapperboard",
   "app.comaps.google/app.organicmaps.DownloadResourcesActivity": "map-solid",
   "app.organicmaps/.DownloadResourcesActivity": "map",
   "app.skrive/.MainActivity": "pencil",
@@ -17,7 +17,7 @@
   "com.android.settings/.Settings": "settings-cog",
   "com.anthropic.claude/.mainactivity.MainActivity": "sparkle",
   "com.app.tgtg/.feature.login.SplashActivity": "shopping-bag",
-  "com.azure.authenticator/.ui.LaunchActivity": "key",
+  "com.azure.authenticator/.ui.LaunchActivity": "smartphone",
   "com.bang_olufsen.OneApp/crc646b24ab3c8c501156.MainActivity": "volume-1",
   "com.blizzard.wtcg.hearthstone/.HearthstoneActivity": "crown",
   "com.bowerswilkins.splice/.views.StartupView": "volume-2",
@@ -28,10 +28,10 @@
   "com.drdropin/.MainActivity": "cross",
   "com.easypick.main/.MainActivity": "box",
   "com.example.nattatid/.MainActivity": "moon",
-  "com.fps.camera/com.android.camera.CameraLauncher": "camera",
+  "com.fps.camera/com.android.camera.CameraLauncher": "webcam",
   "com.generalmagic.magicearth/com.magiclane.androidsphere.map.MapActivity": "earth",
   "com.google.android.gms/org.microg.gms.ui.SettingsActivity": "gear",
-  "com.google.android.youtube/.app.honeycomb.Shell$HomeActivity": "youtube",
+  "com.google.android.youtube/.app.honeycomb.Shell$HomeActivity": "youtube-solid",
   "com.lenbrook.sovi.bluesound/com.lenbrook.sovi.HomeActivity": "audio-waveform",
   "com.netflix.mediaclient/.ui.launch.UIWebViewActivity": "badge-hd",
   "com.norwegian.travelassistant/.MainActivity": "plane",
@@ -81,7 +81,7 @@
   "no.flytoget.flytoget/newKotlin.launchactivity.LaunchActivity": "train",
   "no.giantleap.parko.qpark/no.giantleap.cardboard.StartupActivity": "parking",
   "no.handelsbanken.mobilbank.android/.MainActivity": "banknote",
-  "no.hyre.demand/.LaunchActivity": "car",
+  "no.hyre.demand/.LaunchActivity": "truck",
   "no.nkgs.webatlas.android.munmed/.MainActivity": "map-pin-home",
   "no.nrk.mobil.app/.activity.SplashScreenActivity": "text-align-justify-box",
   "no.nrk.mobil.radio/.MainActivitySwitch": "radio",
@@ -105,7 +105,7 @@
   "org.sufficientlysecure.keychain/.ui.MainActivity": "key",
   "org.thoughtcrime.securesms/.RoutingActivity": "message-text",
   "proton.android.authenticator/.app.ui.MainActivity": "clock",
-  "proton.android.pass/.ui.MainActivity": "key-solid",
-  "tv.twitch.android.app/.core.LandingActivity": "video",
-  "us.spotco.maps/.MainActivity": "map-solid"
+  "proton.android.pass/.ui.MainActivity": "wallet",
+  "tv.twitch.android.app/.core.LandingActivity": "joystick",
+  "us.spotco.maps/.MainActivity": "directions"
 }

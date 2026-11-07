@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item component="ComponentInfo{InfinityLoop1309.NewPipeEnhanced/org.schabi.newpipe.MainActivity}" drawable="ikon_youtube" />
+    <item component="ComponentInfo{InfinityLoop1309.NewPipeEnhanced/org.schabi.newpipe.MainActivity}" drawable="ikon_clapperboard" />
     <item component="ComponentInfo{app.comaps.google/app.organicmaps.DownloadResourcesActivity}" drawable="ikon_map_solid" />
     <item component="ComponentInfo{app.organicmaps/app.organicmaps.DownloadResourcesActivity}" drawable="ikon_map" />
     <item component="ComponentInfo{app.skrive/app.skrive.MainActivity}" drawable="ikon_pencil" />
@@ -18,7 +18,7 @@
     <item component="ComponentInfo{com.android.settings/com.android.settings.Settings}" drawable="ikon_settings_cog" />
     <item component="ComponentInfo{com.anthropic.claude/com.anthropic.claude.mainactivity.MainActivity}" drawable="ikon_sparkle" />
     <item component="ComponentInfo{com.app.tgtg/com.app.tgtg.feature.login.SplashActivity}" drawable="ikon_shopping_bag" />
-    <item component="ComponentInfo{com.azure.authenticator/com.azure.authenticator.ui.LaunchActivity}" drawable="ikon_key" />
+    <item component="ComponentInfo{com.azure.authenticator/com.azure.authenticator.ui.LaunchActivity}" drawable="ikon_smartphone" />
     <item component="ComponentInfo{com.bang_olufsen.OneApp/crc646b24ab3c8c501156.MainActivity}" drawable="ikon_volume_1" />
     <item component="ComponentInfo{com.blizzard.wtcg.hearthstone/com.blizzard.wtcg.hearthstone.HearthstoneActivity}" drawable="ikon_crown" />
     <item component="ComponentInfo{com.bowerswilkins.splice/com.bowerswilkins.splice.views.StartupView}" drawable="ikon_volume_2" />
@@ -29,10 +29,10 @@
     <item component="ComponentInfo{com.drdropin/com.drdropin.MainActivity}" drawable="ikon_cross" />
     <item component="ComponentInfo{com.easypick.main/com.easypick.main.MainActivity}" drawable="ikon_box" />
     <item component="ComponentInfo{com.example.nattatid/com.example.nattatid.MainActivity}" drawable="ikon_moon" />
-    <item component="ComponentInfo{com.fps.camera/com.android.camera.CameraLauncher}" drawable="ikon_camera" />
+    <item component="ComponentInfo{com.fps.camera/com.android.camera.CameraLauncher}" drawable="ikon_webcam" />
     <item component="ComponentInfo{com.generalmagic.magicearth/com.magiclane.androidsphere.map.MapActivity}" drawable="ikon_earth" />
     <item component="ComponentInfo{com.google.android.gms/org.microg.gms.ui.SettingsActivity}" drawable="ikon_gear" />
-    <item component="ComponentInfo{com.google.android.youtube/com.google.android.youtube.app.honeycomb.Shell$HomeActivity}" drawable="ikon_youtube" />
+    <item component="ComponentInfo{com.google.android.youtube/com.google.android.youtube.app.honeycomb.Shell$HomeActivity}" drawable="ikon_youtube_solid" />
     <item component="ComponentInfo{com.lenbrook.sovi.bluesound/com.lenbrook.sovi.HomeActivity}" drawable="ikon_audio_waveform" />
     <item component="ComponentInfo{com.netflix.mediaclient/com.netflix.mediaclient.ui.launch.UIWebViewActivity}" drawable="ikon_badge_hd" />
     <item component="ComponentInfo{com.norwegian.travelassistant/com.norwegian.travelassistant.MainActivity}" drawable="ikon_plane" />
@@ -82,7 +82,7 @@
     <item component="ComponentInfo{no.flytoget.flytoget/newKotlin.launchactivity.LaunchActivity}" drawable="ikon_train" />
     <item component="ComponentInfo{no.giantleap.parko.qpark/no.giantleap.cardboard.StartupActivity}" drawable="ikon_parking" />
     <item component="ComponentInfo{no.handelsbanken.mobilbank.android/no.handelsbanken.mobilbank.android.MainActivity}" drawable="ikon_banknote" />
-    <item component="ComponentInfo{no.hyre.demand/no.hyre.demand.LaunchActivity}" drawable="ikon_car" />
+    <item component="ComponentInfo{no.hyre.demand/no.hyre.demand.LaunchActivity}" drawable="ikon_truck" />
     <item component="ComponentInfo{no.nkgs.webatlas.android.munmed/no.nkgs.webatlas.android.munmed.MainActivity}" drawable="ikon_map_pin_home" />
     <item component="ComponentInfo{no.nrk.mobil.app/no.nrk.mobil.app.activity.SplashScreenActivity}" drawable="ikon_text_align_justify_box" />
     <item component="ComponentInfo{no.nrk.mobil.radio/no.nrk.mobil.radio.MainActivitySwitch}" drawable="ikon_radio" />
@@ -106,7 +106,7 @@
     <item component="ComponentInfo{org.sufficientlysecure.keychain/org.sufficientlysecure.keychain.ui.MainActivity}" drawable="ikon_key" />
     <item component="ComponentInfo{org.thoughtcrime.securesms/org.thoughtcrime.securesms.RoutingActivity}" drawable="ikon_message_text" />
     <item component="ComponentInfo{proton.android.authenticator/proton.android.authenticator.app.ui.MainActivity}" drawable="ikon_clock" />
-    <item component="ComponentInfo{proton.android.pass/proton.android.pass.ui.MainActivity}" drawable="ikon_key_solid" />
-    <item component="ComponentInfo{tv.twitch.android.app/tv.twitch.android.app.core.LandingActivity}" drawable="ikon_video" />
-    <item component="ComponentInfo{us.spotco.maps/us.spotco.maps.MainActivity}" drawable="ikon_map_solid" />
+    <item component="ComponentInfo{proton.android.pass/proton.android.pass.ui.MainActivity}" drawable="ikon_wallet" />
+    <item component="ComponentInfo{tv.twitch.android.app/tv.twitch.android.app.core.LandingActivity}" drawable="ikon_joystick" />
+    <item component="ComponentInfo{us.spotco.maps/us.spotco.maps.MainActivity}" drawable="ikon_directions" />
 </resources>
