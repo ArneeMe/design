@@ -21,6 +21,7 @@
     <item drawable="ikon_car" />
     <item drawable="ikon_castle" />
     <item drawable="ikon_chess" />
+    <item drawable="ikon_clapperboard" />
     <item drawable="ikon_clock" />
     <item drawable="ikon_cloud" />
     <item drawable="ikon_cloud_server" />
@@ -31,6 +32,7 @@
     <item drawable="ikon_credit_card" />
     <item drawable="ikon_cross" />
     <item drawable="ikon_crown" />
+    <item drawable="ikon_directions" />
     <item drawable="ikon_discord" />
     <item drawable="ikon_door_closed" />
     <item drawable="ikon_earth" />
@@ -47,6 +49,7 @@
     <item drawable="ikon_hourglass" />
     <item drawable="ikon_images" />
     <item drawable="ikon_inbox" />
+    <item drawable="ikon_joystick" />
     <item drawable="ikon_key" />
     <item drawable="ikon_key_solid" />
     <item drawable="ikon_keyboard" />
@@ -86,6 +89,7 @@
     <item drawable="ikon_shopping_cart" />
     <item drawable="ikon_signal" />
     <item drawable="ikon_slack" />
+    <item drawable="ikon_smartphone" />
     <item drawable="ikon_smile" />
     <item drawable="ikon_sparkle" />
     <item drawable="ikon_star" />
@@ -96,11 +100,15 @@
     <item drawable="ikon_ticket" />
     <item drawable="ikon_train" />
     <item drawable="ikon_tree" />
+    <item drawable="ikon_truck" />
     <item drawable="ikon_tv" />
     <item drawable="ikon_video" />
     <item drawable="ikon_volume_1" />
     <item drawable="ikon_volume_2" />
     <item drawable="ikon_volume_3" />
+    <item drawable="ikon_wallet" />
+    <item drawable="ikon_webcam" />
     <item drawable="ikon_wifi" />
     <item drawable="ikon_youtube" />
+    <item drawable="ikon_youtube_solid" />
 </resources>
