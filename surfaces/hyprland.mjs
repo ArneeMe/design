@@ -7,7 +7,7 @@ export default function hyprland(t, write) {
   const [e1, e2, e3, e4] = t.get("motion.easing.standard");
   for (const w of t.art.wallpapers ?? [])
     for (const [width, height, scale] of [[1920, 1080, 6], [2560, 1440, 8], [3840, 2160, 12]])
-      write(`wallpapers/${w.file.replace(".png", `-${width}x${height}.png`)}`, t.art.wallpaper(t, w.scene, scale));
+      write(`wallpapers/${w.file.replace(".png", `-${width}x${height}.png`)}`, t.art.wallpaper(t, w.scene, scale, "desktop"));
   write(`${t.id}.conf`, `$bg = ${hypr(dark.bg)}
 $surface = ${hypr(dark.surface)}
 $border = ${hypr(dark.border)}

@@ -1,16 +1,18 @@
 import { Canvas, dither, mix } from "../../scripts/lib/canvas.mjs";
 import { drawPenguin, width as pw, height as ph } from "./penguin.mjs";
 
-const W = 320, H = 180, SCALE = 6, SHELF = 96, PX = 214;
+const W = 320, H = 180, SCALE = 6, PX = 214;
 
-const shelfTop = x => SHELF + Math.round(2 * Math.sin(x / 23) + Math.sin(x / 7));
+const hash = (x, y) => (Math.imul(x, 73856093) ^ Math.imul(y, 19349663)) >>> 0;
 
 function gradient(c, x, y, a, b, t) {
   c.set(x, y, dither(x, y, Math.min(1, Math.max(0, t))) ? b : a);
 }
 
-export function wallpaper(g, accent, scene, scale = SCALE) {
+export function wallpaper(g, accent, scene, scale = SCALE, SHELF = 96) {
   const c = new Canvas(W, H);
+  const shelfTop = x => SHELF + Math.round(2 * Math.sin(x / 23) + Math.sin(x / 7));
+  const glint = (x, y, top) => y % 3 === 0 && hash(x >> 1, y) % 100 < 6 * (1 - (y - top) / (H - top));
   const s = {
     morning: { top: g[2], horizon: mix(g[4], accent, 0.6), ice: g[6], face: g[4], deep: g[3], sea: g[1], glint: mix(g[2], accent, 0.5), ink: g[0], paper: g[9] },
     evening: { top: g[1], horizon: g[4], ice: g[5], face: g[3], deep: g[2], sea: g[1], glint: mix(g[1], accent, 0.35), ink: g[0], paper: g[8] },
@@ -25,7 +27,7 @@ export function wallpaper(g, accent, scene, scale = SCALE) {
         gradient(c, x, y, t < 0.5 ? s.top : mix(s.top, s.horizon, 0.5), t < 0.5 ? mix(s.top, s.horizon, 0.5) : s.horizon, t < 0.5 ? t * 2 : t * 2 - 1);
       } else if (y < top + 3) c.set(x, y, s.ice);
       else if (y < top + 22) gradient(c, x, y, s.face, s.deep, (y - top - 3) / 19);
-      else c.set(x, y, (y % 6 === 0 && (x * 7 + y * 13) % 29 < 6) ? s.glint : s.sea);
+      else c.set(x, y, glint(x, y, top + 22) ? s.glint : s.sea);
     }
 
   if (scene === "morning") disc(c, 72, SHELF - 30, 9, g[8], s.horizon);
