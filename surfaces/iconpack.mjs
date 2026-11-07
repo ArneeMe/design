@@ -100,8 +100,22 @@ android {
         versionCode = ${version.split(".").reduce((n, v) => n * 100 + Number(v), 0)}
         versionName = "${version}"
     }
+
+    signingConfigs {
+        create("pack") {
+            storeFile = file("iconpack.keystore")
+            storePassword = "waddle-ikoner"
+            keyAlias = "ikoner"
+            keyPassword = "waddle-ikoner"
+        }
+    }
+
+    buildTypes {
+        getByName("debug") { signingConfig = signingConfigs.getByName("pack") }
+    }
 }
 `);
+  write("app/iconpack.keystore", readFileSync(new URL("assets/iconpack.keystore", root)));
   write("build.gradle.kts", `plugins {
     id("com.android.application") version "8.7.3" apply false
 }

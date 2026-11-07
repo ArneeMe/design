@@ -100,7 +100,7 @@ TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/Code/design/build/waddle
 **Websites.** Add the repo as a git dependency at a tag. No CDN.
 
 ```bash
-npm install github:arneeme/design#v2.7.0
+npm install github:arneeme/design#v2.7.1
 ```
 
 ```css
