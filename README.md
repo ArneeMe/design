@@ -15,6 +15,7 @@ surfaces/<surface>.mjs  turns any theme into files for one surface
 web/base.css            styles for plain HTML elements, the same for every theme
 build/web/              CSS for all themes, fonts and a Tailwind preset
 build/<theme>/          everything else for that theme, one folder per surface
+assets/icons/           pixel icons from pixelarticons, built to build/icons/ for web, Android and WaddleOS
 ```
 
 Only `waddle` exists today. A theme does not need every surface, its own art or a dark mode.
@@ -46,6 +47,10 @@ Several themes, chosen on the page:
 
 `data-mode` is optional. Without it, the page follows the system setting. Use the CSS variables for anything you style yourself: `var(--accent)`, `var(--space-4)`.
 
+## Apps and icons
+
+`docs/apps.md` explains how to start an Android app, a web page or a WaddleOS screen: the Kotlin tokens and UI helpers, the icons and a checklist.
+
 ## Use it
 
 Clone once to `~/Code/design`. Desktop and TV follow `main`. Apps pin a version tag.
@@ -58,7 +63,7 @@ Clone once to `~/Code/design`. Desktop and TV follow `main`. Apps pin a version 
 ~/Code/design/scripts/android.sh
 ```
 
-**Android apps.** Copies the theme into an app module: `<Theme>Tokens.kt` in the package `me.arnee.design`, colours and sizes as resources (`R.color.waddle_accent`, `R.dimen.waddle_space_4`, light in `values`, dark in `values-night`) and the font as `R.font.waddle_mono`. No libraries needed. Commit the copied files in the app.
+**Android apps.** Copies the theme, the UI helpers and the icons into an app module. See `docs/apps.md`. Commit the copied files in the app.
 
 ```bash
 ~/Code/design/scripts/sync-app.sh ~/Code/waddleOS/phone/app
@@ -86,7 +91,7 @@ git -C ~/Code/design pull && hyprctl reload && pkill -SIGUSR2 waybar && pkill -S
 TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/Code/design/build/waddle/cleanyourtv
 ```
 
-**WaddleOS.** Copy the header into the firmware and commit it there. The firmware builds offline, so it gets a copy, not a submodule.
+**WaddleOS.** Copy the token and icon headers into the firmware and commit it there. The firmware builds offline, so it gets a copy, not a submodule.
 
 ```bash
 ~/Code/design/scripts/sync-waddleos.sh ~/src/waddleos
@@ -95,7 +100,7 @@ TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/Code/design/build/waddle
 **Websites.** Add the repo as a git dependency at a tag. No CDN.
 
 ```bash
-npm install github:arneeme/design#v2.5.0
+npm install github:arneeme/design#v2.6.0
 ```
 
 ```css
