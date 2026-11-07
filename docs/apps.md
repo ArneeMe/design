@@ -79,7 +79,7 @@ The icons come from [pixelarticons](https://github.com/halfmage/pixelarticons) (
 
 `assets/icon-pack.json` maps each app on the phone to an icon: `"package/activity": "icon"`. The build turns it into an Android project in `build/<theme>/iconpack/` with a dark plate, a light symbol and an orange bar for each app.
 
-`build/<theme>/iconpack-farge/` is the same pack in the apps' own colours, from `assets/icon-colors.json`: `"package": "#colour"`. The symbol is light or dark, whichever has more contrast on the colour. Apps without a colour keep the dark plate. Download it as `waddle-ikoner-farge.apk` in the commands below.
+`build/<theme>/iconpack-farge/` is the same pack in the apps' own colours, from `assets/icon-colors.json`: `"package": "#colour"`. The symbol is light or dark, whichever has more contrast on the colour. Download it as `waddle-ikoner-farge.apk` in the commands below.
 
 GitHub builds the pack every time it changes on `main` and puts it on the release `ikoner`. To install it from Termux on the phone, allow Termux to hand files to other apps once:
 
