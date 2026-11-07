@@ -1,0 +1,95 @@
+:root {
+  --font-family-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-size-sm: 12px;
+  --font-size-base: 15px;
+  --font-size-lg: 22px;
+  --font-size-xl: 32px;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --border-width: 2px;
+  --motion-duration-fast: 120ms;
+  --motion-duration-base: 200ms;
+  --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --color-grey-0: #0e0e0d;
+  --color-grey-1: #171716;
+  --color-grey-2: #21211f;
+  --color-grey-3: #2f2f2c;
+  --color-grey-4: #4a4a46;
+  --color-grey-5: #6a6a65;
+  --color-grey-6: #9a9a94;
+  --color-grey-7: #c6c6c0;
+  --color-grey-8: #e4e4df;
+  --color-grey-9: #f4f4f0;
+  --color-grey-white: #ffffff;
+  --color-ansi-black: #21211f;
+  --color-ansi-red: #d9644a;
+  --color-ansi-green: #8fae6a;
+  --color-ansi-yellow: #f0a040;
+  --color-ansi-blue: #8a9fb0;
+  --color-ansi-magenta: #b7949f;
+  --color-ansi-cyan: #8eaba6;
+  --color-ansi-white: #c6c6c0;
+  --color-ansi-bright-black: #6a6a65;
+  --color-ansi-bright-red: #e8806a;
+  --color-ansi-bright-green: #a8c483;
+  --color-ansi-bright-yellow: #f5b866;
+  --color-ansi-bright-blue: #a3b4c2;
+  --color-ansi-bright-magenta: #c9aab4;
+  --color-ansi-bright-cyan: #a6bfbb;
+  --color-ansi-bright-white: #f4f4f0;
+  --color-nebb-dark: #f0a040;
+  --color-nebb-light: #9a4a00;
+}
+
+:root, [data-mode="dark"] {
+  color-scheme: dark;
+  --bg: #0e0e0d;
+  --surface: #171716;
+  --border: #2f2f2c;
+  --text: #e4e4df;
+  --muted: #9a9a94;
+  --accent: #f0a040;
+  --on-accent: #0e0e0d;
+  --penguin-ink: #0e0e0d;
+  --penguin-paper: #f4f4f0;
+  --penguin-plate: #2f2f2c;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-mode="dark"]) {
+    color-scheme: light;
+    --bg: #f4f4f0;
+    --surface: #ffffff;
+    --border: #c6c6c0;
+    --text: #171716;
+    --muted: #6a6a65;
+    --accent: #9a4a00;
+    --on-accent: #ffffff;
+    --penguin-ink: #0e0e0d;
+    --penguin-paper: #f4f4f0;
+    --penguin-plate: #f4f4f0;
+  }
+}
+
+[data-mode="light"] {
+  color-scheme: light;
+  --bg: #f4f4f0;
+  --surface: #ffffff;
+  --border: #c6c6c0;
+  --text: #171716;
+  --muted: #6a6a65;
+  --accent: #9a4a00;
+  --on-accent: #ffffff;
+  --penguin-ink: #0e0e0d;
+  --penguin-paper: #f4f4f0;
+  --penguin-plate: #f4f4f0;
+}

@@ -1,0 +1,53 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: var(--font-size-base)/1.5 var(--font-family-mono);
+}
+
+h1, h2, h3 { font-weight: var(--font-weight-bold); }
+h1 { font-size: var(--font-size-xl); line-height: 1.1; margin: 0 0 var(--space-4); }
+h2 { font-size: var(--font-size-lg); line-height: 1.2; margin: var(--space-8) 0 var(--space-3); }
+h3 { font-size: var(--font-size-base); margin: var(--space-6) 0 var(--space-2); }
+p, ul, ol, table, pre, figure { margin: 0 0 var(--space-4); }
+small { font-size: var(--font-size-sm); }
+a { color: var(--accent); }
+hr { border: 0; border-top: var(--border-width) solid var(--border); margin: var(--space-6) 0; }
+img { max-width: 100%; }
+
+code, pre { font-family: inherit; font-size: var(--font-size-sm); }
+pre { padding: var(--space-3); border: var(--border-width) solid var(--border); overflow-x: auto; }
+
+button, input, select, textarea {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-3);
+  transition: border-color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+button { cursor: pointer; }
+button:hover, input:focus, select:focus, textarea:focus { border-color: var(--text); outline: none; }
+button:disabled { color: var(--muted); border-color: var(--border); cursor: default; }
+:focus-visible { outline: var(--border-width) solid var(--accent); outline-offset: var(--border-width); }
+button.primary, button[type="submit"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: var(--font-weight-bold); }
+label { display: block; margin-bottom: var(--space-1); }
+
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; padding: var(--space-1) var(--space-4) var(--space-1) 0; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-size: var(--font-size-sm); font-weight: var(--font-weight-regular); }
+
+dialog { color: var(--text); background: var(--bg); border: var(--border-width) solid var(--border); padding: var(--space-4); }
+
+.muted { color: var(--muted); }
+.box { border: var(--border-width) solid var(--border); padding: var(--space-4); }
+.row { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+.stack > * + * { margin-top: var(--space-3); }
+.pixel { image-rendering: pixelated; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

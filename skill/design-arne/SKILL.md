@@ -1,52 +1,62 @@
 ---
 name: design-arne
-description: Arne's design system. Use whenever you build or change UI, themes, icons, wallpapers or UI text for Arne, on web, CleanYourTV, WaddleOS, Hyprland or Waybar. Covers tokens, font, shape, motion, the penguin, UI voice and how to check the result.
+description: Arne's design system. Use whenever you build or change UI, themes, icons, wallpapers or UI text for Arne, on web, CleanYourTV, WaddleOS, Hyprland, Waybar or kitty. Covers tokens, font, shape, motion, the penguin, UI voice and how to check the result.
 ---
 
 # Arne's design system
 
 Follow `arnes-stil` for code, git and prose. This skill covers how things look and read.
 
-Source: `github.com/arneeme/design`. Tokens live in `tokens.json`. Generated files live in `build/`.
+Source: `github.com/arneeme/design`, cloned to `~/src/design`. Shared values live in `tokens/base.json`, each theme in `themes/<theme>/tokens.json`. Generated files live in `build/`.
 
-## Tokens
+## Themes and surfaces
 
-Use token names, never raw hex or pixel values.
+A theme is a look. A surface is where it goes. Ask which theme a project uses. If nobody says, use `waddle`.
 
-| Platform | File | Example |
+| Surface | File | Example |
 |---|---|---|
-| Web | `build/web/tokens.css`, `fonts.css` | `var(--accent)`, `var(--space-4)` |
+| Web, one theme | `build/web/<theme>.css` | `var(--accent)`, `var(--space-4)` |
+| Web, many themes | `build/web/all.css` with `data-theme` | `<html data-theme="waddle">` |
 | Tailwind | `build/web/tailwind-preset.js` | `bg-surface text-muted p-4` |
-| WaddleOS | `build/waddleos/WaddleTokens.h` | `WaddleTokens::GRAY4_LIGHT_Text` |
-| Hyprland | `build/hyprland/waddle.conf` | `$accent` |
-| Waybar | `build/waybar/colors.css` | `@accent` |
-| kitty | `build/kitty/waddle.conf` | `color1` to `color15` |
+| WaddleOS | `build/<theme>/waddleos/<Theme>Tokens.h` | `WaddleTokens::GRAY4_LIGHT_Text` |
+| Hyprland | `build/<theme>/hyprland/<theme>.conf` | `$accent` |
+| Waybar | `build/<theme>/waybar/colors.css` | `@accent` |
+| kitty | `build/<theme>/kitty/<theme>.conf` | `color1` to `color15` |
+| TV | `build/<theme>/cleanyourtv/` | pushed with CleanYourTV's `theme.sh` |
 
-Use the semantic names in UI: `bg`, `surface`, `border`, `text`, `muted`, `accent`, `on-accent`. The grey scale `grey-0` to `grey-9` and `nebb` are for the theme itself, not for components.
+Use the semantic names: `bg`, `surface`, `border`, `text`, `muted`, `accent`, `on-accent`. Every theme has them, so code written against them works in every theme. A theme's own colours, like `grey-0` or `nebb`, are for the theme itself.
 
-If a value you need is missing, add it to `tokens.json` and rebuild. Do not invent one in place.
+If a value you need is missing, add it to the theme or to `tokens/base.json` and rebuild. Do not invent one in place. A new theme or surface goes in the design repo, never as a local theme in an app. The README says how.
 
-## Getting the files
+## Web pages
 
-- Websites: `npm install github:arneeme/design#<tag>`, then import `@arneeme/design/fonts.css` and `tokens.css`. Or copy `build/web`.
+- Write plain, semantic HTML. `base.css` already styles text, links, buttons, inputs, tables and dialogs.
+- Do not add React, a component library or a CSS framework for looks. Use the classes `primary`, `muted`, `box`, `row`, `stack` and `pixel`, and CSS variables for the rest.
+- If the app already uses React or Tailwind, keep it and use the same CSS and the preset.
+- Install with `npm install github:arneeme/design#<tag>` and import `@arneeme/design/<theme>.css`, or copy `build/web`.
 - WaddleOS: `scripts/sync-waddleos.sh <waddleos>`. Never edit the copied header there.
-- Hyprland, Waybar, kitty, the desktop wallpaper and TV: see the README in the design repo.
-- A platform that is missing gets a new section in the design repo's `scripts/build.mjs`, not a local theme in the app.
 
-## Theme
+## Modes
+
+- Most themes have dark and light. `data-mode="dark"` or `"light"` on any element sets it. Without it, the page follows the system.
+- Never hard-code one mode's colours. Test both.
+
+## Theme: waddle
 
 - Dark is the default. Light is for e-ink and paper.
-- Support both through `data-theme` or `prefers-color-scheme`. `tokens.css` already does this.
 - Greys are neutral, with no blue or cream tint.
 - Accent is "nebb", the orange of a penguin beak. Use it for focus, links and the one thing that matters on a screen. Never for large areas or decoration.
 - Orange keeps its contrast under the red night filter. Blue and cyan do not, so do not add them.
+- The penguin is its signature. See below.
 
 ## Type
 
-- JetBrains Mono, self-hosted from `build/web/fonts/`. Never load fonts from a CDN.
+- JetBrains Mono for every theme so far, self-hosted from `build/web/fonts/`. Never load fonts from a CDN.
 - Sizes: `sm` 12, `base` 15, `lg` 22, `xl` 32. Weights: 400 and 700. Nothing else.
 
 ## Shape and space
+
+These come from `tokens/base.json` and hold for every theme unless it overrides them.
 
 - Radius `none` (0) or `sm` (2px). Nothing rounder.
 - Borders are 2px, `--border-width`, in `border` colour.
@@ -80,7 +90,7 @@ Show real content instead: the clock, the bus, the headline. Let a plain table o
 
 ## The penguin
 
-- Every penguin comes from `assets/src/penguin.txt`. Use the files in `build/penguin/`. Never redraw it or scale it with smoothing.
+- The penguin belongs to the waddle theme. Every penguin comes from `themes/waddle/penguin.txt`. Use the files in `build/waddle/penguin/`. Never redraw it or scale it with smoothing.
 - Dark mode: `penguin-dark.svg` or `penguin-dark-*.png`, a black penguin on a `penguin-plate` square.
 - Light mode: `penguin-light.svg` or `penguin-light-*.png`, black ink on `penguin-paper`.
 - Favicon: `favicon.svg` with `favicon.ico` as fallback.
@@ -96,7 +106,7 @@ Show real content instead: the clock, the bus, the headline. Let a plain table o
 
 ## Check your work
 
-- Run `node scripts/build.mjs`. It stops if a theme pair fails WCAG AA (4.5:1).
+- Run `node scripts/build.mjs`. It stops if a theme fails WCAG AA (4.5:1) or its other checks.
 - In other repos, run `node ~/src/design/scripts/check-ai-look.mjs src`. It flags gradients, shadows, blur, round corners, blue or purple colours, emoji and marketing words.
 - Look at it in dark and light.
 - For e-ink, view it in greyscale. Text and borders must still read with four grey levels.

@@ -1,55 +1,32 @@
 <!doctype html>
-<html lang="no" data-theme="dark">
+<html lang="no" data-theme="waddle" data-mode="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' file:; script-src 'unsafe-inline'; font-src 'self' file:; img-src 'self' file:">
-<title>Waddle</title>
-<link rel="icon" href="../build/penguin/favicon.svg">
-<link rel="stylesheet" href="../build/web/fonts.css">
-<link rel="stylesheet" href="../build/web/tokens.css">
+<title>Design</title>
+<link rel="icon" href="../build/waddle/penguin/favicon.svg">
+<link rel="stylesheet" href="../build/web/all.css">
 <style>
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--text); font: var(--font-size-base)/1.5 var(--font-family-mono); }
 html[data-view="eink"] body { filter: url(#eink); }
 html[data-view="red"] body { filter: url(#red); }
 main { max-width: 960px; margin: 0 auto; padding: var(--space-4) var(--space-4) var(--space-12); }
-nav { display: flex; gap: var(--space-2); justify-content: flex-end; margin-bottom: var(--space-8); }
-h2 { font-size: var(--font-size-base); font-weight: var(--font-weight-bold); margin: var(--space-12) 0 var(--space-3); padding-bottom: var(--space-2); border-bottom: var(--border-width) solid var(--border); }
-a { color: var(--accent); }
-button, input { font: inherit; border-radius: var(--radius-sm); border: var(--border-width) solid var(--border); padding: var(--space-1) var(--space-3); transition: border-color var(--motion-duration-fast) var(--motion-easing-standard); }
-button { background: var(--bg); color: var(--text); cursor: pointer; }
-button:hover, input:focus { border-color: var(--text); outline: none; }
-button:focus-visible { outline: var(--border-width) solid var(--accent); outline-offset: var(--border-width); }
+nav { justify-content: flex-end; margin-bottom: var(--space-8); }
 button[aria-pressed="true"] { border-color: var(--accent); }
-button.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: var(--font-weight-bold); }
-input { background: var(--bg); color: var(--text); }
-
-.screen { border: var(--border-width) solid var(--border); display: grid; grid-template-columns: 1fr auto; gap: var(--space-6); padding: var(--space-6); }
+h2 { font-size: var(--font-size-base); padding-bottom: var(--space-2); border-bottom: var(--border-width) solid var(--border); margin-top: var(--space-12); }
+.screen { display: grid; grid-template-columns: 1fr auto; gap: var(--space-6); padding: var(--space-6); }
 .clock { font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); line-height: 1; }
-.date { color: var(--muted); margin: var(--space-2) 0 var(--space-6); }
-.news { list-style: none; margin: 0; padding: 0; }
+.news { list-style: none; padding: 0; }
 .news li { padding: var(--space-2) 0; border-top: var(--border-width) solid var(--border); }
 .news li:last-child { border-bottom: var(--border-width) solid var(--border); }
-.news small { color: var(--muted); font-size: var(--font-size-sm); margin-right: var(--space-2); }
+.news small { margin-right: var(--space-2); }
 .side { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-4); text-align: right; }
-.side img { image-rendering: pixelated; }
 .weather { font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); }
-.dialog { margin-top: var(--space-4); border: var(--border-width) solid var(--border); padding: var(--space-4); max-width: 420px; }
-.dialog p { margin: 0 0 var(--space-3); }
-.row { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
-
-table { border-collapse: collapse; width: 100%; }
-td, th { text-align: left; padding: var(--space-1) var(--space-4) var(--space-1) 0; border-bottom: 1px solid var(--border); font-weight: var(--font-weight-regular); vertical-align: middle; }
-th { color: var(--muted); font-size: var(--font-size-sm); }
-td code { font-size: var(--font-size-sm); }
 .sw { display: inline-block; width: var(--space-4); height: var(--space-4); border: 1px solid var(--border); vertical-align: middle; margin-right: var(--space-2); }
-
-.pengs { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: end; }
-.pengs img { display: block; image-rendering: pixelated; }
-.paper { background: var(--color-grey-9); padding: var(--space-3); }
+.paper { background: var(--penguin-paper); padding: var(--space-3); }
 .walls { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-2); }
-.walls img { width: 100%; display: block; image-rendering: pixelated; }
+.walls img { width: 100%; display: block; }
+.art[hidden] { display: none; }
 @media (max-width: 600px) { .screen { grid-template-columns: 1fr; } .side { align-items: flex-start; text-align: left; } }
 </style>
 </head>
@@ -59,28 +36,29 @@ td code { font-size: var(--font-size-sm); }
   <filter id="red" color-interpolation-filters="sRGB"><feColorMatrix values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/></filter>
 </svg>
 <main>
-<nav>
-  <button id="theme">Lys</button>
+<nav class="row">
+  <select id="theme" aria-label="Tema"></select>
+  <button id="mode">Lys</button>
   <button data-view="eink" aria-pressed="false">E-ink</button>
   <button data-view="red" aria-pressed="false">Rødfilter</button>
 </nav>
 
-<div class="screen">
+<div class="screen box">
   <div>
     <div class="clock">07:42</div>
-    <div class="date">Fredag 6. november</div>
+    <p class="muted">Fredag 6. november</p>
     <ul class="news">
-      <li><small>NRK</small>Stengt E6 ved Dovre etter snøfall</li>
-      <li><small>NRK</small>Strømprisen stiger igjen i Sør-Norge</li>
-      <li><small>Ruter</small>Buss 20 går <a href="#">om fire minutter</a></li>
+      <li><small class="muted">NRK</small>Stengt E6 ved Dovre etter snøfall</li>
+      <li><small class="muted">NRK</small>Strømprisen stiger igjen i Sør-Norge</li>
+      <li><small class="muted">Ruter</small>Buss 20 går <a href="#">om fire minutter</a></li>
     </ul>
-    <div class="dialog">
-      <p>Bruke bildet som bakgrunn?</p>
+    <div class="box stack" style="max-width: 420px">
+      <div>Bruke bildet som bakgrunn?</div>
       <div class="row"><button class="primary">Bruk</button><button>Avbryt</button></div>
     </div>
   </div>
   <div class="side">
-    <img src="../build/penguin/penguin-dark.svg" width="120" height="120" alt="" id="peng">
+    <img class="pixel art" id="peng" width="120" height="120" alt="">
     <div class="weather">4° lett regn</div>
     <div>Bluesound: Kjøkken</div>
     <input value="Jazz til frokost" aria-label="Spilleliste" size="16">
@@ -90,69 +68,71 @@ td code { font-size: var(--font-size-sm); }
 <h2>Farger</h2>
 <table id="colors"><tr><th>Navn</th><th>Mørk</th><th>Lys</th></tr></table>
 
-<h2>Gråskala</h2>
-<table id="ramp"><tr><th>Token</th><th>Verdi</th><th>E-ink</th></tr></table>
-
 <h2>Skrift</h2>
-<div style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold)">07:42</div>
-<div style="font-size: var(--font-size-lg); font-weight: var(--font-weight-bold)">4° lett regn</div>
-<div>Buss 20 går om fire minutter.</div>
-<div style="font-size: var(--font-size-sm); color: var(--muted)">Oppdatert 07:40</div>
+<div class="clock">07:42</div>
+<div class="weather">4° lett regn</div>
+<p>Buss 20 går om fire minutter.</p>
+<small class="muted">Oppdatert 07:40</small>
 
+<section class="art" id="pengs">
 <h2>Pingvin</h2>
-<div class="pengs">
-  <img src="../build/penguin/penguin-dark.svg" width="120" alt="Mørk">
-  <div class="paper"><img src="../build/penguin/penguin-light.svg" width="96" alt="Lys"></div>
-  <img src="../build/penguin/png/penguin-dark-64.png" width="64" alt="64 px">
-  <img src="../build/penguin/png/penguin-dark-32.png" width="32" alt="32 px">
-  <img src="../build/penguin/png/penguin-dark-16.png" width="16" alt="16 px">
+<div class="row">
+  <img class="pixel" data-art="penguin/penguin-dark.svg" width="120" alt="Mørk">
+  <div class="paper"><img class="pixel" data-art="penguin/penguin-light.svg" width="96" alt="Lys"></div>
+  <img class="pixel" data-art="penguin/png/penguin-dark-64.png" width="64" alt="64 px">
+  <img class="pixel" data-art="penguin/png/penguin-dark-32.png" width="32" alt="32 px">
+  <img class="pixel" data-art="penguin/png/penguin-dark-16.png" width="16" alt="16 px">
 </div>
+</section>
 
-<h2>TV</h2>
+<section class="art" id="walls">
+<h2>Bakgrunner</h2>
 <div class="walls">
-  <img src="../build/cleanyourtv/waddle/wallpapers/01-morgen.png" alt="Morgen på isbreen">
-  <img src="../build/cleanyourtv/waddle/wallpapers/02-kveld.png" alt="Kveld på isbreen">
-  <img src="../build/cleanyourtv/waddle/wallpapers/03-natt.png" alt="Natt på isbreen">
+  <img data-art="cleanyourtv/wallpapers/01-morgen.png" alt="Morgen">
+  <img data-art="cleanyourtv/wallpapers/02-kveld.png" alt="Kveld">
+  <img data-art="cleanyourtv/wallpapers/03-natt.png" alt="Natt">
 </div>
+</section>
 
 <h2>Filer</h2>
-<table>
-  <tr><td>Web</td><td><code>build/web/tokens.css</code></td></tr>
-  <tr><td>WaddleOS</td><td><code>build/waddleos/WaddleTokens.h</code></td></tr>
-  <tr><td>TV</td><td><code>build/cleanyourtv/waddle</code></td></tr>
-  <tr><td>Hyprland</td><td><code>build/hyprland/waddle.conf</code></td></tr>
-  <tr><td>Waybar</td><td><code>build/waybar/style.css</code></td></tr>
-  <tr><td>kitty</td><td><code>build/kitty/waddle.conf</code></td></tr>
-  <tr><td>Bakgrunn</td><td><code>build/hyprland/wallpapers</code></td></tr>
-  <tr><td>AI</td><td><code>skill/design-arne/SKILL.md</code></td></tr>
-</table>
+<table id="files"></table>
 </main>
 <script>
 const root = document.documentElement;
-const val = (name, theme) => {
+const themes = getComputedStyle(root).getPropertyValue("--themes").replaceAll('"', "").trim().split(/\s+/);
+const val = (name, mode) => {
   const el = document.createElement("div");
-  if (theme) el.dataset.theme = theme;
+  el.dataset.theme = root.dataset.theme;
+  el.dataset.mode = mode;
   document.body.append(el);
   const v = getComputedStyle(el).getPropertyValue(name).trim();
   el.remove();
   return v;
 };
-const sw = v => `<span class="sw" style="background:${v}"></span><code>${v}</code>`;
-const gray4 = h => ["svart", "mørkegrå", "lysegrå", "hvit"][Math.round([1, 3, 5].reduce((s, i, k) => s + parseInt(h.slice(i, i + 2), 16) * [0.2126, 0.7152, 0.0722][k], 0) / 85)];
-colors.innerHTML += ["bg", "surface", "border", "text", "muted", "accent", "on-accent"].map(n => `<tr><td>${n}</td><td>${sw(val(`--${n}`, "dark"))}</td><td>${sw(val(`--${n}`, "light"))}</td></tr>`).join("");
-ramp.innerHTML += [...Array(10).keys(), "white"].map(i => { const v = val(`--color-grey-${i}`); return `<tr><td>grey-${i}</td><td>${sw(v)}</td><td>${gray4(v)}</td></tr>`; }).join("")
-  + ["dark", "light"].map(t => { const v = val(`--color-nebb-${t}`); return `<tr><td>nebb-${t}</td><td>${sw(v)}</td><td>${gray4(v)}</td></tr>`; }).join("");
-document.getElementById("theme").onclick = e => {
-  const dark = root.dataset.theme === "dark";
-  root.dataset.theme = dark ? "light" : "dark";
-  e.target.textContent = dark ? "Mørk" : "Lys";
-  peng.src = `../build/penguin/penguin-${dark ? "light" : "dark"}.svg`;
+const sw = v => v ? `<span class="sw" style="background:${v}"></span><code>${v}</code>` : "";
+const draw = () => {
+  const t = root.dataset.theme;
+  colors.innerHTML = "<tr><th>Navn</th><th>Mørk</th><th>Lys</th></tr>" + ["bg", "surface", "border", "text", "muted", "accent", "on-accent"].map(n => `<tr><td>${n}</td><td>${sw(val(`--${n}`, "dark"))}</td><td>${sw(val(`--${n}`, "light"))}</td></tr>`).join("");
+  files.innerHTML = [["Web, ett tema", `build/web/${t}.css`], ["Web, alle temaer", "build/web/all.css"], ["WaddleOS", `build/${t}/waddleos`], ["TV", `build/${t}/cleanyourtv`], ["Hyprland", `build/${t}/hyprland`], ["Waybar", `build/${t}/waybar`], ["kitty", `build/${t}/kitty`]].map(([a, b]) => `<tr><td>${a}</td><td><code>${b}</code></td></tr>`).join("");
+  document.querySelectorAll("[data-art]").forEach(img => { img.src = `../build/${t}/${img.dataset.art}`; });
+  peng.src = `../build/${t}/penguin/penguin-${root.dataset.mode === "light" ? "light" : "dark"}.svg`;
+};
+document.addEventListener("error", e => { const s = e.target.closest?.("section.art"); if (s) s.hidden = true; if (e.target === peng) peng.hidden = true; }, true);
+theme.innerHTML = themes.map(t => `<option>${t}</option>`).join("");
+theme.value = root.dataset.theme;
+theme.onchange = () => { root.dataset.theme = theme.value; document.querySelectorAll(".art").forEach(a => a.hidden = false); draw(); };
+mode.onclick = () => {
+  const dark = root.dataset.mode === "dark";
+  root.dataset.mode = dark ? "light" : "dark";
+  mode.textContent = dark ? "Mørk" : "Lys";
+  draw();
 };
 document.querySelectorAll("[data-view]").forEach(b => b.onclick = () => {
   const on = root.dataset.view !== b.dataset.view;
   root.dataset.view = on ? b.dataset.view : "";
   document.querySelectorAll("[data-view]").forEach(o => o.setAttribute("aria-pressed", String(on && o === b)));
 });
+draw();
 </script>
 </body>
 </html>
