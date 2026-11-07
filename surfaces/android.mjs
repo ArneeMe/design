@@ -43,12 +43,11 @@ termux-reload-settings
 echo "termux: bruker ${t.id}"
 `);
   const phone = phones[0].id;
-  const pick = scene => (t.art.wallpapers ?? []).find(w => w.scene === scene)?.file.replace(".png", `-${phone}.png`);
-  if (t.art.wallpapers?.length) write("termux/wallpaper.sh", `h=$(date +%-H)
-if [ "$h" -ge 6 ] && [ "$h" -lt 12 ]; then f=${pick("morning")}
-elif [ "$h" -ge 12 ] && [ "$h" -lt 19 ]; then f=${pick("evening")}
-else f=${pick("night")}
-fi
+  const walls = [...(t.art.wallpapers ?? [])].sort((x, y) => x.from - y.from);
+  const file = w => w.file.replace(".png", `-${phone}.png`);
+  if (walls.length) write("termux/wallpaper.sh", `h=$(date +%-H)
+f=${file(walls.at(-1))}
+${walls.map(w => `[ "$h" -ge ${w.from} ] && f=${file(w)}`).join("\n")}
 [ "$(cat ~/.termux/wallpaper.last 2>/dev/null)" = "$f" ] && exit 0
 termux-wallpaper -f "/sdcard/Pictures/${t.id}/$f" && termux-wallpaper -l -f "/sdcard/Pictures/${t.id}/$f" && echo "$f" > ~/.termux/wallpaper.last
 `);

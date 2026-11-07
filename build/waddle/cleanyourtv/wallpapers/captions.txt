@@ -1,3 +1,4 @@
 01-morgen.png	Morgen på isbreen
-02-kveld.png	Kveld på isbreen
-03-natt.png	Natt på isbreen
+02-ettermiddag.png	Ettermiddag på isbreen
+03-kveld.png	Kveld på isbreen
+04-natt.png	Natt på isbreen

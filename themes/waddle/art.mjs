@@ -6,9 +6,10 @@ import { wallpaper as draw } from "./wallpapers.mjs";
 const png = c => encodePng(c.w, c.h, c.data);
 
 export const wallpapers = [
-  { file: "01-morgen.png", scene: "morning", caption: "Morgen på isbreen" },
-  { file: "02-kveld.png", scene: "evening", caption: "Kveld på isbreen" },
-  { file: "03-natt.png", scene: "night", caption: "Natt på isbreen" },
+  { file: "01-morgen.png", scene: "morning", from: 6, caption: "Morgen på isbreen" },
+  { file: "02-ettermiddag.png", scene: "afternoon", from: 12, caption: "Ettermiddag på isbreen" },
+  { file: "03-kveld.png", scene: "evening", from: 19, caption: "Kveld på isbreen" },
+  { file: "04-natt.png", scene: "night", from: 23, caption: "Natt på isbreen" },
 ];
 
 const places = { tv: [96, 320, 180], desktop: [118, 320, 180], phone: [260, 186, 414] };
