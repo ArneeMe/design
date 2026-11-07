@@ -19,6 +19,7 @@ A theme is a look. A surface is where it goes. Ask which theme a project uses. I
 | Web, many themes | `build/web/all.css` with `data-theme` | `<html data-theme="waddle">` |
 | Tailwind | `build/web/tailwind-preset.js` | `bg-surface text-muted p-4` |
 | WaddleOS | `build/<theme>/waddleos/<Theme>Tokens.h` | `WaddleTokens::GRAY4_LIGHT_Text` |
+| Omarchy | `build/<theme>/omarchy/` | `colors.toml`, linked into `~/.config/omarchy/themes/` |
 | Hyprland | `build/<theme>/hyprland/<theme>.conf` | `$accent` |
 | Waybar | `build/<theme>/waybar/colors.css` | `@accent` |
 | kitty | `build/<theme>/kitty/<theme>.conf` | `color1` to `color15` |

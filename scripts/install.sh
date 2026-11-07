@@ -11,6 +11,26 @@ echo "skill: ~/.claude/skills/design-arne"
 
 backup() { [ -f "$1.for-design" ] || cp "$1" "$1.for-design"; }
 
+if command -v omarchy-theme-set >/dev/null && [ -d "$out/omarchy" ]; then
+  mkdir -p "$HOME/.config/omarchy/themes"
+  ln -sfn "$out/omarchy" "$HOME/.config/omarchy/themes/$theme"
+  for f in "$HOME/.config/hypr/hyprland.conf" "$HOME/.config/kitty/kitty.conf"; do
+    if [ -f "$f" ] && grep -qF "$repo/build/" "$f"; then
+      grep -vF "$repo/build/" "$f" > "$f.tmp" || true
+      mv "$f.tmp" "$f"
+      echo "omarchy: fjernet gammel linje fra $f"
+    fi
+  done
+  paper="$HOME/.config/hypr/hyprpaper.conf"
+  if [ -f "$paper" ] && grep -qF "$repo/build/" "$paper"; then
+    rm "$paper"
+    echo "omarchy: fjernet $paper"
+  fi
+  omarchy-theme-set "$theme"
+  echo "omarchy: bruker $theme"
+  exit 0
+fi
+
 hypr="$HOME/.config/hypr/hyprland.conf"
 line="source = $out/hyprland/$theme.conf"
 if [ -f "$hypr" ] && ! grep -qxF "$line" "$hypr"; then
