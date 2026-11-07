@@ -15,6 +15,7 @@ export function wallpaper(g, accent, scene, scale = 6, SHELF = 96, W = 320, H = 
   const glint = (x, y, top) => y % 3 === 0 && hash(x >> 1, y) % 100 < 6 * (1 - (y - top) / (H - top));
   const s = {
     morning: { top: g[2], horizon: mix(g[4], accent, 0.6), ice: g[6], face: g[4], deep: g[3], sea: g[1], glint: mix(g[2], accent, 0.5), ink: g[0], paper: g[9] },
+    afternoon: { top: g[3], horizon: g[5], ice: g[7], face: g[5], deep: g[3], sea: g[2], glint: g[4], ink: g[0], paper: g[9] },
     evening: { top: g[1], horizon: g[4], ice: g[5], face: g[3], deep: g[2], sea: g[1], glint: mix(g[1], accent, 0.35), ink: g[0], paper: g[8] },
     night: { top: g[0], horizon: g[3], ice: g[4], face: g[2], deep: g[1], sea: g[0], glint: g[2], ink: g[0], paper: g[7] },
   }[scene];
@@ -31,6 +32,7 @@ export function wallpaper(g, accent, scene, scale = 6, SHELF = 96, W = 320, H = 
     }
 
   if (scene === "morning") disc(c, Math.round(W * 0.225), SHELF - 30, 9, g[8], s.horizon);
+  if (scene === "afternoon") disc(c, Math.round(W * 0.3), Math.round(SHELF * 0.4), 9, g[9], mix(s.top, s.horizon, 0.3));
   if (scene === "evening") for (let x = 0; x < W; x++) for (let y = SHELF - 14; y < SHELF; y++) if (y < shelfTop(x) && dither(x, y, (y - SHELF + 14) / 14 * 0.6)) c.set(x, y, mix(s.horizon, accent, 0.4));
   if (scene === "night") {
     for (let i = 0; i < Math.round(W * H / 823); i++) {

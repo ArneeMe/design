@@ -52,7 +52,7 @@ Clone once to `~/Code/design`. Desktop and TV follow `main`. Apps pin a version 
 
 **Omarchy.** The install script sees Omarchy and does it Omarchy's way. It links `build/<theme>/omarchy` into `~/.config/omarchy/themes/` and runs `omarchy-theme-set`. Omarchy then colours Hyprland, the bar, the terminal, the lock screen and the rest from the theme's `colors.toml`. Your keybinds, monitors and `looknfeel.lua` stay yours. Later you can pick the theme in Omarchy's theme menu like any other. After a pull, run `omarchy-theme-set <theme>` again. `omarchy-theme-refresh` skips the wallpaper.
 
-**Android.** With the phone on USB and USB debugging on, this puts the wallpapers in `Pictures/<theme>`, sets the system colour and dark mode, and copies Termux's colours and font to `Download/<theme>-termux`. It then prints one command to run in Termux, which puts them in place and keeps the old files as `<file>.for-design`. No root needed. With the Termux:API app from F-Droid and `pkg install termux-api`, it also switches the home and lock screen wallpaper by time of day: morning 06 to 12, evening 12 to 19, night after that. Pick the wallpaper yourself in the gallery. Phones and their sizes are listed in `surfaces/android.mjs`.
+**Android.** With the phone on USB and USB debugging on, this puts the wallpapers in `Pictures/<theme>`, sets the system colour and dark mode, and copies Termux's colours and font to `Download/<theme>-termux`. It then prints one command to run in Termux, which puts them in place and keeps the old files as `<file>.for-design`. No root needed. With the Termux:API app from F-Droid and `pkg install termux-api`, it also switches the home and lock screen wallpaper by time of day: morning from 06, afternoon from 12, evening from 19 and night from 23. The times live in `themes/waddle/art.mjs`. Pick the wallpaper yourself in the gallery. Phones and their sizes are listed in `surfaces/android.mjs`.
 
 ```bash
 ~/Code/design/scripts/android.sh
@@ -89,7 +89,7 @@ TV_HOST=192.168.1.50 ~/src/cleanyourtv/tools/theme.sh ~/Code/design/build/waddle
 **Websites.** Add the repo as a git dependency at a tag. No CDN.
 
 ```bash
-npm install github:arneeme/design#v2.3.0
+npm install github:arneeme/design#v2.4.0
 ```
 
 ```css

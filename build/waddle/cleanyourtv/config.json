@@ -8,10 +8,11 @@
       "01-morgen.png"
     ],
     "evening": [
-      "02-kveld.png"
+      "02-ettermiddag.png",
+      "03-kveld.png"
     ],
     "night": [
-      "03-natt.png"
+      "04-natt.png"
     ]
   },
   "wallpaper_captions": true,

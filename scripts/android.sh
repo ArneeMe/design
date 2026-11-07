@@ -9,6 +9,7 @@ termux=/sdcard/Download/$theme-termux
 adb get-state >/dev/null
 
 adb shell mkdir -p "/sdcard/Pictures/$theme"
+adb shell "rm -f /sdcard/Pictures/$theme/*.png"
 adb push "$out"/wallpapers/*.png "/sdcard/Pictures/$theme/" >/dev/null
 adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d "file:///sdcard/Pictures/$theme" >/dev/null
 echo "bakgrunner: Bilder/$theme på telefonen"

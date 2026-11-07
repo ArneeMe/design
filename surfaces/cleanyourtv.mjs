@@ -3,14 +3,14 @@ export default function cleanyourtv(t, write) {
   const walls = t.art.wallpapers ?? [];
   for (const w of walls) write(`wallpapers/${w.file}`, t.art.wallpaper(t, w.scene, 6));
   if (walls.length) write("wallpapers/captions.txt", walls.map(w => `${w.file}\t${w.caption}\n`).join(""));
-  const mood = scene => walls.filter(w => w.scene === scene).map(w => w.file);
+  const mood = (...scenes) => walls.filter(w => scenes.includes(w.scene)).map(w => w.file);
   write("config.json", JSON.stringify({
     background_color: dark.bg.toUpperCase(),
     sky_intensity: 0,
     wallpaper: walls.length > 0,
     ...(walls.length && {
       wallpaper_rotation_minutes: 60,
-      wallpaper_moods: { morning: mood("morning"), evening: mood("evening"), night: mood("night") },
+      wallpaper_moods: { morning: mood("morning"), evening: mood("afternoon", "evening"), night: mood("night") },
       wallpaper_captions: true,
       wallpaper_dim: 10,
       wallpaper_true_color: true,
