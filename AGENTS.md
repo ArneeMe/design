@@ -13,7 +13,8 @@ This repo is Arne's design system. Follow the `arnes-stil` skill for code, git a
 - `scripts/build.mjs`: the build. `scripts/lib/` has the theme loader, checks, canvas and PNG encoder. Node only, no dependencies.
 - `build/`: generated output. Committed. Never edit by hand.
 - `preview/index.html`: preview of every theme from `build/`, with dark, light, e-ink and red filter views.
-- `scripts/install.sh`, `scripts/sync-waddleos.sh`, `scripts/android.sh`: hook this machine, WaddleOS and the phone up to `build/`.
+- `scripts/install.sh`, `scripts/sync-waddleos.sh`, `scripts/android.sh`, `scripts/sync-app.sh`: hook this machine, WaddleOS, the phone and Android apps up to `build/`.
+- `drafts/`: ideas not in the build yet, like the vector penguin drafts.
 
 ## Rules
 
